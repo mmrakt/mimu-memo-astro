@@ -1,6 +1,5 @@
 // import { withPrefix } from 'gatsby'
 import React from 'react'
-import { Helmet } from 'react-helmet'
 
 import { LOCALE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../config'
 
@@ -34,9 +33,9 @@ const Head: React.VFC<IProps> = ({
   const type = pageType || 'blog'
 
   return (
-    <Helmet>
-      <html lang="ja" className="bg-primary dark:bg-dark-black" />
+    <head>
       <title>{title}</title>
+      <meta charSet="utf-8" />
       <meta name="description" content={description} />
       <link rel="canonical" href={siteUrl} />
       {/* <link
@@ -59,7 +58,7 @@ const Head: React.VFC<IProps> = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
-    </Helmet>
+    </head>
   )
 }
 

@@ -1,6 +1,7 @@
-import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+
+import GithubLogo from './common/GithubLogo'
+import TwitterLogo from './common/TwitterLogo'
 
 const Profile: React.VFC = () => (
   <>
@@ -14,9 +15,14 @@ const Profile: React.VFC = () => (
     </div>
     <div className="description mt-3">大阪出身の文系エンジニアです。</div>
     <div className="description">ストリートダンスと飲酒が趣味です。</div>
-    <div className="mt-3">
-      <a href="https://github.com/mmrakt" target="_blank" rel="noreferrer">
-        <FontAwesomeIcon size="2x" icon={faGithub} />
+    <div className="mt-3 flex items-center">
+      <a
+        href="https://github.com/mmrakt"
+        target="_blank"
+        rel="noreferrer"
+        className=""
+      >
+        <GithubLogo />
       </a>
       <a
         href="https://twitter.com/mmrakt0716"
@@ -24,7 +30,7 @@ const Profile: React.VFC = () => (
         target="_blank"
         rel="noreferrer"
       >
-        <FontAwesomeIcon size="2x" icon={faTwitter} />
+        <TwitterLogo />
       </a>
     </div>
   </>
