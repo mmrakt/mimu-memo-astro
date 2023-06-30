@@ -4,22 +4,37 @@ import BaseLayout from '../../components/BaseLayout.astro'
 import Posts from '../../templates/posts.tsx'
 import { data } from 'autoprefixer'
 import ChevronLeft from '../../components/common/ChevronLeft.tsx'
+import {
+  fetchQiitaFeed,
+  fetchZennFeed,
+  extractSlugFromMd,
+  sortPostsByPubDate,
+} from '../../utils'
+import type { Frontmatter } from '../../types/index.ts'
 
 export async function getStaticPaths({
   paginate,
 }: {
   paginate: PaginateFunction
 }) {
-  const DELIVERY_TOKEN = import.meta.env.CONTENTFUL_DELIVERY_API_TOKEN
-  const SPACE_ID = import.meta.env.CONTENTFUL_SPACE_ID
-  const ENVIRONMENT_ID = import.meta.env.CONTENTFUL_ENVIRONMENT
-  const contentfulFetchUrl = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}/entries?access_token=${DELIVERY_TOKEN}`
-  const response = await fetch(contentfulFetchUrl)
-  const { items } = await response.json()
-  return paginate(items, { pageSize: 10 })
+  const ownedMd = await Astro.glob<Frontmatter>('../../content/owned/*.md')
+  const ownedPosts: Frontmatter[] = ownedMd.map((post) => {
+    return {
+      pubDate: post.frontmatter.pubDate,
+      title: post.frontmatter.title,
+      link: extractSlugFromMd(post),
+      media: 'owned',
+    }
+  })
+  const qiitaPosts = await fetchQiitaFeed()
+  const zennPosts = await fetchZennFeed()
+
+  const posts = sortPostsByPubDate([...ownedPosts, ...qiitaPosts, ...zennPosts])
+
+  return paginate(posts, { pageSize: 10 })
 }
 type Props = {
-  page: Page
+  page: Page<Frontmatter>
 }
 const { page } = Astro.props
 ---

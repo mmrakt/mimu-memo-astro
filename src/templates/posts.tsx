@@ -4,11 +4,12 @@ import Pagination from '../components/Pagination'
 import PostList from '../components/PostList'
 import PostListLayout from '../components/PostListLayout'
 
+import type { Frontmatter } from '../types'
 import type { Page } from 'astro'
 
-const PostsTemplate = ({ page }: { page: Page }) => (
+const PostsTemplate = ({ page }: { page: Page<Frontmatter> }) => (
   <PostListLayout>
-    <PostList nodes={page.data} />
+    <PostList posts={page.data} />
     <Pagination page={page} />
   </PostListLayout>
 )
