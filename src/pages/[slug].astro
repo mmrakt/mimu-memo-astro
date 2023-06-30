@@ -1,7 +1,22 @@
 ---
+import { getCollection, getEntry } from 'astro:content'
+import type { Frontmatter } from '../types'
+import { extractSlugFromMd } from '../utils'
+
 export async function getStaticPaths() {
-  return [{ params: { slug: 'hoge' } }]
+  const { slug } = Astro.params
+  const post = await getCollection('owned')
+  console.log(post)
+  return [
+    {
+      params: { slug: post.slug },
+      props: post,
+    },
+  ]
 }
+
+const post = Astro.props
+const { Content } = await post.render()
 ---
 
 <div></div>
