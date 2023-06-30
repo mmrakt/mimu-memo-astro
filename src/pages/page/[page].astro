@@ -1,0 +1,31 @@
+---
+import type { Page, PaginateFunction } from 'astro'
+import BaseLayout from '../../components/BaseLayout.astro'
+import Posts from '../../templates/posts.tsx'
+import { data } from 'autoprefixer'
+import ChevronLeft from '../../components/common/ChevronLeft.tsx'
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
+  const DELIVERY_TOKEN = import.meta.env.CONTENTFUL_DELIVERY_API_TOKEN
+  const SPACE_ID = import.meta.env.CONTENTFUL_SPACE_ID
+  const ENVIRONMENT_ID = import.meta.env.CONTENTFUL_ENVIRONMENT
+  const contentfulFetchUrl = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}/entries?access_token=${DELIVERY_TOKEN}`
+  const response = await fetch(contentfulFetchUrl)
+  const { items } = await response.json()
+  return paginate(items, { pageSize: 10 })
+}
+type Props = {
+  page: Page
+}
+const { page } = Astro.props
+---
+
+<html lang="ja">
+  <BaseLayout>
+    <Posts page={page} />
+  </BaseLayout>
+</html>

@@ -1,0 +1,61 @@
+{
+  "name": "$npm_package_config_siteName",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint ./src/**/*.{tsx,astro}"
+  },
+  "dependencies": {
+    "@astrojs/image": "^0.17.1",
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/react": "^2.2.1",
+    "@astrojs/tailwind": "^4.0.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@tailwindcss/jit": "^0.1.18",
+    "@types/node": "^20.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@vercel/analytics": "^1.0.1",
+    "astro": "^2.7.1",
+    "autoprefixer": "^10.4.14",
+    "dayjs": "^1.11.8",
+    "postcss": "^8.4.24",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-responsive": "^9.0.2",
+    "react-share": "^4.4.1",
+    "tailwindcss": "^3.3.2"
+  },
+  "volta": {
+    "node": "20.3.1"
+  },
+  "config": {
+    "siteName": "mimu-memo",
+    "description": "平凡エンジニアの個人学習メモ",
+    "siteUrl": "https://mimu-memo.com",
+    "lang": "ja",
+    "locale": "ja_JP"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.2",
+    "@types/react": "^18.2.14",
+    "@typescript-eslint/parser": "^5.60.1",
+    "astro-auto-import": "^0.3.0",
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-astro": "^0.27.2",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "prettier": "^2.8.8",
+    "prettier-plugin-astro": "^0.10.0",
+    "ts-jest": "^29.1.0"
+  }
+}

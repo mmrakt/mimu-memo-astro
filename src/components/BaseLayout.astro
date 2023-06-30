@@ -1,0 +1,34 @@
+---
+import { inject } from '@vercel/analytics'
+
+import Footer from './Footer.tsx'
+import Header from './Header.tsx'
+import Head from './Head.tsx'
+
+inject()
+
+type Props = {
+  pageTitle?: string
+  pageDescription?: string
+  pageUrl?: string
+  pageType?: string
+}
+const { pageTitle, pageDescription, pageUrl, pageType } = Astro.props
+---
+
+<!-- TODO: pageUrl設定 -->
+<Head
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  pageUrl="/"
+  pageType={pageType}
+/>
+<body>
+  <div class="dark:text-white">
+    <Header />
+    <main class="min-h-[53rem] pc:py-10 py-6 dark:bg-dark-black bg-gray-100">
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</body>
