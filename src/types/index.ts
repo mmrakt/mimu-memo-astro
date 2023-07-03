@@ -1,4 +1,4 @@
-import { MEDIA } from '../config'
+import { MEDIA_LIST, MEDIA_LIST_DISPLAY } from '../config'
 
 import type { CollectionEntry } from 'astro:content'
 
@@ -21,5 +21,5 @@ export type PaginatedPost = {
   }
 }
 
-export type Media = (typeof MEDIA)[number]
-export type UncaptalizedMedia = Uncapitalize<Media>
+export type Media = (typeof MEDIA_LIST)[number]
+export type MediaDisplay = (typeof MEDIA_LIST_DISPLAY)[number]

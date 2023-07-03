@@ -1,0 +1,56 @@
+---
+import type { Page, PaginateFunction } from 'astro'
+import { MEDIA_LIST, QIITA_FEED_URL } from '../../../config'
+import { extractSlugFromMd, makeQiitaPost, makeZennPost } from '../../../utils'
+import type { Frontmatter, Media } from '../../../types'
+import BaseLayout from '../../../components/BaseLayout.astro'
+import PostsByMedia from '../../../templates/postsByMedia.astro'
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
+  const ownedMd = await Astro.glob<Frontmatter>('../../../content/owned/*.md'),
+    qiitaPosts = await makeQiitaPost(),
+    zennPosts = await makeZennPost()
+  const ownedPosts: Frontmatter[] = ownedMd.map((post) => {
+    return {
+      pubDate: post.frontmatter.pubDate,
+      title: post.frontmatter.title,
+      link: extractSlugFromMd(post),
+      media: 'owned',
+    }
+  })
+
+  let posts: Frontmatter[] = []
+  return MEDIA_LIST.map((media) => {
+    if (media === 'owned') {
+      posts = ownedPosts
+    } else if (media === 'qiita') {
+      posts = qiitaPosts
+    } else if (media === 'zenn') {
+      posts = zennPosts
+    }
+    if (posts.length !== 0) {
+      console.log(posts)
+      return paginate(posts, {
+        params: { media },
+        pageSize: 10,
+      })
+    }
+  })
+}
+type Props = {
+  page: Page<Frontmatter>
+}
+
+const { page } = Astro.props
+const { media } = Astro.params
+---
+
+<html lang="ja">
+  <BaseLayout pageUrl="">
+    <PostsByMedia page={page} media={media} />
+  </BaseLayout>
+</html>

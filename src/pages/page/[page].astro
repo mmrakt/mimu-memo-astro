@@ -5,8 +5,8 @@ import Posts from '../../templates/posts.astro'
 import { data } from 'autoprefixer'
 import ChevronLeft from '../../components/common/ChevronLeft.tsx'
 import {
-  fetchQiitaFeed,
-  fetchZennFeed,
+  makeQiitaPost,
+  makeZennPost,
   extractSlugFromMd,
   sortPostsByPubDate,
 } from '../../utils'
@@ -17,7 +17,9 @@ export async function getStaticPaths({
 }: {
   paginate: PaginateFunction
 }) {
-  const ownedMd = await Astro.glob<Frontmatter>('../../content/owned/*.md')
+  const ownedMd = await Astro.glob<Frontmatter>('../../content/owned/*.md'),
+    qiitaPosts = await makeQiitaPost(),
+    zennPosts = await makeZennPost()
   const ownedPosts: Frontmatter[] = ownedMd.map((post) => {
     return {
       pubDate: post.frontmatter.pubDate,
@@ -26,8 +28,6 @@ export async function getStaticPaths({
       media: 'owned',
     }
   })
-  const qiitaPosts = await fetchQiitaFeed()
-  const zennPosts = await fetchZennFeed()
 
   const posts = sortPostsByPubDate([...ownedPosts, ...qiitaPosts, ...zennPosts])
 

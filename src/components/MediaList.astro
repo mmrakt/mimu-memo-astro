@@ -1,14 +1,14 @@
 ---
 import React from 'react'
 
-import { MEDIA, QIITA_FEED_URL, ZENN_FEED_URL } from '../config'
+import { MEDIA_LIST_DISPLAY, QIITA_FEED_URL, ZENN_FEED_URL } from '../config'
 import { convertMediaNameToSlug, fetchFeed } from '../utils'
-import type { Frontmatter, Media } from '../types'
+import type { Frontmatter, Media, MediaDisplay } from '../types'
 const ownedMd = await Astro.glob<Frontmatter>('../content/owned/*.md')
 const qiitaFeed = await fetchFeed(QIITA_FEED_URL)
 const zennFeed = await fetchFeed(ZENN_FEED_URL)
 
-const getCountByMedia = (media: Media) => {
+const getCountByMedia = (media: MediaDisplay) => {
   if (media === 'mimu-memo') {
     return ownedMd.length
   } else if (media === 'Qiita') {
@@ -23,8 +23,8 @@ const getCountByMedia = (media: Media) => {
 <h3 class="mt-6 font-black">Media</h3>
 <div class="flex flex-wrap mt-2">
   {
-    MEDIA.map((media) => (
-      <a href={`/${convertMediaNameToSlug(media)}`}>
+    MEDIA_LIST_DISPLAY.map((media) => (
+      <a href={`/${convertMediaNameToSlug(media)}/page/1`}>
         <span class="text-link mb-3 mr-5 underline text-sm">
           #{media}({getCountByMedia(media)})
         </span>
