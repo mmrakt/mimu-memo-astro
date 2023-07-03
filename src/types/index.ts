@@ -1,3 +1,5 @@
+import { MEDIA } from '../config'
+
 import type { CollectionEntry } from 'astro:content'
 
 export type Frontmatter = {
@@ -18,3 +20,6 @@ export type PaginatedPost = {
     title: string
   }
 }
+
+export type Media = (typeof MEDIA)[number]
+export type UncaptalizedMedia = Uncapitalize<Media>

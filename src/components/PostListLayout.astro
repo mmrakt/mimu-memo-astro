@@ -1,0 +1,13 @@
+---
+import SideBar from './SideBar.astro'
+---
+
+<!-- TODO react-responsive削除してtailwindで再実装 -->
+<div class="flex flex-col pc:flex-row mx-auto max-w-6xl">
+  <div class="w-full">
+    <slot />
+  </div>
+  <div class="pc:ml-10">
+    <SideBar />
+  </div>
+</div>

@@ -1,0 +1,20 @@
+---
+import React from 'react'
+
+import Pagination from '../components/Pagination'
+import PostList from '../components/PostList'
+import PostListLayout from '../components/PostListLayout.astro'
+
+import type { Frontmatter } from '../types'
+import type { Page } from 'astro'
+
+type Props = {
+  page: Page<Frontmatter>
+}
+const { page } = Astro.props
+---
+
+<PostListLayout>
+  <PostList posts={page.data} />
+  <Pagination page={page} />
+</PostListLayout>

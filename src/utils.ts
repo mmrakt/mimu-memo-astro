@@ -1,9 +1,9 @@
 import dayjs from 'dayjs'
 import Parser from 'rss-parser'
 
-import { Media, SNS_ID } from './config/index'
+import { QIITA_FEED_URL, ZENN_FEED_URL } from './config/index'
 
-import type { Frontmatter } from './types/index'
+import type { Frontmatter, Media } from './types/index'
 import type { MarkdownInstance } from 'astro'
 
 export const convertMediaNameToSlug = (mediaName: Media) => {
@@ -28,23 +28,24 @@ export const sortPostsByPubDate = (posts: Frontmatter[]): Frontmatter[] =>
   )
 
 export const fetchQiitaFeed = async (): Promise<Frontmatter[]> => {
-  const feed = await new Parser().parseURL(`https://qiita.com/${SNS_ID}/feed`)
-  return feed.items.map((item) => ({
-    title: item.title ?? '',
-    pubDate: item.pubDate ? dayjs(item.pubDate).format('YYYY-MM-DD') : '',
-    link: item.link ?? '',
-    media: 'qiita',
-  }))
+  const feed = await fetchFeed(QIITA_FEED_URL)
+  return mappingFeed(feed.items, 'qiita')
 }
 
 export const fetchZennFeed = async (): Promise<Frontmatter[]> => {
-  const feed = await new Parser().parseURL(
-    `https://zenn.dev/${SNS_ID}/feed?all=1`
-  )
-  return feed.items.map((item) => ({
+  const feed = await fetchFeed(ZENN_FEED_URL)
+  return mappingFeed(feed.items, 'zenn')
+}
+
+export const fetchFeed = async (url: string) => {
+  const feed = await new Parser().parseURL(url)
+  return feed
+}
+
+const mappingFeed = (items: Parser.Item[], media: 'qiita' | 'zenn') =>
+  items.map((item) => ({
     title: item.title ?? '',
     pubDate: item.pubDate ? dayjs(item.pubDate).format('YYYY-MM-DD') : '',
     link: item.link ?? '',
-    media: 'zenn',
+    media,
   }))
-}

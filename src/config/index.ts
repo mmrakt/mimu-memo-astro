@@ -11,6 +11,7 @@ export const QIITA_URL_PREFIX = 'https://qiita.com'
 export const NOTE_URL_PREFIX = 'https://note.com'
 export const ZENN_URL_PREFIX = 'https://zenn.dev'
 export const MEDIA = ['mimu-memo', 'Qiita', 'Zenn'] as const
-export type Media = (typeof MEDIA)[number]
 
 export const SNS_ID = 'mmrakt'
+export const ZENN_FEED_URL = `https://zenn.dev/${SNS_ID}/feed?all=1`
+export const QIITA_FEED_URL = `https://qiita.com/${SNS_ID}/feed`

@@ -1,0 +1,24 @@
+---
+import React from 'react'
+
+import Head from '../components/Head'
+import Pagination from '../components/Pagination'
+import PostList from '../components/PostList'
+import PostListLayout from '../components/PostListLayout.astro'
+import { group } from 'console'
+import type { Frontmatter } from '../types'
+import type { Page } from 'astro'
+
+type props = Page<Frontmatter>
+const page = Astro.props
+---
+
+<PostListLayout>
+  <!-- <Head pageUrl={location.pathname} />
+  <p class="mb-7 text-center">
+    <b class="mr-2 text-lg">#{media}</b>
+    の記事
+  </p>
+  <PostList nodes={group} />
+  <Pagination pageContext={pageContext} /> -->
+</PostListLayout>
