@@ -6,13 +6,16 @@ import {
   TwitterShareButton,
 } from 'react-share'
 
+import { SITE_URL } from '../config'
+
 type IProps = {
   title: string
-  url: string
+  slug: string
 }
 
-const SocialButtons = ({ title, url }: IProps) => {
+const SocialButtons = ({ title, slug }: IProps) => {
   const iconSize = '42'
+  const url = `${SITE_URL}/${slug}`
 
   return (
     <div className="left-[-80px] absolute h-full">

@@ -30,9 +30,9 @@ export const sortPostsByPubDate = (posts: Frontmatter[]): Frontmatter[] =>
 export const fetchQiitaFeed = async (): Promise<Frontmatter[]> => {
   const feed = await new Parser().parseURL(`https://qiita.com/${SNS_ID}/feed`)
   return feed.items.map((item) => ({
-    title: item.title,
+    title: item.title ?? '',
     pubDate: item.pubDate ? dayjs(item.pubDate).format('YYYY-MM-DD') : '',
-    link: item.link,
+    link: item.link ?? '',
     media: 'qiita',
   }))
 }
@@ -44,7 +44,7 @@ export const fetchZennFeed = async (): Promise<Frontmatter[]> => {
   return feed.items.map((item) => ({
     title: item.title ?? '',
     pubDate: item.pubDate ? dayjs(item.pubDate).format('YYYY-MM-DD') : '',
-    link: item.link ?? 'https://zenn.dev/kshida',
+    link: item.link ?? '',
     media: 'zenn',
   }))
 }

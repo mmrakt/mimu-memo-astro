@@ -1,20 +1,19 @@
-import React, { ReactElement } from 'react'
+import React, { ReactNode } from 'react'
 import MediaQuery from 'react-responsive'
 
 import { BREAK_POINT } from '../config'
 
-import Layout from './BaseLayout.astro'
 import SideBar from './SideBar'
 import SocialButtons from './SocialButtons'
 
 type IProps = {
   title: string
-  url: string
-  children: ReactElement[]
+  slug: string
+  children: ReactNode
 }
 
-const PostLayout: React.FC<IProps> = ({ children, title, url }) => (
-  <Layout>
+const PostLayout: React.FC<IProps> = ({ children, title, slug }) => (
+  <>
     <MediaQuery maxWidth={BREAK_POINT}>
       <div className="mx-auto px-3 py-5 max-w-xl">
         {children}
@@ -23,14 +22,14 @@ const PostLayout: React.FC<IProps> = ({ children, title, url }) => (
     </MediaQuery>
     <MediaQuery minWidth={BREAK_POINT + 1}>
       <div className="relative flex mx-auto max-w-6xl">
-        <SocialButtons title={title} url={url} />
+        <SocialButtons title={title} slug={slug} />
         <div className="max-w-[824px]">{children}</div>
         <div className="ml-10">
           <SideBar />
         </div>
       </div>
     </MediaQuery>
-  </Layout>
+  </>
 )
 
 export default PostLayout

@@ -21,11 +21,14 @@
     "astro": "^2.7.1",
     "autoprefixer": "^10.4.14",
     "dayjs": "^1.11.8",
+    "dompurify": "^3.0.4",
     "postcss": "^8.4.24",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
     "react-share": "^4.4.1",
+    "remark": "^14.0.3",
+    "remark-html": "^15.0.2",
     "rss-parser": "^3.13.0",
     "tailwindcss": "^3.3.2"
   },
@@ -42,6 +45,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "@types/dompurify": "^3.0.2",
     "@types/jest": "^29.5.2",
     "@types/react": "^18.2.14",
     "@typescript-eslint/parser": "^5.60.1",

@@ -1,71 +1,64 @@
+import dayjs from 'dayjs'
 import React from 'react'
 
 import Content from '../components/Content'
-import Head from '../components/Head'
 import PostLayout from '../components/PostLayout'
 import ChevronLeft from '../components/common/ChevronLeft'
 import ChevronRight from '../components/common/ChevronRight'
 import useStringTrim from '../hooks/useStringTrim'
 
+import type { PaginatedPost } from '../types'
+import type { AstroComponentFactory } from 'astro/dist/runtime/server'
+import type { CollectionEntry } from 'astro:content'
+
 type IProps = {
-  data: {
-    contentfulPost: GatsbyTypes.PostQuery['contentfulPost']
-  }
-  // pageContext: PageContextProps
-  // location: PageProps['location']
+  post: PaginatedPost
+  content: AstroComponentFactory
 }
 
-const PostTemplate = ({ data }: IProps) => {
-  const { contentfulPost } = data
-  // const { prev, next } = pageContext
-  // const url = location.origin + contentfulPost.slug
-
-  return (
-    <PostLayout title={contentfulPost.title}>
-      {/* <Head
-        pageTitle={contentfulPost.title}
-        pageDescription={contentfulPost.excerpt.excerpt}
-        pageUrl={location.pathname}
-        pageType="article"
-      />
-      <section className="box-outline pc:p-10 p-5 w-full dark:bg-dark-gray bg-white animate-slide-in">
-        <p className="text-sm">
-          <span className="text-lg">{contentfulPost.date}</span>
-        </p>
-        <h1 className="mt-5 text-3xl font-black">{contentfulPost.title}</h1>
-        <div className="mt-16">
-          <div className="text-left leading-loose">
-            <Content
-              content={contentfulPost.content.childMarkdownRemark.html}
-            />
-          </div>
+const PostTemplate: React.FC<IProps> = ({ post, content }) => (
+  // <PostLayout title={entry.data.title} slug={entry.slug}>
+  <>
+    <section className="box-outline pc:p-10 p-5 w-full dark:bg-dark-gray bg-white animate-slide-in">
+      <p className="text-sm">
+        <span className="text-lg">
+          {dayjs(post.entry.data.pubDate).format('YYYY-MM-DD')}
+        </span>
+      </p>
+      <h1 className="mt-5 text-3xl font-black">{post.entry.data.title}</h1>
+      <div className="mt-16">
+        <div className="text-left leading-loose">
+          <Content content={post.entry.body} />
         </div>
-      </section>
-      <div className="flex items-center mt-10">
-        <div className="w-1/2">
-          {prev && (
-            <a href={`/${prev.slug}`} className="flex items-center">
-              <div className="text-link flex items-center underline">
-                <ChevronLeft />
-                {useStringTrim(prev.title, 50)}
-              </div>
-            </a>
-          )}
-        </div>
-        <div className="w-1/2">
-          {next && (
-            <a href={`/${next.slug}`} className="flex items-center float-right">
-              <div className="text-link flex items-center underline">
-                {useStringTrim(next.title, 50)}
-                <ChevronRight />
-              </div>
-            </a>
-          )}
-        </div>
-      </div> */}
-      hoge
-    </PostLayout>
-  )
-}
+      </div>
+    </section>
+    <div className="flex items-center mt-10">
+      <div className="w-1/2">
+        {post.prev.url && (
+          <a href={`/${post.prev.url}`} className="flex items-center">
+            <div className="text-link flex items-center underline">
+              <ChevronLeft />
+              {useStringTrim(post.prev.title, 50)}
+            </div>
+          </a>
+        )}
+      </div>
+      <div className="w-1/2">
+        {post.next.url && (
+          <a
+            href={`/${post.next.url}`}
+            className="flex items-center float-right"
+          >
+            <div className="text-link flex items-center underline">
+              {useStringTrim(post.next.title, 50)}
+              <ChevronRight />
+            </div>
+          </a>
+        )}
+      </div>
+    </div>
+  </>
+  // </PostLayout>
+)
 
 export default PostTemplate

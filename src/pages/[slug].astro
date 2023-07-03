@@ -1,22 +1,58 @@
 ---
-import { getCollection, getEntry } from 'astro:content'
-import type { Frontmatter } from '../types'
+import { CollectionEntry, getCollection, getEntry } from 'astro:content'
+import type { Frontmatter, PaginatedPost } from '../types'
 import { extractSlugFromMd } from '../utils'
+import BaseLayout from '../components/BaseLayout.astro'
+import Post from '../templates/post'
 
 export async function getStaticPaths() {
-  const { slug } = Astro.params
-  const post = await getCollection('owned')
-  console.log(post)
-  return [
-    {
-      params: { slug: post.slug },
-      props: post,
-    },
-  ]
-}
+  const collection = await getCollection('owned')
 
-const post = Astro.props
-const { Content } = await post.render()
+  let paths = []
+  for (let i = 0; i < collection.length; i++) {
+    let nextUrl = '',
+      nextTitle = '',
+      prevUrl = '',
+      prevTitle = ''
+
+    if (i !== collection.length - 1) {
+      nextUrl = collection[i + 1].slug
+      nextTitle = collection[i + 1].data.title
+    }
+    if (i !== 0) {
+      prevUrl = collection[i - 1].slug
+      prevTitle = collection[i - 1].data.title
+    }
+
+    paths.push({
+      params: {
+        slug: collection[i].slug,
+      },
+      props: {
+        entry: collection[i],
+        next: {
+          url: nextUrl,
+          title: nextTitle,
+        },
+        prev: {
+          url: prevUrl,
+          title: prevTitle,
+        },
+      },
+    })
+  }
+  return paths
+}
+type Props = PaginatedPost
+
+const post = Astro.props as Props
+const { Content } = await post.entry.render()
 ---
 
-<div></div>
+<html lang="ja">
+  <BaseLayout pageUrl="">
+    <Post post={post} content={Content}>
+      <Content />
+    </Post>
+  </BaseLayout>
+</html>
