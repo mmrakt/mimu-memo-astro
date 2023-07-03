@@ -38,7 +38,10 @@
   "config": {
     "siteName": "mimu-memo",
     "description": "平凡エンジニアの個人学習メモ",
-    "siteUrl": "https://mimu-memo.com",
+    "siteUrl": {
+      "dev": "http://localhost:3000/",
+      "prod": "https://mimu-memo.com"
+    },
     "lang": "ja",
     "locale": "ja_JP"
   },

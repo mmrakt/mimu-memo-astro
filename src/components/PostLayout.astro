@@ -1,0 +1,26 @@
+---
+import MediaQuery from 'react-responsive'
+import { BREAK_POINT } from '../config'
+
+import SideBar from './SideBar'
+import SocialButtons from './SocialButtons'
+import type { ReactNode } from 'react'
+
+type IProps = {
+  title: string
+  slug: string
+}
+const { title, slug } = Astro.props
+---
+
+<div class="flex pc:relative pc:flex mx-auto pc:max-w-6xl text-black">
+  <div class="hidden pc:block">
+    <SocialButtons title={title} slug={slug} />
+  </div>
+  <div class="pc:max-w-[824px]">
+    <slot />
+  </div>
+  <div class="pc:ml-10">
+    <SideBar />
+  </div>
+</div>

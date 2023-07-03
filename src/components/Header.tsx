@@ -6,7 +6,7 @@ const Header: React.VFC = () => (
   <div className="dark:bg-dark-black bg-primary">
     <div className="items-center shadow-md">
       <div className="p-4 text-center text-white">
-        <a href="/" className="navbar-item" title="Logo">
+        <a href="/page/1" className="navbar-item" title="Logo">
           <img
             className="block m-auto w-max h-auto"
             width="190"

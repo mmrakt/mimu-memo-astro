@@ -1,0 +1,64 @@
+---
+import dayjs from 'dayjs'
+import React from 'react'
+
+import Content from '../components/Content'
+import PostLayout from '../components/PostLayout.astro'
+import ChevronLeft from '../components/common/ChevronLeft'
+import ChevronRight from '../components/common/ChevronRight'
+import useStringTrim from '../hooks/useStringTrim'
+
+import type { PaginatedPost } from '../types'
+import type { AstroComponentFactory } from 'astro/dist/runtime/server'
+import type { CollectionEntry } from 'astro:content'
+
+type IProps = {
+  post: PaginatedPost
+}
+const { post } = Astro.props
+---
+
+<PostLayout title={post.entry.data.title} slug={post.entry.slug}>
+  <section
+    class="box-outline pc:p-10 p-5 w-full dark:bg-dark-gray bg-white animate-slide-in"
+  >
+    <p class="text-sm">
+      <span class="text-lg">
+        {dayjs(post.entry.data.pubDate).format('YYYY-MM-DD')}
+      </span>
+    </p>
+    <h1 class="mt-5 text-3xl font-black">{post.entry.data.title}</h1>
+    <div class="mt-16">
+      <div class="text-left leading-loose">
+        <!-- <Content content={post.entry.body} /> -->
+        <slot />
+      </div>
+    </div>
+  </section>
+  <div class="flex items-center mt-10">
+    <div class="w-1/2">
+      {
+        post.prev.url && (
+          <a href={`/${post.prev.url}`} class="flex items-center">
+            <div class="text-link flex items-center underline">
+              <ChevronLeft />
+              {useStringTrim(post.prev.title, 50)}
+            </div>
+          </a>
+        )
+      }
+    </div>
+    <div class="w-1/2">
+      {
+        post.next.url && (
+          <a href={`/${post.next.url}`} class="flex items-center float-right">
+            <div class="text-link flex items-center underline">
+              {useStringTrim(post.next.title, 50)}
+              <ChevronRight />
+            </div>
+          </a>
+        )
+      }
+    </div>
+  </div>
+</PostLayout>

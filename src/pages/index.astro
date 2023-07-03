@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../components/BaseLayout.astro'
+---
+
+<html lang="ja">
+  <BaseLayout pageUrl="">
+    <script>
+      if (location.pathname === '/') {
+        location.href = '/page/1'
+      }
+    </script>
+  </BaseLayout>
+</html>
