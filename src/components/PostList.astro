@@ -1,0 +1,47 @@
+---
+import LoadingSpinner from './LoadingSpinner'
+
+import type { Frontmatter } from '../types'
+import Post from './Post.astro'
+
+type Props = {
+  posts: Frontmatter[]
+}
+const { posts } = Astro.props
+---
+
+<div class="animate-slide-in">
+  {
+    !posts ? (
+      <div class="postList__loading flex justify-center items-center">
+        <LoadingSpinner />
+      </div>
+    ) : (
+      <ul class="postList">
+        {posts.map((post) => (
+          <li class="postList__item">
+            {post.media !== 'owned' ? (
+              <a href={post.link} target="_blank" rel="noreferrer">
+                <Post post={post} />
+              </a>
+            ) : (
+              <a href={`/${post.link}`}>
+                <Post post={post} />
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>
+
+<style lang="scss">
+  @use '../styles/mixin' as mixin;
+  @use '../styles/variables' as vars;
+  .postList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+</style>

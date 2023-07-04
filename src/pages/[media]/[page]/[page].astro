@@ -3,8 +3,8 @@ import type { Page, PaginateFunction } from 'astro'
 import { MEDIA_LIST, QIITA_FEED_URL } from '../../../config'
 import { extractSlugFromMd, makeQiitaPost, makeZennPost } from '../../../utils'
 import type { Frontmatter, Media } from '../../../types'
-import BaseLayout from '../../../components/BaseLayout.astro'
-import PostsByMedia from '../../../templates/postsByMedia.astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import PostListByMediaLayout from '../../../layouts/PostListByMediaLayout.astro'
 
 export async function getStaticPaths({
   paginate,
@@ -51,6 +51,6 @@ const { media } = Astro.params
 
 <html lang="ja">
   <BaseLayout pageUrl="">
-    <PostsByMedia page={page} media={media} />
+    <PostListByMediaLayout page={page} media={media} />
   </BaseLayout>
 </html>

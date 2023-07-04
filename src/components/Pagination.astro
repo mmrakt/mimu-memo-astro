@@ -1,0 +1,43 @@
+---
+import ChevronLeft from './common/ChevronLeft'
+import ChevronRight from './common/ChevronRight'
+
+import type { Page } from 'astro'
+
+type Props = {
+  page: Pick<
+    Page,
+    'start' | 'end' | 'size' | 'total' | 'currentPage' | 'lastPage' | 'url'
+  >
+}
+const {
+  page: { start, end, size, total, currentPage, lastPage, url },
+} = Astro.props
+---
+
+<div class="flex py-3">
+  {
+    currentPage !== 1 && (
+      <a
+        href={url.prev}
+        rel="prev"
+        class="box-outline text-link flex items-center pr-2 py-2 dark:text-white underline text-sm font-medium dark:bg-dark-gray bg-white"
+      >
+        <ChevronLeft />
+        <span class="">Prev</span>
+      </a>
+    )
+  }
+  {
+    currentPage !== lastPage && (
+      <a
+        href={url.next}
+        rel="next"
+        class="box-outline text-link flex items-center ml-auto pl-2 py-2 dark:text-white underline text-sm font-medium dark:bg-dark-gray bg-white"
+      >
+        <span>Next</span>
+        <ChevronRight />
+      </a>
+    )
+  }
+</div>

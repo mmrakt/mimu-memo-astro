@@ -1,0 +1,56 @@
+---
+import dayjs from 'dayjs'
+import { QIITA_URL_PREFIX, NOTE_URL_PREFIX, ZENN_URL_PREFIX } from '../config'
+import type { Frontmatter } from '../types'
+
+type Props = {
+  post: Frontmatter
+}
+const { post } = Astro.props
+
+let externalLinkText = ''
+if (post?.link) {
+  if (post.link.indexOf(QIITA_URL_PREFIX) === 0) {
+    externalLinkText = '（Qiita記事）'
+  } else if (post?.link.indexOf(NOTE_URL_PREFIX) === 0) {
+    externalLinkText = '（note記事）'
+  } else if (post?.link.indexOf(ZENN_URL_PREFIX) === 0) {
+    externalLinkText = '（Zenn記事）'
+  }
+}
+---
+
+<article class="post">
+  <p class="post__date flex">
+    <span class="text-base mb-3 mr-3">
+      {dayjs(post.pubDate).format('YYYY.MM.DD')}
+    </span>
+    {externalLinkText && <span>{externalLinkText}</span>}
+  </p>
+  <div class="post__title mb-3 text-lg font-bold">
+    <h2 class="text-link">{post.title}</h2>
+  </div>
+</article>
+
+<style lang="scss">
+  @use '../styles/mixin' as mixin;
+  @use '../styles/variables' as vars;
+
+  .post {
+    height: 100%;
+    background: #fff;
+    transform: scale(1);
+    transition: transform 0.2s;
+    box-shadow: 0 0 0 black;
+    border-radius: 5px;
+    border: 1px solid #ededed;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @include mixin.dark() {
+      background: vars.$black-300;
+    }
+  }
+</style>

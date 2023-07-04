@@ -2,8 +2,8 @@
 import { CollectionEntry, getCollection, getEntry } from 'astro:content'
 import type { Frontmatter, PaginatedPost } from '../types'
 import { extractSlugFromMd } from '../utils'
-import BaseLayout from '../components/BaseLayout.astro'
-import Post from '../templates/post.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PostLayout from '../layouts/PostLayout.astro'
 
 export async function getStaticPaths() {
   const collection = await getCollection('owned')
@@ -51,8 +51,8 @@ const { Content } = await post.entry.render()
 
 <html lang="ja">
   <BaseLayout pageUrl="">
-    <Post post={post}>
+    <PostLayout post={post}>
       <Content />
-    </Post>
+    </PostLayout>
   </BaseLayout>
 </html>

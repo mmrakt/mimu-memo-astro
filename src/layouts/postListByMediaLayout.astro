@@ -2,10 +2,9 @@
 import React from 'react'
 
 import Head from '../components/Head'
-import Pagination from '../components/Pagination'
-import PostList from '../components/PostList'
+import Pagination from '../components/Pagination.astro'
+import PostList from '../components/PostList.astro'
 import PostListLayout from '../components/PostListLayout.astro'
-import { group } from 'console'
 import type { Frontmatter, Media } from '../types'
 import type { Page } from 'astro'
 import SideBar from '../components/SideBar.astro'
@@ -17,11 +16,11 @@ type props = {
 const { page, media } = Astro.props
 ---
 
-<div class="postsByMedia__tagText">
+<div class="postsByMediaLayout__tagText">
   <b>#{media === 'owned' ? 'mimu-memo' : media}</b>
   の記事
 </div>
-<div class="postsByMedia__body">
+<div class="postsByMediaOLayout__body">
   <PostList posts={page.data} />
   <Pagination page={page} />
 </div>
@@ -30,7 +29,7 @@ const { page, media } = Astro.props
   @use '../styles/mixin' as mixin;
   @use '../styles/variables' as vars;
 
-  .postsByMedia {
+  .postsByMediaLayout {
     &__tagText {
       text-align: center;
       font-size: 20px;
