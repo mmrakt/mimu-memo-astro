@@ -20,15 +20,53 @@ const getCountByMedia = (media: MediaDisplay) => {
 }
 ---
 
-<h3 class="mt-6 font-black">Media</h3>
-<div class="flex flex-wrap mt-2">
-  {
-    MEDIA_LIST_DISPLAY.map((media) => (
-      <a href={`/${convertMediaNameToSlug(media)}/page/1`}>
-        <span class="text-link mb-3 mr-5 underline text-sm">
-          #{media}({getCountByMedia(media)})
-        </span>
-      </a>
-    ))
-  }
+<div class="mediaList">
+  <h3 class="mediaList__header mt-6 font-black">Media</h3>
+  <div class="mediaList__list flex flex-wrap mt-2">
+    {
+      MEDIA_LIST_DISPLAY.map((media) => (
+        <a
+          href={`/${convertMediaNameToSlug(media)}/page/1`}
+          class="mediaList__itemLink"
+        >
+          <span class="mediaList__itemText">
+            #{media}({getCountByMedia(media)})
+          </span>
+        </a>
+      ))
+    }
+  </div>
 </div>
+
+<style lang="scss">
+  @use '../styles/mixin' as mixin;
+  @use '../styles/variables' as vars;
+
+  .mediaList {
+    margin-top: 16px;
+    &__header {
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    &__list {
+      margin-top: 8px;
+    }
+
+    &__itemLink {
+      display: block;
+      width: fit-content;
+      padding: 4px;
+    }
+    &__itemText {
+      margin-top: 8px;
+      font-weight: 500;
+      color: #000;
+      text-decoration: underline #000;
+
+      &:hover {
+        color: vars.$black-400;
+        text-decoration: underline vars.$black-400;
+      }
+    }
+  }
+</style>

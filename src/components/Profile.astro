@@ -5,26 +5,67 @@ import GithubLogo from './common/GithubLogo'
 import TwitterLogo from './common/TwitterLogo'
 ---
 
-<h3 class="font-black">Profile</h3>
-<div class="flex items-center mt-3">
-  <img src="/img/avatar.png" alt="mmrakt" width={80} />
-  <div class="ml-3">
-    <p>@mmrakt</p>
-    <h4 class="font-black">mimu</h4>
+<div class="profile">
+  <h3 class="profile__header font-black">Profile</h3>
+  <div class="profile__info flex items-center mt-3">
+    <img src="/img/avatar.png" alt="mmrakt" width={80} />
+    <div class="profile__name ml-3">
+      <span>@mmrakt</span>
+      <h4 class="font-black">mimu</h4>
+    </div>
+  </div>
+  <p class="profile__introduce description mt-3">
+    ストリートダンスと飲酒と個人開発が好き🕺🍺🧑‍💻
+  </p>
+  <div class="profile__sns mt-3 flex items-center">
+    <a
+      href="https://github.com/mmrakt"
+      target="_blank"
+      rel="noreferrer"
+      class=""
+    >
+      <GithubLogo />
+    </a>
+    <a
+      href="https://twitter.com/mmrakt0716"
+      class="ml-3"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <TwitterLogo />
+    </a>
   </div>
 </div>
-<div class="description mt-3">大阪出身の文系エンジニアです。</div>
-<div class="description">ストリートダンスと飲酒が趣味です。</div>
-<div class="mt-3 flex items-center">
-  <a href="https://github.com/mmrakt" target="_blank" rel="noreferrer" class="">
-    <GithubLogo />
-  </a>
-  <a
-    href="https://twitter.com/mmrakt0716"
-    class="ml-3"
-    target="_blank"
-    rel="noreferrer"
-  >
-    <TwitterLogo />
-  </a>
-</div>
+
+<style lang="scss">
+  @use '../styles/mixin' as mixin;
+  @use '../styles/variables' as vars;
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1px solid vars.$black-700;
+    padding-bottom: 16px;
+
+    &__header {
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    &__info {
+      display: flex;
+      align-items: center;
+    }
+    &__name {
+      margin-left: 12px;
+      & > h4 {
+        font-weight: bold;
+      }
+    }
+    &__sns {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+</style>

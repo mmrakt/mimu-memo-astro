@@ -4,8 +4,8 @@ import { inject } from '@vercel/analytics'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import Head from '../components/Head.tsx'
-import '../styles/global.css'
 import SideBar from '../components/SideBar.astro'
+import '../styles/reset.css'
 
 inject()
 
@@ -42,10 +42,11 @@ const { pageTitle, pageDescription, pageUrl, pageType } = Astro.props
   @use '../styles/mixin' as mixin;
   @use '../styles/variables' as vars;
   .baseLayout {
-    background: #f3f4f6;
+    background: vars.$black-900;
     width: 100%;
-    height: 100vh;
+    // min-height: 100vh;
     @include mixin.dark() {
+      background: vars.$black-200;
       color: #fff;
     }
 
@@ -54,11 +55,17 @@ const { pageTitle, pageDescription, pageUrl, pageType } = Astro.props
       gap: 40px;
       max-width: vars.$contentMaxWidth;
       margin: 0 auto;
-      height: calc(100% - #{vars.$headerHeight} - #{vars.$footerHeight});
+
+      min-height: calc(100vh - #{vars.$headerHeight} - #{vars.$footerHeight});
+      @include mixin.mq(sp) {
+        flex-direction: column;
+        gap: 0;
+      }
     }
 
     &__main {
-      padding: 60px;
+      padding: 40px 16px 80px;
+      width: 100%;
     }
   }
 </style>

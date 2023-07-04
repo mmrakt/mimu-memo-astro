@@ -21,14 +21,14 @@ if (post?.link) {
 ---
 
 <article class="post">
-  <p class="post__date flex">
-    <span class="text-base mb-3 mr-3">
+  <p class="post__date">
+    <span class="">
       {dayjs(post.pubDate).format('YYYY.MM.DD')}
     </span>
     {externalLinkText && <span>{externalLinkText}</span>}
   </p>
-  <div class="post__title mb-3 text-lg font-bold">
-    <h2 class="text-link">{post.title}</h2>
+  <div class="post__title">
+    <h2 class="">{post.title}</h2>
   </div>
 </article>
 
@@ -43,14 +43,31 @@ if (post?.link) {
     transition: transform 0.2s;
     box-shadow: 0 0 0 black;
     border-radius: 5px;
-    border: 1px solid #ededed;
+    border: 1px solid vars.$black-800;
+    padding: 20px;
+    color: #000;
 
     &:hover {
       transform: scale(1.05);
     }
 
     @include mixin.dark() {
-      background: vars.$black-300;
+      background: vars.$black-400;
+      color: #fff;
+      border: none;
+    }
+
+    &__title {
+      font-weight: bold;
+      margin-top: 8px;
+
+      & > h2 {
+        font-size: 20px;
+      }
+
+      &:hover {
+        color: vars.$black-400;
+      }
     }
   }
 </style>

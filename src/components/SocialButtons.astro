@@ -18,17 +18,13 @@ const iconSize = '42'
 const url = `${SITE_URL}/${slug}`
 ---
 
-<div class="left-[-80px] absolute h-full">
-  <div class="sticky top-40 inline-block">
-    <div>
-      <TwitterShareButton url={url} title={title}>
-        <TwitterIcon round size={iconSize} />
-      </TwitterShareButton>
-    </div>
-    <div class="mt-3">
-      <FacebookShareButton url={url} quote={title}>
-        <FacebookIcon round size={iconSize} />
-      </FacebookShareButton>
-    </div>
-  </div>
+<div>
+  <TwitterShareButton url={url} title={title}>
+    <TwitterIcon round size={iconSize} />
+  </TwitterShareButton>
+</div>
+<div class="mt-3">
+  <FacebookShareButton url={url} quote={title}>
+    <FacebookIcon round size={iconSize} />
+  </FacebookShareButton>
 </div>

@@ -3,8 +3,8 @@ import MediaList from './MediaList.astro'
 import Profile from './Profile.astro'
 ---
 
-<div>
-  <aside class="sideBar">
+<div class="sideBar">
+  <aside class="sideBar__inner">
     <Profile />
     <MediaList />
   </aside>
@@ -14,10 +14,23 @@ import Profile from './Profile.astro'
   @use '../styles/mixin' as mixin;
   @use '../styles/variables' as vars;
   .sideBar {
-    margin-top: 80px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px solid #ededed;
+    width: 300px;
+    flex-shrink: 0;
+    &__inner {
+      margin-top: 80px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      border: 1px solid vars.$black-800;
+
+      @include mixin.mq(sp) {
+        margin: 0 16px;
+      }
+
+      @include mixin.dark() {
+        background: vars.$black-400;
+        border: none;
+      }
+    }
   }
 </style>

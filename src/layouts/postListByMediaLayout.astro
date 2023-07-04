@@ -20,7 +20,7 @@ const { page, media } = Astro.props
   <b>#{media === 'owned' ? 'mimu-memo' : media}</b>
   の記事
 </div>
-<div class="postsByMediaOLayout__body">
+<div class="postsByMediaLayout__body">
   <PostList posts={page.data} />
   <Pagination page={page} />
 </div>
@@ -40,7 +40,7 @@ const { page, media } = Astro.props
     }
 
     &__body {
-      display: flex;
+      margin-top: 30px;
     }
   }
 </style>
