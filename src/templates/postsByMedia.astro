@@ -8,6 +8,7 @@ import PostListLayout from '../components/PostListLayout.astro'
 import { group } from 'console'
 import type { Frontmatter, Media } from '../types'
 import type { Page } from 'astro'
+import SideBar from '../components/SideBar.astro'
 
 type props = {
   page: Page<Frontmatter>
@@ -16,11 +17,31 @@ type props = {
 const { page, media } = Astro.props
 ---
 
-<PostListLayout>
-  <p class="mb-7 text-center">
-    <b class="mr-2 text-lg">#{media === 'owned' ? 'mimu-memo' : media}</b>
-    の記事
-  </p>
+<div class="postsByMedia__tagText">
+  <b>#{media === 'owned' ? 'mimu-memo' : media}</b>
+  の記事
+</div>
+<div class="postsByMedia__body">
   <PostList posts={page.data} />
   <Pagination page={page} />
-</PostListLayout>
+</div>
+
+<style lang="scss">
+  @use '../styles/mixin' as mixin;
+  @use '../styles/variables' as vars;
+
+  .postsByMedia {
+    &__tagText {
+      text-align: center;
+      font-size: 20px;
+
+      & b {
+        font-weight: bold;
+      }
+    }
+
+    &__body {
+      display: flex;
+    }
+  }
+</style>

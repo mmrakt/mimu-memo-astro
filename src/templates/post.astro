@@ -20,7 +20,7 @@ const { post } = Astro.props
 
 <PostLayout title={post.entry.data.title} slug={post.entry.slug}>
   <section
-    class="box-outline pc:p-10 p-5 w-full dark:bg-dark-gray bg-white animate-slide-in"
+    class="wrapper box-outline pc:p-10 p-5 w-full dark:bg-dark-gray bg-white animate-slide-in"
   >
     <p class="text-sm">
       <span class="text-lg">
@@ -62,3 +62,10 @@ const { post } = Astro.props
     </div>
   </div>
 </PostLayout>
+
+<style lang="scss">
+  @use '../styles/mixin' as mixin;
+  @use '../styles/variables' as vars;
+  .wrapper {
+  }
+</style>

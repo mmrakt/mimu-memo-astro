@@ -1,0 +1,17 @@
+$breakpoint: 980px;
+$mappedBreakpoint: (
+  pc: 'screen and (min-width: #{$breakpoint + 1px})',
+  sp: 'screen and (max-width: #{$breakpoint})',
+);
+
+@mixin mq($breakpoint) {
+  @media #{map-get($mappedBreakpoint, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin dark() {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
