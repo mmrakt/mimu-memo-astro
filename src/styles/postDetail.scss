@@ -1,0 +1,61 @@
+@use 'variables' as vars;
+@use 'mixin';
+
+.postDetail {
+  .astro-code {
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 30px 20px;
+    margin: 20px 0;
+    line-height: 1.5;
+    overflow-x: scroll;
+    word-wrap: normal !important; // NOTE: astro側のインラインスタイルを打ち消し
+  }
+
+  h2 {
+    font-size: 24px;
+    padding: 10px 0;
+    margin: 20px 0;
+    border-bottom: 1px solid vars.$black-700;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+
+  h4 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  p {
+    line-height: 2;
+  }
+
+  ul {
+    padding-left: 24px;
+  }
+
+  li {
+    list-style-type: disc;
+    line-height: 2;
+  }
+
+  a {
+    @extend %link;
+  }
+
+  > code,
+  *:not(.astro-code) > code {
+    background: vars.$black-800;
+    padding: 3px 5px;
+    margin: 0 3px;
+    border-radius: 5px;
+    font-size: 16px;
+
+    @include mixin.dark() {
+      background: vars.$black-400;
+    }
+  }
+}

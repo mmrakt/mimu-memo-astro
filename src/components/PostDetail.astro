@@ -2,6 +2,7 @@
 import dayjs from 'dayjs'
 
 import type { PaginatedPost } from '../types'
+import '../styles/postDetail.scss'
 
 type Props = {
   post: PaginatedPost
@@ -9,16 +10,14 @@ type Props = {
 const { post } = Astro.props
 ---
 
-<section
-  class="postDetail box-outline pc:p-10 p-5 w-full dark:bg-dark-gray bg-white animate-slide-in"
->
-  <p class="text-sm">
+<section class="postDetail">
+  <p class="postDetail__date">
     {dayjs(post.entry.data.pubDate).format('YYYY-MM-DD')}
   </p>
-  <h1 class="postDetail__title mt-5 text-3xl font-black">
+  <h1 class="postDetail__title">
     {post.entry.data.title}
   </h1>
-  <div class="postDetail__content mt-16">
+  <div class="postDetail__content">
     <slot />
   </div>
 </section>
@@ -30,7 +29,22 @@ const { post } = Astro.props
     border-radius: 5px;
     border: 1px solid vars.$black-800;
     background: #fff;
+    padding: 40px;
 
     @include mixin.slideIn();
+
+    @include mixin.dark() {
+      background: vars.$black-300;
+      border: none;
+    }
+
+    &__title {
+      font-size: 32px;
+      margin-top: 16px;
+    }
+
+    &__content {
+      margin-top: 20px;
+    }
   }
 </style>

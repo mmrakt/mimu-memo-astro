@@ -1,3 +1,5 @@
+@use 'variables' as vars;
+
 $breakpoint: 980px;
 $mappedBreakpoint: (
   pc: 'screen and (min-width: #{$breakpoint + 1px})',
@@ -29,4 +31,24 @@ $mappedBreakpoint: (
 
 @mixin slideIn() {
   animation: slideInAnimation 0.25s ease-in forwards;
+}
+
+%link {
+  color: vars.$text-color-black;
+  text-decoration: underline vars.$text-color-black;
+
+  &:hover {
+    color: vars.$black-400;
+    text-decoration: underline vars.$black-400;
+  }
+
+  @include dark() {
+    color: #fff;
+    text-decoration: underline #fff;
+
+    &:hover {
+      color: vars.$black-700;
+      text-decoration: underline vars.$black-700;
+    }
+  }
 }

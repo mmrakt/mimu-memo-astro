@@ -60,13 +60,8 @@ const getCountByMedia = (media: MediaDisplay) => {
     &__itemText {
       margin-top: 8px;
       font-weight: 500;
-      color: #000;
-      text-decoration: underline #000;
 
-      &:hover {
-        color: vars.$black-400;
-        text-decoration: underline vars.$black-400;
-      }
+      @extend %link;
     }
   }
 </style>

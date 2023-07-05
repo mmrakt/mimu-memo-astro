@@ -16,6 +16,7 @@ import Profile from './Profile.astro'
   .sideBar {
     width: 300px;
     flex-shrink: 0;
+
     &__inner {
       margin-top: 80px;
       background: #fff;
@@ -28,7 +29,7 @@ import Profile from './Profile.astro'
       }
 
       @include mixin.dark() {
-        background: vars.$black-400;
+        background: vars.$black-300;
         border: none;
       }
     }
