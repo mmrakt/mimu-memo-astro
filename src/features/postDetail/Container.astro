@@ -2,14 +2,14 @@
 import dayjs from 'dayjs'
 import React from 'react'
 
-import ChevronLeft from '../components/common/ChevronLeft'
-import ChevronRight from '../components/common/ChevronRight'
-import useStringTrim from '../hooks/useStringTrim'
+import useStringTrim from '../../hooks/useStringTrim'
 
-import type { PaginatedPost } from '../types'
+import type { PaginatedPost } from '../../types'
 import type { AstroComponentFactory } from 'astro/dist/runtime/server'
-import SocialButtons from '../components/SocialButtons.astro'
-import PostDetail from '../components/PostDetail.astro'
+import SocialButtons from './SocialButtons.astro'
+import PostDetail from './Content.astro'
+import ChevronLeft from '../../components/elements/ChevronLeft'
+import ChevronRight from '../../components/elements/ChevronRight'
 
 type Props = {
   post: PaginatedPost
@@ -61,8 +61,8 @@ const { post } = Astro.props
 </div>
 
 <style lang="scss">
-  @use '../styles/mixin' as mixin;
-  @use '../styles/variables' as vars;
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
   .postDetailLayout {
     display: flex;
     width: 100%;

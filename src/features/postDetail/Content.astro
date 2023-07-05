@@ -1,8 +1,8 @@
 ---
 import dayjs from 'dayjs'
 
-import type { PaginatedPost } from '../types'
-import '../styles/postDetail.scss'
+import type { PaginatedPost } from '../../types'
+import '../../styles/postDetail.scss'
 
 type Props = {
   post: PaginatedPost
@@ -23,8 +23,8 @@ const { post } = Astro.props
 </section>
 
 <style lang="scss">
-  @use '../styles/mixin' as mixin;
-  @use '../styles/variables' as vars;
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
   .postDetail {
     border-radius: 5px;
     border: 1px solid vars.$black-800;

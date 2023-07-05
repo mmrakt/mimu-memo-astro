@@ -1,10 +1,12 @@
 ---
 import React from 'react'
 
-import { MEDIA_LIST_DISPLAY, QIITA_FEED_URL, ZENN_FEED_URL } from '../config'
-import { convertMediaNameToSlug, fetchFeed } from '../utils'
-import type { Frontmatter, Media, MediaDisplay } from '../types'
-const ownedMd = await Astro.glob<Frontmatter>('../content/owned/*.md')
+import { MEDIA_LIST_DISPLAY, QIITA_FEED_URL, ZENN_FEED_URL } from '../../config'
+import { convertMediaNameToSlug, fetchFeed } from '../../utils'
+import type { Frontmatter, Media, MediaDisplay } from '../../types'
+import { getCollection } from 'astro:content'
+
+const ownedMd = await getCollection('owned')
 const qiitaFeed = await fetchFeed(QIITA_FEED_URL)
 const zennFeed = await fetchFeed(ZENN_FEED_URL)
 
@@ -39,8 +41,8 @@ const getCountByMedia = (media: MediaDisplay) => {
 </div>
 
 <style lang="scss">
-  @use '../styles/mixin' as mixin;
-  @use '../styles/variables' as vars;
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
 
   .mediaList {
     margin-top: 16px;

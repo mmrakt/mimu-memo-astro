@@ -1,8 +1,8 @@
 ---
 import type { Page, PaginateFunction } from 'astro'
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import PostListLayout from '../../layouts/PostListLayout.astro'
-import ChevronLeft from '../../components/common/ChevronLeft.tsx'
+import BaseLayout from '../../components/layouts/BaseLayout.astro'
+import Container from '../../features/postList/Container.astro'
+import ChevronLeft from '../../components/elements/ChevronLeft.tsx'
 import {
   makeQiitaPost,
   makeZennPost,
@@ -40,6 +40,6 @@ const { page } = Astro.props
 
 <html lang="ja">
   <BaseLayout pageUrl="">
-    <PostListLayout page={page} />
+    <Container page={page} />
   </BaseLayout>
 </html>

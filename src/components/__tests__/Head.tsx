@@ -4,7 +4,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Head from '../Head'
+import Head from '../layouts/Head'
 
 // TODO: react-helmet抜きのテストに変える
 describe.skip('Head Component', () => {

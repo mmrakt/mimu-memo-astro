@@ -1,7 +1,11 @@
 ---
 import dayjs from 'dayjs'
-import { QIITA_URL_PREFIX, NOTE_URL_PREFIX, ZENN_URL_PREFIX } from '../config'
-import type { Frontmatter } from '../types'
+import {
+  QIITA_URL_PREFIX,
+  NOTE_URL_PREFIX,
+  ZENN_URL_PREFIX,
+} from '../../config'
+import type { Frontmatter } from '../../types'
 
 type Props = {
   post: Frontmatter
@@ -33,8 +37,8 @@ if (post?.link) {
 </article>
 
 <style lang="scss">
-  @use '../styles/mixin' as mixin;
-  @use '../styles/variables' as vars;
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
 
   .postItem {
     height: 100%;

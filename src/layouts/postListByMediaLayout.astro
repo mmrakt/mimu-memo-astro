@@ -1,13 +1,13 @@
----
+<!-- ---
 import React from 'react'
 
-import Head from '../components/Head'
-import Pagination from '../components/Pagination.astro'
-import PostList from '../components/PostList.astro'
-import PostListLayout from '../components/PostListLayout.astro'
+import Head from '../components/layouts/Head'
+import Pagination from '../features/postList/Pagination.astro'
+import PostList from '../features/postList/List.astro'
+import PostListLayout '../components/postList/PostListLayout.astro'
 import type { Frontmatter, Media } from '../types'
 import type { Page } from 'astro'
-import SideBar from '../components/SideBar.astro'
+import SideBar from '../components/elements/SideBar.astro'
 
 type props = {
   page: Page<Frontmatter>
@@ -26,8 +26,8 @@ const { page, media } = Astro.props
 </div>
 
 <style lang="scss">
-  @use '../styles/mixin' as mixin;
-  @use '../styles/variables' as vars;
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
 
   .postsByMediaLayout {
     &__tagText {
@@ -43,4 +43,4 @@ const { page, media } = Astro.props
       margin-top: 30px;
     }
   }
-</style>
+</style> -->

@@ -1,7 +1,7 @@
 // import { withPrefix } from 'gatsby'
 import React from 'react'
 
-import { LOCALE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../config'
+import { LOCALE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../../config'
 
 type IProps = {
   pageTitle?: string

@@ -1,0 +1,47 @@
+---
+import Pagination from './Pagination.astro'
+import PostList from './List.astro'
+
+import type { Frontmatter, Media } from '../../types'
+import type { Page } from 'astro'
+
+type Props = {
+  page: Page<Frontmatter>
+  media?: Media
+}
+const { page, media } = Astro.props
+---
+
+<div class="postListLayout__media">
+  {
+    media && (
+      <p class="postListLayout__mediaText">
+        <b>#{media === 'owned' ? 'mimu-memo' : media}</b>
+        の記事
+      </p>
+    )
+  }
+</div>
+<div class="postListLayout__body">
+  <PostList posts={page.data} />
+  <Pagination page={page} />
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
+  .postListLayout {
+    &__mediaText {
+      text-align: center;
+      font-size: 20px;
+
+      & b {
+        font-weight: bold;
+      }
+    }
+
+    &__body {
+      margin-top: 40px;
+    }
+  }
+</style>

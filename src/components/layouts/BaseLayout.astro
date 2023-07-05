@@ -1,12 +1,12 @@
 ---
 import { inject } from '@vercel/analytics'
 
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
-import Head from '../components/Head.tsx'
-import SideBar from '../components/SideBar.astro'
-import '../styles/reset.css'
-import '../styles/_common.scss'
+import Footer from './Footer.astro'
+import Header from './Header.astro'
+import Head from './Head.tsx'
+import '../../styles/reset.css'
+import '../../styles/_common.scss'
+import SideBar from './SideBar.astro'
 
 inject()
 
@@ -40,8 +40,8 @@ const { pageTitle, pageDescription, pageUrl, pageType } = Astro.props
 </body>
 
 <style lang="scss">
-  @use '../styles/mixin' as mixin;
-  @use '../styles/variables' as vars;
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
   .baseLayout {
     background: vars.$black-900;
     width: 100%;
