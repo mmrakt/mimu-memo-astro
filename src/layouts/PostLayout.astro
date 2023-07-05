@@ -74,9 +74,14 @@ const { post } = Astro.props
   @use '../styles/variables' as vars;
   .postLayout {
     display: flex;
+    width: 100%;
     gap: 40px;
     position: relative;
     padding-top: 40px;
+
+    &__inner {
+      width: 100%;
+    }
 
     &__socialButton {
       position: sticky;
@@ -85,10 +90,12 @@ const { post } = Astro.props
       height: 100vh;
     }
     &__section {
-      max-width: 680px;
+      // max-width: 680px;
       border-radius: 5px;
       border: 1px solid vars.$black-800;
       background: #fff;
+
+      @include mixin.slideIn();
     }
   }
 </style>

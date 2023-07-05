@@ -21,13 +21,13 @@ if (post?.link) {
 ---
 
 <article class="post">
-  <p class="post__date">
+  <p class="postItem__date">
     <span class="">
       {dayjs(post.pubDate).format('YYYY.MM.DD')}
     </span>
     {externalLinkText && <span>{externalLinkText}</span>}
   </p>
-  <div class="post__title">
+  <div class="postItem__title">
     <h2 class="">{post.title}</h2>
   </div>
 </article>
@@ -36,7 +36,7 @@ if (post?.link) {
   @use '../styles/mixin' as mixin;
   @use '../styles/variables' as vars;
 
-  .post {
+  .postItem {
     height: 100%;
     background: #fff;
     transform: scale(1);

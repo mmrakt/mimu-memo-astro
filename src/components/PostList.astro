@@ -2,7 +2,7 @@
 import LoadingSpinner from './LoadingSpinner'
 
 import type { Frontmatter } from '../types'
-import Post from './Post.astro'
+import PostItem from './PostItem.astro'
 
 type Props = {
   posts: Frontmatter[]
@@ -21,11 +21,11 @@ const { posts } = Astro.props
         <li class="postList__item">
           {post.media !== 'owned' ? (
             <a href={post.link} target="_blank" rel="noreferrer">
-              <Post post={post} />
+              <PostItem post={post} />
             </a>
           ) : (
             <a href={`/${post.link}`}>
-              <Post post={post} />
+              <PostItem post={post} />
             </a>
           )}
         </li>
@@ -41,5 +41,6 @@ const { posts } = Astro.props
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @include mixin.slideIn();
   }
 </style>
