@@ -1,0 +1,71 @@
+---
+import useStringTrim from '../../hooks/useStringTrim'
+
+import type { PaginatedPost } from '../../types'
+import ChevronLeft from '../../components/elements/ChevronLeft'
+import ChevronRight from '../../components/elements/ChevronRight'
+
+type Props = {
+  next: PaginatedPost['next']
+  prev: PaginatedPost['prev']
+}
+const { next, prev } = Astro.props
+---
+
+<div class="postDetailPagination">
+  <div class="postDetailPagination__item">
+    {
+      prev.url && (
+        <a href={`/${prev.url}`} class="postDetailPagination__itemLink">
+          <div class="postDetailPagination__itemText">
+            <ChevronLeft />
+            {useStringTrim(prev.title, 50)}
+          </div>
+        </a>
+      )
+    }
+  </div>
+  <div class="postDetailPagination__item">
+    {
+      next.url && (
+        <a
+          href={`/${next.url}`}
+          class="postDetailPagination__itemLink postDetailPagination__itemLink--next"
+        >
+          <div class="postDetailPagination__itemText">
+            {useStringTrim(next.title, 50)}
+            <ChevronRight />
+          </div>
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
+  .postDetailPagination {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+
+    &__item {
+      width: 50%;
+    }
+    &__itemLink {
+      display: flex;
+      align-items: center;
+
+      @extend %link;
+
+      &--next {
+        float: right;
+      }
+    }
+    &__itemText {
+      display: flex;
+      align-items: center;
+    }
+  }
+</style>

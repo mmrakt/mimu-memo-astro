@@ -1,5 +1,5 @@
 ---
-title: ほげほげ
+title: Prisma × Supabaseの本番環境で起きた`prepared statement "sx" already exists` のエラーの対処
 pubDate: 2023-06-29
 ---
 

@@ -16,7 +16,7 @@ pubDate: 2023-04-15
 ```js
 let options = {
   size: {
-    width: 100,
+    width: 100,ｚ
     height: 200,
   },
   items: ["Cake", "Donut"],
