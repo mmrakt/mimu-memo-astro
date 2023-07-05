@@ -38,11 +38,7 @@ const Head: React.VFC<IProps> = ({
       <meta charSet="utf-8" />
       <meta name="description" content={description} />
       <link rel="canonical" href={siteUrl} />
-      {/* <link
-        rel="icon"
-        href={`${withPrefix('/')}img/favicon.svg`}
-        type="image/svg+xml"
-      /> */}
+      <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
       <meta name="theme-color" content="#fff" />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={SITE_NAME} />

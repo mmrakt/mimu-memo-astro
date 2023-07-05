@@ -1,0 +1,36 @@
+---
+import dayjs from 'dayjs'
+
+import type { PaginatedPost } from '../types'
+
+type Props = {
+  post: PaginatedPost
+}
+const { post } = Astro.props
+---
+
+<section
+  class="postDetail box-outline pc:p-10 p-5 w-full dark:bg-dark-gray bg-white animate-slide-in"
+>
+  <p class="text-sm">
+    {dayjs(post.entry.data.pubDate).format('YYYY-MM-DD')}
+  </p>
+  <h1 class="postDetail__title mt-5 text-3xl font-black">
+    {post.entry.data.title}
+  </h1>
+  <div class="postDetail__content mt-16">
+    <slot />
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../styles/mixin' as mixin;
+  @use '../styles/variables' as vars;
+  .postDetail {
+    border-radius: 5px;
+    border: 1px solid vars.$black-800;
+    background: #fff;
+
+    @include mixin.slideIn();
+  }
+</style>
