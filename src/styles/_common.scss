@@ -1,11 +1,11 @@
 @use 'variables' as vars;
-@use 'mixin';
+@use 'utils';
 
 body {
   color: vars.$text-color-black;
   font-family: 'Noto Sans JP', sans-serif;
 
-  @include mixin.dark() {
+  @include utils.dark() {
     color: vars.$text-color-white;
   }
 }

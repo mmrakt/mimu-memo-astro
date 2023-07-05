@@ -23,7 +23,7 @@ const { post } = Astro.props
 </section>
 
 <style lang="scss">
-  @use '../../styles/mixin' as mixin;
+  @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
   .postDetail {
     border-radius: 5px;
@@ -31,9 +31,9 @@ const { post } = Astro.props
     background: #fff;
     padding: 40px;
 
-    @include mixin.slideIn();
+    @include utils.slideIn();
 
-    @include mixin.dark() {
+    @include utils.dark() {
       background: vars.$black-300;
       border: none;
     }

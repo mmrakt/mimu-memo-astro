@@ -11,7 +11,7 @@ import Profile from './Profile.astro'
 </div>
 
 <style lang="scss">
-  @use '../../styles/mixin' as mixin;
+  @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
   .sideBar {
     width: 300px;
@@ -23,7 +23,7 @@ import Profile from './Profile.astro'
 
       @extend %card-content;
 
-      @include mixin.mq(sp) {
+      @include utils.mq(sp) {
         margin: 0 16px;
       }
     }

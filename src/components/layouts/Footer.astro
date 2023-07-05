@@ -8,11 +8,11 @@
 </footer>
 
 <style lang="scss">
-  @use '../../styles/mixin' as mixin;
+  @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
   .footer {
     background: vars.$primary;
-    @include mixin.dark() {
+    @include utils.dark() {
       background: vars.$black-200;
     }
     &__inner {

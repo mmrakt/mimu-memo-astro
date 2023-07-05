@@ -3,7 +3,7 @@ title: JavaScript復習メモ
 pubDate: 2023-04-15
 ---
 
-[JAVASCRIPT.INFO](https://ja.javascript.info/) というJavaScriptのチュートリアルサイトを読んで改めて学んだことを自分用につらつらまとめます。
+[JAVASCRIPT.INFO](https://ja.javascript.info/) という JavaScript のチュートリアルサイトを読んで改めて学んだことを自分用につらつらまとめます。
 
 ※誤った情報や理解を含む場合があるのでその点ご了承ください。
 
@@ -46,11 +46,11 @@ alert(item2); // Donut
 引数をオブジェクト形式でまとめつつ、デフォルト値を`{}`で指定できる。
 
 ```js
-function showMenu({ title = "Menu", width = 100, height = 200 } = {}) {
-  alert(`${title} ${width} ${height}`);
+function showMenu({ title = 'Menu', width = 100, height = 200 } = {}) {
+  alert(`${title} ${width} ${height}`)
 }
 
-showMenu(); // Menu 100 200
+showMenu() // Menu 100 200
 ```
 
 ### Map, Set オブジェクトについて
@@ -86,14 +86,14 @@ showMenu(); // Menu 100 200
 `JSON.parse ｀時に文字列型ではなく、特定の型に変換させたい場合は第二引数にコールバック関数を渡して処理する。
 
 ```js
-let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
+let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}'
 
 let meetup = JSON.parse(str, function (key, value) {
-  if (key == "date") return new Date(value);
-  return value;
-});
+  if (key == 'date') return new Date(value)
+  return value
+})
 
-alert(meetup.date.getDate()); // 動作します!
+alert(meetup.date.getDate()) // 動作します!
 ```
 
 ### `func.call()`の使用例
@@ -104,62 +104,62 @@ alert(meetup.date.getDate()); // 動作します!
 ```js
 let worker = {
   someMethod() {
-    return 1;
+    return 1
   },
 
   slow(x) {
-    alert("Called with " + x);
-    return x * this.someMethod(); // (*)
+    alert('Called with ' + x)
+    return x * this.someMethod() // (*)
   },
-};
-
-function cachingDecorator(func) {
-  let cache = new Map();
-  return function (x) {
-    if (cache.has(x)) {
-      return cache.get(x);
-    }
-    let result = func.call(this, x); // "this" は正しいものが渡されます
-    cache.set(x, result);
-    return result;
-  };
 }
 
-worker.slow = cachingDecorator(worker.slow); // キャッシングします
+function cachingDecorator(func) {
+  let cache = new Map()
+  return function (x) {
+    if (cache.has(x)) {
+      return cache.get(x)
+    }
+    let result = func.call(this, x) // "this" は正しいものが渡されます
+    cache.set(x, result)
+    return result
+  }
+}
 
-alert(worker.slow(2)); // 動作します
-alert(worker.slow(2)); // 動作します（キャッシュが使われます）
+worker.slow = cachingDecorator(worker.slow) // キャッシングします
+
+alert(worker.slow(2)) // 動作します
+alert(worker.slow(2)) // 動作します（キャッシュが使われます）
 ```
 
 ### bind()によるコンテキストの固定
 
 ```js
 function hello() {
-  console.log("こんにちは、" + this.name);
+  console.log('こんにちは、' + this.name)
 }
-const yamada = hello.bind({ name: "yamada" });
+const yamada = hello.bind({ name: 'yamada' })
 
-yamada("sasaki"); //こんにちは、yamada
-JavaScript;
+yamada('sasaki') //こんにちは、yamada
+JavaScript
 ```
 
 また`bind()`と`call()`, `apply()`の違いは関数実行のタイミング。
 
 ```js
 function hello() {
-  console.log("こんにちは、" + this.name);
+  console.log('こんにちは、' + this.name)
 }
-const yamada = { name: "yamada" };
+const yamada = { name: 'yamada' }
 
 //bindの場合
-const bindYamada = hello.bind(yamada);
-bindYamada(); //こんにちは、yamada
+const bindYamada = hello.bind(yamada)
+bindYamada() //こんにちは、yamada
 
 //call()の場合
-hello.call(yamada); //こんにちは、yamada
+hello.call(yamada) //こんにちは、yamada
 
 //apply()の場合
-hello.apply(yamada); //こんにちは、yamada
+hello.apply(yamada) //こんにちは、yamada
 ```
 
 ### オブジェクトのプロパティフラグ
@@ -176,17 +176,17 @@ hello.apply(yamada); //こんにちは、yamada
 let animal = {
   eats: true,
   walk() {
-    alert("Animal walk");
+    alert('Animal walk')
   },
-};
+}
 
 let rabbit = {
   jumps: true,
   __proto__: animal,
-};
+}
 
 // walk は prototype から得られました
-rabbit.walk(); // Animal walk
+rabbit.walk() // Animal walk
 ```
 
 また`this`には常にドットの前のオブジェクトが入る。
@@ -194,15 +194,15 @@ rabbit.walk(); // Animal walk
 ```js
 let animal = {
   eat() {
-    this.full = true;
+    this.full = true
   },
-};
+}
 
 let rabbit = {
   __proto__: animal,
-};
+}
 
-rabbit.eat(); // thisは rabbit
+rabbit.eat() // thisは rabbit
 ```
 
 ### `for ... in` ループは継承したプロパティも含めて処理する
@@ -212,18 +212,18 @@ rabbit.eat(); // thisは rabbit
 ```js
 let animal = {
   eats: true,
-};
+}
 
 let rabbit = {
   jumps: true,
   __proto__: animal,
-};
+}
 
 // Object.keys は実親のキーだけを返します
-alert(Object.keys(rabbit)); // jumps
+alert(Object.keys(rabbit)) // jumps
 
 // for..in は実親と継承したキー両方をループします
-for (let prop in rabbit) alert(prop); // jumps, eats
+for (let prop in rabbit) alert(prop) // jumps, eats
 ```
 
 継承プロパティを除外したい場合は組み込みメソッドの`obj.hasOwnProperty(key)`を使用する。
@@ -233,16 +233,16 @@ for (let prop in rabbit) alert(prop); // jumps, eats
 オブジェクト ⇨ 組み込みのプロトタイプ ⇨Object プロトタイプ →`null`の関係で継承している。
 
 ```js
-let arr = [1, 2, 3];
+let arr = [1, 2, 3]
 
 // Array.prototype から継承している?
-alert(arr.__proto__ === Array.prototype); // true
+alert(arr.__proto__ === Array.prototype) // true
 
 // 次に Object.prototype からは継承している?
-alert(arr.__proto__.__proto__ === Object.prototype); // true
+alert(arr.__proto__.__proto__ === Object.prototype) // true
 
 // そしてトップの null
-alert(arr.__proto__.__proto__.__proto__); // null
+alert(arr.__proto__.__proto__.__proto__) // null
 ```
 
 また下記の例のようにネイティブプロトタイプを変更することができる。
@@ -250,10 +250,10 @@ alert(arr.__proto__.__proto__.__proto__); // null
 ```js
 // Stringプロトタイプに show()　メソッドを生やす
 String.prototype.show = function () {
-  alert(this);
-};
+  alert(this)
+}
 
-"BOOM!".show(); // BOOM!
+'BOOM!'.show() // BOOM!
 ```
 
 しかしプロトタイプはグローバルのため変更するとコンフリクトが起きやすいため、ポリフィルの考慮（特定の JavaScript エンジンではまだサポートされていないメソッド）等の特定のケースにのみ使用する。
@@ -263,9 +263,9 @@ String.prototype.show = function () {
 `Object.create(null)`でプロトタイプを持たない純粋なオブジェクトを生成することができる。
 
 ```js
-let obj = Object.create(null);
+let obj = Object.create(null)
 
-alert(obj); // Error (no toString)
+alert(obj) // Error (no toString)
 ```
 
 ちなみに`Object.create()`の引数は空の場合はエラーとなる。
@@ -277,52 +277,52 @@ JavaScript ではクラスは関数の一種である。
 ```js
 class User {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
   sayHi() {
-    alert(this.name);
+    alert(this.name)
   }
 }
 
 // class は function
-alert(typeof User); // function
+alert(typeof User) // function
 
 // ...あるいは, より正確には User は constructor メソッド
-alert(User === User.prototype.constructor); // true
+alert(User === User.prototype.constructor) // true
 
 // メソッドは User.prototype にあります e.g:
-alert(User.prototype.sayHi); // sayHi メソッドのコード
+alert(User.prototype.sayHi) // sayHi メソッドのコード
 
 // prototype には正確には2つのメソッドがあります
-alert(Object.getOwnPropertyNames(User.prototype)); // constructor, sayHi
+alert(Object.getOwnPropertyNames(User.prototype)) // constructor, sayHi
 ```
 
 - クラス宣言の結果となる`User`と言う名前の関数を作成
 - 関数コードは`constructor`メソッド
 - `User.prototype`に`sayHi`などのクラスメソッドを格納
 
-### クラスの mixin
+### クラスの utils
 
 JavaScript では多重継承が許可されていないため、部分的にクラスに機能を追加した新しいクラスを返すことで近いことが実現できる。
 
 下記は TypeScript での実装例
 
 ```js
-// Needed for all mixins
+// Needed for all utilss
 type Constructor<T = {}> = new (...args: any[]) => T;
 
 ////////////////////
-// Example mixins
+// Example utilss
 ////////////////////
 
-// A mixin that adds a property
+// A utils that adds a property
 function Timestamped<TBase extends Constructor>(Base: TBase) {
   return class extends Base {
     timestamp = Date.now();
   };
 }
 
-// a mixin that adds a property and methods
+// a utils that adds a property and methods
 function Activatable<TBase extends Constructor>(Base: TBase) {
   return class extends Base {
     isActivated = false;
@@ -369,22 +369,22 @@ console.log(timestampedActivatableUserExample.isActivated);
 `try...catch`内では既知のエラーだけを捉えて処理し、未知のエラーについてはスキップ（再スロー）することで、より上位の`try...catch`で捉えることができる。
 
 ```js
-let json = '{ "age": 30 }'; // 不完全なデータ
+let json = '{ "age": 30 }' // 不完全なデータ
 try {
-  let user = JSON.parse(json);
+  let user = JSON.parse(json)
 
   if (!user.name) {
-    throw new SyntaxError("Incomplete data: no name");
+    throw new SyntaxError('Incomplete data: no name')
   }
 
-  blabla(); // 予期しないエラー
+  blabla() // 予期しないエラー
 
-  alert(user.name);
+  alert(user.name)
 } catch (e) {
-  if (e.name == "SyntaxError") {
-    alert("JSON Error: " + e.message);
+  if (e.name == 'SyntaxError') {
+    alert('JSON Error: ' + e.message)
   } else {
-    throw e; // 再スロー (*)
+    throw e // 再スロー (*)
   }
 }
 ```
@@ -399,15 +399,15 @@ Promise が reject を投げた際に`.catch`の記述が無い場合、JavaScri
 またブラウザでは、イベント `unhandledrejection`を使ってキャッチができる。
 
 ```js
-window.addEventListener("unhandledrejection", function (event) {
+window.addEventListener('unhandledrejection', function (event) {
   // イベントオブジェクトは2つの特別なプロパティを持っています:
-  alert(event.promise); // [object Promise] - エラーを生成した promise
-  alert(event.reason); // Error: Whoops! - 未処理のエラーオブジェクト
-});
+  alert(event.promise) // [object Promise] - エラーを生成した promise
+  alert(event.reason) // Error: Whoops! - 未処理のエラーオブジェクト
+})
 
 new Promise(function () {
-  throw new Error("Whoops!");
-}); // エラーを処理する catch がない
+  throw new Error('Whoops!')
+}) // エラーを処理する catch がない
 ```
 
 ### Promise の API
@@ -429,16 +429,16 @@ Node.js であれば組み込みの`util.promisify`を使うことで比較的�
 ```js
 function* gen() {
   // 質問を外側のコードに渡して答えを待ちます
-  let result = yield "2 + 2?"; // (*)
+  let result = yield '2 + 2?' // (*)
 
-  alert(result);
+  alert(result)
 }
 
-let generator = gen();
+let generator = gen()
 
-let question = generator.next().value; // <-- yield は値を返します
+let question = generator.next().value // <-- yield は値を返します
 
-generator.next(4); // --> 結果をジェネレータに渡します
+generator.next(4) // --> 結果をジェネレータに渡します
 ```
 
 ### デフォルトエクスポートの再エクスポート
@@ -446,8 +446,8 @@ generator.next(4); // --> 結果をジェネレータに渡します
 デフォルトエクスポートを再エクスポートする場合、`{defult}`で明示しなければならない。
 
 ```js
-export * from "./module.js"; // to re-export named exports
-export { default } from "./module.js"; // to re-export default
+export * from './module.js' // to re-export named exports
+export { default } from './module.js' // to re-export default
 ```
 
 ### `parentElement`と`parentNode`の挙動の違い
@@ -455,8 +455,8 @@ export { default } from "./module.js"; // to re-export default
 `document.documentElement`の場合、`<html>`の親は`document`であり、要素ノードではないため`.parentNode`では`null`になる。
 
 ```js
-alert(document.documentElement.parentNode); // document
-alert(document.documentElement.parentElement); // null
+alert(document.documentElement.parentNode) // document
+alert(document.documentElement.parentElement) // null
 ```
 
 ### `document`の階層位置
@@ -464,20 +464,20 @@ alert(document.documentElement.parentElement); // null
 下記で確認ができる。
 
 ```js
-alert(HTMLDocument.prototype.constructor.name); // HTMLDocument
-alert(HTMLDocument.prototype.__proto__.constructor.name); // Document
-alert(HTMLDocument.prototype.__proto__.__proto__.constructor.name); // Node
-alert(HTMLDocument.prototype.__proto__.__proto__.__proto__.constructor.name); // EventTarget
+alert(HTMLDocument.prototype.constructor.name) // HTMLDocument
+alert(HTMLDocument.prototype.__proto__.constructor.name) // Document
+alert(HTMLDocument.prototype.__proto__.__proto__.constructor.name) // Node
+alert(HTMLDocument.prototype.__proto__.__proto__.__proto__.constructor.name) // EventTarget
 alert(
   HTMLDocument.prototype.__proto__.__proto__.__proto__.__proto__.constructor
     .name
-); // Object
+) // Object
 
 // TypeError: Cannot read properties of null (reading 'constructor')
 alert(
   HTMLDocument.prototype.__proto__.__proto__.__proto__.__proto__.__proto__
     .constructor.name
-);
+)
 ```
 
 ### `data-*`属性について
@@ -527,19 +527,19 @@ DOM の準備を待たずに、スクリプトの準備ができたタイミン�
 
 ```js
 // 1秒で中止
-let controller = new AbortController();
-setTimeout(() => controller.abort(), 1000);
+let controller = new AbortController()
+setTimeout(() => controller.abort(), 1000)
 
 try {
-  let response = await fetch("/article/fetch-abort/demo/hang", {
+  let response = await fetch('/article/fetch-abort/demo/hang', {
     signal: controller.signal,
-  });
+  })
 } catch (err) {
-  if (err.name == "AbortError") {
+  if (err.name == 'AbortError') {
     // abort() を処理
-    alert("Aborted!");
+    alert('Aborted!')
   } else {
-    throw err;
+    throw err
   }
 }
 ```

@@ -40,13 +40,13 @@ const { pageTitle, pageDescription, pageUrl, pageType } = Astro.props
 </body>
 
 <style lang="scss">
-  @use '../../styles/mixin' as mixin;
+  @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
   .baseLayout {
     background: vars.$black-900;
     width: 100%;
     // min-height: 100vh;
-    @include mixin.dark() {
+    @include utils.dark() {
       background: vars.$black-200;
       color: #fff;
     }
@@ -58,7 +58,7 @@ const { pageTitle, pageDescription, pageUrl, pageType } = Astro.props
       margin: 0 auto;
 
       min-height: calc(100vh - #{vars.$headerHeight} - #{vars.$footerHeight});
-      @include mixin.mq(sp) {
+      @include utils.mq(sp) {
         flex-direction: column;
         gap: 0;
       }

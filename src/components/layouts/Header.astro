@@ -18,14 +18,14 @@ import { SITE_DESCRIPTION } from '../../config'
 </header>
 
 <style lang="scss">
-  @use '../../styles/mixin' as mixin;
+  @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
 
   .header {
     background: vars.$primary;
     color: #fff;
 
-    @include mixin.dark() {
+    @include utils.dark() {
       background: vars.$black-200;
     }
 

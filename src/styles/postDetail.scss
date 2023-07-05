@@ -1,5 +1,5 @@
 @use 'variables' as vars;
-@use 'mixin';
+@use 'utils';
 
 .postDetail {
   .astro-code {
@@ -77,7 +77,7 @@
     border-radius: 5px;
     font-size: 16px;
 
-    @include mixin.dark() {
+    @include utils.dark() {
       background: vars.$black-400;
     }
   }
