@@ -1,5 +1,5 @@
 ---
-title: google-cloud-firestore-cloud-firestore-rest-api
+title: google-cloud/firestore を使って Cloud Firestore REST API を呼び出す
 pubDate: 2022-01-01
 ---
 
@@ -13,9 +13,9 @@ Cloud Firestore REST API の公式ドキュメントは以下。
 まずはライブラリをインストールし、 Quickstart の手順に従い以下の流れで準備を行う。
 [Quickstart](https://www.npmjs.com/package/@google-cloud/firestore#quickstart)
 
-①プロジェクトの選択
+① プロジェクトの選択
 ②Cloud Firestore API の有効化
-③サービスアカウント作成、キーの登録とダウンロード
+③ サービスアカウント作成、キーの登録とダウンロード
 
 とりあえず最小構成でいいので API を試してみる。
 
@@ -44,11 +44,11 @@ $ GOOGLE_APPLICATION_CREDENTIALS=***.json node hoge.js
 ほぼコピペだがこんな感じ。
 
 ```js
-import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-import { Firestore } from "@google-cloud/firestore";
+import NextAuth from 'next-auth'
+import GithubProvider from 'next-auth/providers/github'
+import { Firestore } from '@google-cloud/firestore'
 
-const firestore = new Firestore();
+const firestore = new Firestore()
 
 export default NextAuth({
   providers: [
@@ -58,18 +58,18 @@ export default NextAuth({
     }),
   ],
   pages: {
-    signIn: "/signin",
+    signIn: '/signin',
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      const document = firestore.doc(`users/${user.id}`);
+      const document = firestore.doc(`users/${user.id}`)
       await document.set({
         email: email,
-      });
-      return true;
+      })
+      return true
     },
   },
-});
+})
 ```
 
 これで早速ログイン処理を実行してみると、、エラーが返ってきた。

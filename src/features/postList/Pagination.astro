@@ -15,16 +15,16 @@ const {
 } = Astro.props
 ---
 
-<div class="flex py-3">
+<div class="postListPagination flex py-3">
   {
     currentPage !== 1 && (
       <a
         href={url.prev}
         rel="prev"
-        class="box-outline text-link flex items-center pr-2 py-2 dark:text-white underline text-sm font-medium dark:bg-dark-gray bg-white"
+        class="postListPagination__link postListPagination__link--prev box-outline text-link flex items-center pr-2 py-2 dark:text-white underline text-sm font-medium dark:bg-dark-gray bg-white"
       >
         <ChevronLeft />
-        <span class="">Prev</span>
+        Prev
       </a>
     )
   }
@@ -33,11 +33,35 @@ const {
       <a
         href={url.next}
         rel="next"
-        class="box-outline text-link flex items-center ml-auto pl-2 py-2 dark:text-white underline text-sm font-medium dark:bg-dark-gray bg-white"
+        class="postListPagination__link postListPagination__link--next box-outline text-link flex items-center ml-auto pl-2 py-2 dark:text-white underline text-sm font-medium dark:bg-dark-gray bg-white"
       >
-        <span>Next</span>
+        Next
         <ChevronRight />
       </a>
     )
   }
 </div>
+
+<style lang="scss">
+  @use '../../styles/mixin' as mixin;
+  @use '../../styles/variables' as vars;
+
+  .postListPagination {
+    display: flex;
+    margin-top: 40px;
+
+    &__link {
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      font-weight: bold;
+
+      @extend %link;
+      @extend %card-content;
+
+      &--next {
+        margin-left: auto;
+      }
+    }
+  }
+</style>

@@ -12,6 +12,11 @@
     word-wrap: normal !important; // NOTE: astro側のインラインスタイルを打ち消し
   }
 
+  h1 {
+    font-size: 28px;
+    margin-top: 40px;
+    padding-bottom: 20px;
+  }
   h2 {
     font-size: 24px;
     padding: 10px 0;
@@ -26,15 +31,17 @@
 
   h4 {
     font-size: 16px;
-    margin: 10px 0;
+    margin-top: 20px;
   }
 
   p {
     line-height: 2;
+    margin-top: 20px;
   }
 
   ul {
     padding-left: 24px;
+    margin-top: 20px;
   }
 
   li {
@@ -42,8 +49,24 @@
     line-height: 2;
   }
 
+  li > ul {
+    margin-top: 0;
+  }
+
   a {
     @extend %link;
+  }
+
+  blockquote {
+    margin-top: 20px;
+    padding: 5px 20px;
+    margin-left: 5px;
+    border-left: 3px solid vars.$black-700;
+    color: vars.$black-400;
+
+    > * {
+      margin-top: 0;
+    }
   }
 
   > code,

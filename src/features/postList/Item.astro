@@ -42,23 +42,14 @@ if (post?.link) {
 
   .postItem {
     height: 100%;
-    background: #fff;
     transform: scale(1);
     transition: transform 0.2s;
-    box-shadow: 0 0 0 black;
-    border-radius: 5px;
-    border: 1px solid vars.$black-800;
     padding: 20px;
-    color: #000;
+
+    @extend %card-content;
 
     &:hover {
       transform: scale(1.05);
-    }
-
-    @include mixin.dark() {
-      background: vars.$black-400;
-      color: #fff;
-      border: none;
     }
 
     &__title {

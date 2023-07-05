@@ -19,18 +19,12 @@ import Profile from './Profile.astro'
 
     &__inner {
       margin-top: 80px;
-      background: #fff;
       padding: 20px;
-      border-radius: 5px;
-      border: 1px solid vars.$black-800;
+
+      @extend %card-content;
 
       @include mixin.mq(sp) {
         margin: 0 16px;
-      }
-
-      @include mixin.dark() {
-        background: vars.$black-300;
-        border: none;
       }
     }
   }
