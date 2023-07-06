@@ -2,14 +2,10 @@
 import dayjs from 'dayjs'
 import React from 'react'
 
-import useStringTrim from '../../hooks/useStringTrim'
-
 import type { PaginatedPost } from '../../types'
 import type { AstroComponentFactory } from 'astro/dist/runtime/server'
 import SocialButtons from './SocialButtons.astro'
 import PostDetail from './Content.astro'
-import ChevronLeft from '../../components/elements/ChevronLeft'
-import ChevronRight from '../../components/elements/ChevronRight'
 import Pagination from '../../features/postDetail/Pagination.astro'
 
 type Props = {

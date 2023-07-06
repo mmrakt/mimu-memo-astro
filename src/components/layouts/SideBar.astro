@@ -21,11 +21,16 @@ import Profile from './Profile.astro'
     @include utils.mq(sp) {
       width: 100%;
       padding-left: vars.$sp-side-padding-size;
+      padding-bottom: 40px;
     }
 
     &__inner {
       margin-top: 80px;
       padding: 20px;
+
+      @include utils.mq(sp) {
+        margin-top: 0;
+      }
 
       @extend %card-content;
     }

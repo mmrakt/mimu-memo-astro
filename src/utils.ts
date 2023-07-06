@@ -6,6 +6,9 @@ import { QIITA_FEED_URL, ZENN_FEED_URL } from './config/index'
 import type { Frontmatter, Media, MediaDisplay } from './types/index'
 import type { MarkdownInstance } from 'astro'
 
+export const trimString = (str: string, limit: number) =>
+  str.length > limit ? `${str.substring(0, limit)}...` : str
+
 export const convertMediaNameToSlug = (mediaName: MediaDisplay): Media | '' => {
   if (mediaName === 'mimu-memo') {
     return 'owned'

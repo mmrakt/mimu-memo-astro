@@ -57,7 +57,10 @@ if (post?.link) {
       }
 
       &:hover {
-        color: vars.$black-700;
+        color: vars.$black-400;
+        @include utils.dark() {
+          color: vars.$black-700;
+        }
       }
     }
   }

@@ -13,23 +13,22 @@ type Props = {
 }
 const { media } = Astro.props
 
-let posts
+let postCount
 if (media === 'mimu-memo') {
-  posts = await getCollection('owned')
+  const ownedMd = await getCollection('owned')
+  postCount = ownedMd.length
 } else if (media === 'Qiita') {
-  posts = await fetchFeed(QIITA_FEED_URL)
+  const qiitaFeed = await fetchFeed(QIITA_FEED_URL)
+  postCount = qiitaFeed.items.length
 } else if (media === 'Zenn') {
-  posts = await fetchFeed(ZENN_FEED_URL)
-}
-
-const getPostCount = () => {
-  return posts.length
+  const zennFeed = await fetchFeed(ZENN_FEED_URL)
+  postCount = zennFeed.items.length
 }
 ---
 
 <>
   {
-    !posts ? (
+    !postCount ? (
       <LoadingSpinner />
     ) : (
       <a
@@ -37,7 +36,7 @@ const getPostCount = () => {
         class="mediaItem__link"
       >
         <span class="mediaItem__text">
-          #{media}({getPostCount()})
+          #{media}({postCount})
         </span>
       </a>
     )
