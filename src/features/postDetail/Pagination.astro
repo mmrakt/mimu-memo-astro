@@ -17,8 +17,7 @@ const { next, prev } = Astro.props
     {
       prev.url && (
         <a href={`/${prev.url}`} class="postDetailPagination__itemLink">
-          <div class="postDetailPagination__itemText">
-            <ChevronLeft />
+          <div class="postDetailPagination__itemText postDetailPagination__itemText--prev">
             {useStringTrim(prev.title, 50)}
           </div>
         </a>
@@ -32,9 +31,8 @@ const { next, prev } = Astro.props
           href={`/${next.url}`}
           class="postDetailPagination__itemLink postDetailPagination__itemLink--next"
         >
-          <div class="postDetailPagination__itemText">
+          <div class="postDetailPagination__itemText postDetailPagination__itemText--next">
             {useStringTrim(next.title, 50)}
-            <ChevronRight />
           </div>
         </a>
       )
@@ -47,6 +45,7 @@ const { next, prev } = Astro.props
   @use '../../styles/variables' as vars;
   .postDetailPagination {
     display: flex;
+    gap: 20px;
     align-items: center;
     margin-top: 40px;
 
@@ -54,9 +53,6 @@ const { next, prev } = Astro.props
       width: 50%;
     }
     &__itemLink {
-      display: flex;
-      align-items: center;
-
       @extend %link;
 
       &--next {
@@ -66,6 +62,24 @@ const { next, prev } = Astro.props
     &__itemText {
       display: flex;
       align-items: center;
+      position: relative;
+
+      &::before,
+      &::after {
+        @extend %arrow;
+      }
+      &--prev {
+        padding-left: 20px;
+        &::before {
+          @extend %arrow-prev;
+        }
+      }
+      &--next {
+        padding-right: 20px;
+        &::after {
+          @extend %arrow-next;
+        }
+      }
     }
   }
 </style>

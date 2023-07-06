@@ -6,44 +6,13 @@ import { convertMediaNameToSlug, fetchFeed } from '../../utils'
 import type { Frontmatter, Media, MediaDisplay } from '../../types'
 import { getCollection } from 'astro:content'
 import LoadingSpinner from '../elements/LoadingSpinner.astro'
-
-const ownedMd = await getCollection('owned')
-const qiitaFeed = await fetchFeed(QIITA_FEED_URL)
-const zennFeed = await fetchFeed(ZENN_FEED_URL)
-
-const getCountByMedia = (media: MediaDisplay) => {
-  if (media === 'mimu-memo') {
-    return ownedMd.length
-  } else if (media === 'Qiita') {
-    return qiitaFeed.items.length
-  } else if (media === 'Zenn') {
-    return zennFeed.items.length
-  }
-  return 0
-}
+import MediaItem from './MediaItem.astro'
 ---
 
 <div class="mediaList">
   <h3 class="mediaList__header">Media</h3>
   <div class="mediaList__list">
-    {
-      MEDIA_LIST_DISPLAY.map((media) => (
-        <>
-          {!media ? (
-            <LoadingSpinner />
-          ) : (
-            <a
-              href={`/${convertMediaNameToSlug(media)}/page/1`}
-              class="mediaList__itemLink"
-            >
-              <span class="mediaList__itemText">
-                #{media}({getCountByMedia(media)})
-              </span>
-            </a>
-          )}
-        </>
-      ))
-    }
+    {MEDIA_LIST_DISPLAY.map((media) => <MediaItem media={media} />)}
   </div>
 </div>
 
@@ -59,18 +28,6 @@ const getCountByMedia = (media: MediaDisplay) => {
     }
     &__list {
       margin-top: 8px;
-    }
-
-    &__itemLink {
-      display: block;
-      width: fit-content;
-      padding: 4px;
-    }
-    &__itemText {
-      margin-top: 8px;
-      font-weight: 500;
-
-      @extend %link;
     }
   }
 </style>

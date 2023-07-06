@@ -21,9 +21,8 @@ const {
       <a
         href={url.prev}
         rel="prev"
-        class="postListPagination__link postListPagination__link--prev box-outline text-link flex items-center pr-2 py-2 dark:text-white underline text-sm font-medium dark:bg-dark-gray bg-white"
+        class="postListPagination__link postListPagination__link--prev"
       >
-        <ChevronLeft />
         Prev
       </a>
     )
@@ -33,10 +32,9 @@ const {
       <a
         href={url.next}
         rel="next"
-        class="postListPagination__link postListPagination__link--next box-outline text-link flex items-center ml-auto pl-2 py-2 dark:text-white underline text-sm font-medium dark:bg-dark-gray bg-white"
+        class="postListPagination__link postListPagination__link--next"
       >
         Next
-        <ChevronRight />
       </a>
     )
   }
@@ -56,17 +54,31 @@ const {
       justify-content: center;
       padding: 8px 12px;
       font-weight: bold;
+      position: relative;
 
       @extend %link;
       @extend %card-content;
 
+      &::before,
+      &::after {
+        @extend %arrow;
+      }
       &--prev {
-        padding-left: 5px;
+        padding-left: 30px;
+        &::before {
+          @extend %arrow-prev;
+          left: 10px;
+        }
       }
 
       &--next {
-        padding-right: 5px;
+        padding-right: 30px;
         margin-left: auto;
+
+        &::after {
+          @extend %arrow-next;
+          right: 10px;
+        }
       }
     }
   }

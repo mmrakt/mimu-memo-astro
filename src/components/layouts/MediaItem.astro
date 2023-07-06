@@ -6,36 +6,38 @@ import { convertMediaNameToSlug, fetchFeed } from '../../utils'
 import type { Frontmatter, Media, MediaDisplay } from '../../types'
 import { getCollection } from 'astro:content'
 import LoadingSpinner from '../elements/LoadingSpinner.astro'
+import { postcss } from 'autoprefixer'
 
 type Props = {
   media: MediaDisplay
 }
 const { media } = Astro.props
 
-let postCount
+let posts
 if (media === 'mimu-memo') {
-  const ownedMd = await getCollection('owned')
-  postCount = ownedMd.length
+  posts = await getCollection('owned')
 } else if (media === 'Qiita') {
-  const qiitaFeed = await fetchFeed(QIITA_FEED_URL)
-  postCount = qiitaFeed.length
+  posts = await fetchFeed(QIITA_FEED_URL)
 } else if (media === 'Zenn') {
-  const zennFeed = await fetchFeed(ZENN_FEED_URL)
-  postCount = zennFeed.length
+  posts = await fetchFeed(ZENN_FEED_URL)
+}
+
+const getPostCount = () => {
+  return posts.length
 }
 ---
 
 <>
   {
-    !postCount ? (
+    !posts ? (
       <LoadingSpinner />
     ) : (
       <a
         href={`/${convertMediaNameToSlug(media)}/page/1`}
-        class="mediaItem__kink"
+        class="mediaItem__link"
       >
         <span class="mediaItem__text">
-          #{media}({postCount})
+          #{media}({getPostCount()})
         </span>
       </a>
     )
@@ -46,7 +48,7 @@ if (media === 'mimu-memo') {
   @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
 
-  .media {
+  .mediaItem {
     &__link {
       display: block;
       width: fit-content;

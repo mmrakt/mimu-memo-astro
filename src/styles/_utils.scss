@@ -84,3 +84,33 @@ $mappedBreakpoint: (
     border: none;
   }
 }
+
+%arrow {
+  position: absolute;
+  top: 40%;
+  content: '';
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+}
+
+%arrow-prev {
+  left: 0;
+  content: '';
+  border-left: 2px solid vars.$text-color-black;
+  border-bottom: 2px solid vars.$text-color-black;
+
+  @include dark() {
+    border-color: #fff;
+  }
+}
+%arrow-next {
+  right: 0;
+  content: '';
+  border-top: 2px solid vars.$text-color-black;
+  border-right: 2px solid vars.$text-color-black;
+
+  @include dark() {
+    border-color: #fff;
+  }
+}
