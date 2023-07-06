@@ -4,6 +4,7 @@ import type { Frontmatter, PaginatedPost } from '../types'
 import { extractSlugFromMd } from '../utils'
 import BaseLayout from '../components/layouts/BaseLayout.astro'
 import Container from '../features/postDetail/Container.astro'
+import Head from '../components/layouts/Head'
 
 export async function getStaticPaths() {
   const collection = await getCollection('owned')
@@ -50,7 +51,12 @@ const { Content } = await post.entry.render()
 ---
 
 <html lang="ja">
-  <BaseLayout pageUrl="">
+  <Head
+    pageTitle={post.entry.data.title}
+    pagePath={post.entry.slug}
+    pageType="article"
+  />
+  <BaseLayout>
     <Container post={post}>
       <Content />
     </Container>

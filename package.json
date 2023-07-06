@@ -36,7 +36,7 @@
     "siteName": "mimu-memo",
     "description": "平凡エンジニアの個人学習メモ",
     "siteUrl": {
-      "dev": "http://localhost:3000/",
+      "dev": "http://localhost:3000",
       "prod": "https://mimu-memo.com"
     },
     "lang": "ja",

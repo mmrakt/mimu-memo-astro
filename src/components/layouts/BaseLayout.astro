@@ -9,23 +9,8 @@ import '../../styles/_common.scss'
 import SideBar from './SideBar.astro'
 
 inject()
-
-type Props = {
-  pageTitle?: string
-  pageDescription?: string
-  pageUrl: string
-  pageType?: string
-}
-const { pageTitle, pageDescription, pageUrl, pageType } = Astro.props
 ---
 
-<!-- TODO: pageUrl設定 -->
-<Head
-  pageTitle={pageTitle}
-  pageDescription={pageDescription}
-  pageUrl="/"
-  pageType={pageType}
-/>
 <body>
   <div class="baseLayout">
     <Header />

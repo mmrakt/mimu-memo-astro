@@ -1,0 +1,76 @@
+---
+---
+
+<div class="notFount">
+  <div class="notFound__title">
+    <h1 class="notFound__titleMain">404</h1>
+    <span class="notFound__titleSub">Not Found</span>
+  </div>
+  <div class="notFound__body">
+    <p class="notFound__bodyText">
+      アクセスしたページは削除またはURLが変更されていたため<br
+        class="notFound__onlyPc"
+      />表示することができませんでした。
+    </p>
+    <div class="notFound__buttonWrapper">
+      <a href="/page/1" class="notFound__button">TOPへ戻る</a>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/utils' as utils;
+  @use '../../styles/variables' as vars;
+
+  .notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__titleMain {
+      font-size: 52px;
+    }
+    &__titleSub {
+      font-size: 24px;
+    }
+    &__body {
+      margin-top: 80px;
+      text-align: center;
+    }
+    &__bodyText {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    &__onlyPc {
+      @include utils.mq(sp) {
+        display: none;
+      }
+    }
+    &__buttonWrapper {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__button {
+      padding: 10px 20px;
+      background: vars.$black-750;
+      //   border: 1px solid vars.$black-700;
+      border-radius: 10px;
+      color: vars.$text-color-black;
+      font-weight: 500;
+
+      &:hover {
+        background: vars.$black-700;
+      }
+    }
+  }
+</style>

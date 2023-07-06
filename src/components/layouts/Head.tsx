@@ -1,71 +1,50 @@
-// import { withPrefix } from 'gatsby'
 import React from 'react'
 
-import { LOCALE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../../config'
+import { LOCALE, SITE_NAME, SITE_URL, TWITTER_ID } from '../../config'
 
 type IProps = {
   pageTitle?: string
-  pageDescription?: string
-  pageUrl?: string
-  pageImage?: string
+  pagePath?: string
   pageImageWidth?: string
   pageImageHeight?: string
-  pageType?: string
+  pageType?: 'blog' | 'article'
 }
 
-const Head: React.VFC<IProps> = ({
+const Head = ({
   pageTitle,
-  pageDescription,
-  pageUrl,
-  pageImage,
-  pageImageWidth,
-  pageImageHeight,
+  pagePath,
+  pageImageWidth = '1280',
+  pageImageHeight = '640',
   pageType,
-}) => {
-  const title = pageTitle ? `${pageTitle} | ${SITE_NAME}` : SITE_NAME
-  const description = pageDescription || SITE_DESCRIPTION
-  const siteUrl = pageUrl ? `${SITE_URL}${pageUrl}` : SITE_URL
-  const imageUrl = pageImage
-    ? `https:${pageImage}`
-    : `${SITE_URL}/img/thumb.png`
-  const imageWidth = pageImageWidth || '1280'
-  const imageHeight = pageImageHeight || '640'
-  const type = pageType || 'blog'
+}: IProps) => {
+  const title = pageTitle
+    ? `${pageTitle} - ${SITE_NAME}`
+    : `${SITE_NAME} - 平凡エンジニアの個人学習メモ`
+  // TODO: descriptionをmarkdownから動的に抜き出す方法検討
+  const siteUrl = pagePath ? `${SITE_URL}/${pagePath}` : SITE_URL
+  const imageUrl = `${SITE_URL}/img/thumb.png`
 
   return (
     <head>
       <title>{title}</title>
       <meta charSet="utf-8" />
-      <meta name="description" content={description} />
       <link rel="canonical" href={siteUrl} />
       <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
       <meta name="theme-color" content="#fff" />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:type" content={type} />
-      <meta property="og:description" content={description} />
+      {pageType && <meta property="og:type" content={pageType} />}
       <meta property="og:url" content={siteUrl} />
       <meta property="og:locale" content={LOCALE} />
       <meta property="og:image" content={imageUrl} />
-      <meta property="og:image.width" content={imageWidth} />
-      <meta property="og:image.height" content={imageHeight} />
+      <meta property="og:image.width" content={pageImageWidth} />
+      <meta property="og:image.height" content={pageImageHeight} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={process.env.TWITTER_ID} />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:creator" content={`@${TWITTER_ID}`} />
     </head>
   )
-}
-
-Head.defaultProps = {
-  pageTitle: '',
-  pageDescription: '',
-  pageUrl: '',
-  pageImage: '',
-  pageImageWidth: '',
-  pageImageHeight: '',
-  pageType: '',
 }
 
 export default Head

@@ -1,11 +1,6 @@
 ---
 import React from 'react'
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  TwitterIcon,
-  TwitterShareButton,
-} from 'react-share'
+import { TwitterIcon, TwitterShareButton } from 'react-share'
 
 import { SITE_URL } from '../../config'
 
@@ -15,20 +10,21 @@ type Props = {
 }
 const { title, slug } = Astro.props
 const iconSize = '42'
-const url = `${SITE_URL}/${slug}`
+const url = encodeURI(`${SITE_URL}/${slug}`)
+const twitterLink = `https://twitter.com/share?url=${url}&text=${title}`
 ---
 
 <div class="socialButtons">
-  <div class="socialButtons__item">
+  <a
+    class="socialButtons__item"
+    href={twitterLink}
+    rel="nofollow"
+    target="_blank"
+  >
     <TwitterShareButton url={url} title={title}>
       <TwitterIcon round size={iconSize} />
     </TwitterShareButton>
-  </div>
-  <div class="socialButtons__item">
-    <FacebookShareButton url={url} quote={title}>
-      <FacebookIcon round size={iconSize} />
-    </FacebookShareButton>
-  </div>
+  </a>
 </div>
 
 <style lang="scss">

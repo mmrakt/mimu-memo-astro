@@ -5,6 +5,7 @@ import { extractSlugFromMd, makeQiitaPost, makeZennPost } from '../../../utils'
 import type { Frontmatter, Media } from '../../../types'
 import BaseLayout from '../../../components/layouts/BaseLayout.astro'
 import Container from '../../../features/postList/Container.astro'
+import Head from '../../../components/layouts/Head'
 
 export async function getStaticPaths({
   paginate,
@@ -51,7 +52,8 @@ const { media } = Astro.params as Params
 ---
 
 <html lang="ja">
-  <BaseLayout pageUrl="">
+  <Head pagePath={`/${media}/page/${page.currentPage}`} pageType="blog" />
+  <BaseLayout>
     <Container page={page} media={media} />
   </BaseLayout>
 </html>

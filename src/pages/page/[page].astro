@@ -2,7 +2,6 @@
 import type { Page, PaginateFunction } from 'astro'
 import BaseLayout from '../../components/layouts/BaseLayout.astro'
 import Container from '../../features/postList/Container.astro'
-import ChevronLeft from '../../components/elements/ChevronLeft.tsx'
 import {
   makeQiitaPost,
   makeZennPost,
@@ -10,6 +9,7 @@ import {
   sortPostsByPubDate,
 } from '../../utils'
 import type { Frontmatter } from '../../types/index.ts'
+import Head from '../../components/layouts/Head'
 
 export async function getStaticPaths({
   paginate,
@@ -39,7 +39,8 @@ const { page } = Astro.props
 ---
 
 <html lang="ja">
-  <BaseLayout pageUrl="">
+  <Head pagePath={`page/${page.currentPage}`} pageType="blog" />
+  <BaseLayout>
     <Container page={page} />
   </BaseLayout>
 </html>

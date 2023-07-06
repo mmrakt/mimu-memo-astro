@@ -14,5 +14,6 @@ export const MEDIA_LIST = ['owned', 'qiita', 'zenn'] as const
 export const MEDIA_LIST_DISPLAY = ['mimu-memo', 'Qiita', 'Zenn'] as const
 
 export const SNS_ID = 'mmrakt'
+export const TWITTER_ID = 'mmrakt0716'
 export const ZENN_FEED_URL = `https://zenn.dev/${SNS_ID}/feed?all=1`
 export const QIITA_FEED_URL = `https://qiita.com/${SNS_ID}/feed`
