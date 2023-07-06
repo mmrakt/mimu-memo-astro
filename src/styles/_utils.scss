@@ -29,8 +29,18 @@ $mappedBreakpoint: (
   }
 }
 
+@keyframes spinAnimation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @mixin slideIn() {
   animation: slideInAnimation 0.25s ease-in forwards;
+}
+
+@mixin spin() {
+  animation: spinAnimation 1s linear infinite;
 }
 
 @mixin scale($scale) {

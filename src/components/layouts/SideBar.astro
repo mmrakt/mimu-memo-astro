@@ -16,9 +16,11 @@ import Profile from './Profile.astro'
   .sideBar {
     width: 300px;
     flex-shrink: 0;
+    padding-right: vars.$sp-side-padding-size;
 
     @include utils.mq(sp) {
       width: 100%;
+      padding-left: vars.$sp-side-padding-size;
     }
 
     &__inner {
@@ -26,10 +28,6 @@ import Profile from './Profile.astro'
       padding: 20px;
 
       @extend %card-content;
-
-      @include utils.mq(sp) {
-        margin: 0 16px;
-      }
     }
   }
 </style>

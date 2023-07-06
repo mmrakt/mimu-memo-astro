@@ -1,0 +1,62 @@
+---
+import React from 'react'
+
+import { MEDIA_LIST_DISPLAY, QIITA_FEED_URL, ZENN_FEED_URL } from '../../config'
+import { convertMediaNameToSlug, fetchFeed } from '../../utils'
+import type { Frontmatter, Media, MediaDisplay } from '../../types'
+import { getCollection } from 'astro:content'
+import LoadingSpinner from '../elements/LoadingSpinner.astro'
+
+type Props = {
+  media: MediaDisplay
+}
+const { media } = Astro.props
+
+let postCount
+if (media === 'mimu-memo') {
+  const ownedMd = await getCollection('owned')
+  postCount = ownedMd.length
+} else if (media === 'Qiita') {
+  const qiitaFeed = await fetchFeed(QIITA_FEED_URL)
+  postCount = qiitaFeed.length
+} else if (media === 'Zenn') {
+  const zennFeed = await fetchFeed(ZENN_FEED_URL)
+  postCount = zennFeed.length
+}
+---
+
+<>
+  {
+    !postCount ? (
+      <LoadingSpinner />
+    ) : (
+      <a
+        href={`/${convertMediaNameToSlug(media)}/page/1`}
+        class="mediaItem__kink"
+      >
+        <span class="mediaItem__text">
+          #{media}({postCount})
+        </span>
+      </a>
+    )
+  }
+</>
+
+<style lang="scss">
+  @use '../../styles/utils' as utils;
+  @use '../../styles/variables' as vars;
+
+  .media {
+    &__link {
+      display: block;
+      width: fit-content;
+      padding: 4px;
+    }
+    &__text {
+      margin-top: 8px;
+      font-weight: 500;
+
+      @extend %link;
+    }
+  }
+</style>

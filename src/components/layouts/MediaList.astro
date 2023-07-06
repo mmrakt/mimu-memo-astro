@@ -5,6 +5,7 @@ import { MEDIA_LIST_DISPLAY, QIITA_FEED_URL, ZENN_FEED_URL } from '../../config'
 import { convertMediaNameToSlug, fetchFeed } from '../../utils'
 import type { Frontmatter, Media, MediaDisplay } from '../../types'
 import { getCollection } from 'astro:content'
+import LoadingSpinner from '../elements/LoadingSpinner.astro'
 
 const ownedMd = await getCollection('owned')
 const qiitaFeed = await fetchFeed(QIITA_FEED_URL)
@@ -23,18 +24,24 @@ const getCountByMedia = (media: MediaDisplay) => {
 ---
 
 <div class="mediaList">
-  <h3 class="mediaList__header mt-6 font-black">Media</h3>
-  <div class="mediaList__list flex flex-wrap mt-2">
+  <h3 class="mediaList__header">Media</h3>
+  <div class="mediaList__list">
     {
       MEDIA_LIST_DISPLAY.map((media) => (
-        <a
-          href={`/${convertMediaNameToSlug(media)}/page/1`}
-          class="mediaList__itemLink"
-        >
-          <span class="mediaList__itemText">
-            #{media}({getCountByMedia(media)})
-          </span>
-        </a>
+        <>
+          {!media ? (
+            <LoadingSpinner />
+          ) : (
+            <a
+              href={`/${convertMediaNameToSlug(media)}/page/1`}
+              class="mediaList__itemLink"
+            >
+              <span class="mediaList__itemText">
+                #{media}({getCountByMedia(media)})
+              </span>
+            </a>
+          )}
+        </>
       ))
     }
   </div>
