@@ -2,8 +2,6 @@
 import useStringTrim from '../../hooks/useStringTrim'
 
 import type { PaginatedPost } from '../../types'
-import ChevronLeft from '../../components/elements/ChevronLeft'
-import ChevronRight from '../../components/elements/ChevronRight'
 
 type Props = {
   next: PaginatedPost['next']
@@ -16,10 +14,11 @@ const { next, prev } = Astro.props
   <div class="postDetailPagination__item">
     {
       prev.url && (
-        <a href={`/${prev.url}`} class="postDetailPagination__itemLink">
-          <div class="postDetailPagination__itemText postDetailPagination__itemText--prev">
-            {useStringTrim(prev.title, 50)}
-          </div>
+        <a
+          href={`/${prev.url}`}
+          class="postDetailPagination__itemLink postDetailPagination__itemLink--prev"
+        >
+          {useStringTrim(prev.title, 50)}
         </a>
       )
     }
@@ -31,9 +30,7 @@ const { next, prev } = Astro.props
           href={`/${next.url}`}
           class="postDetailPagination__itemLink postDetailPagination__itemLink--next"
         >
-          <div class="postDetailPagination__itemText postDetailPagination__itemText--next">
-            {useStringTrim(next.title, 50)}
-          </div>
+          {useStringTrim(next.title, 50)}
         </a>
       )
     }
@@ -54,30 +51,44 @@ const { next, prev } = Astro.props
     }
     &__itemLink {
       @extend %link;
-
-      &--next {
-        float: right;
-      }
-    }
-    &__itemText {
       display: flex;
       align-items: center;
       position: relative;
 
-      &::before,
-      &::after {
-        @extend %arrow;
-      }
       &--prev {
         padding-left: 20px;
         &::before {
           @extend %arrow-prev;
+        }
+        &:hover {
+          &::before {
+            border-color: vars.$black-400;
+          }
+        }
+        @include utils.dark() {
+          &:hover {
+            &::before {
+              border-color: vars.$black-700;
+            }
+          }
         }
       }
       &--next {
         padding-right: 20px;
         &::after {
           @extend %arrow-next;
+        }
+        &:hover {
+          &::after {
+            border-color: vars.$black-400;
+          }
+        }
+        @include utils.dark() {
+          &:hover {
+            &::after {
+              border-color: vars.$black-700;
+            }
+          }
         }
       }
     }

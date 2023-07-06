@@ -1,7 +1,4 @@
 ---
-import ChevronLeft from '../../components/elements/ChevronLeft'
-import ChevronRight from '../../components/elements/ChevronRight'
-
 import type { Page } from 'astro'
 
 type Props = {
@@ -59,15 +56,24 @@ const {
       @extend %link;
       @extend %card-content;
 
-      &::before,
-      &::after {
-        @extend %arrow;
-      }
       &--prev {
         padding-left: 30px;
         &::before {
           @extend %arrow-prev;
           left: 10px;
+        }
+
+        &:hover {
+          &::before {
+            border-color: vars.$black-400;
+          }
+        }
+        @include utils.dark() {
+          &:hover {
+            &::before {
+              border-color: vars.$black-700;
+            }
+          }
         }
       }
 
@@ -78,6 +84,19 @@ const {
         &::after {
           @extend %arrow-next;
           right: 10px;
+        }
+
+        &:hover {
+          &::after {
+            border-color: vars.$black-400;
+          }
+        }
+        @include utils.dark() {
+          &:hover {
+            &::after {
+              border-color: vars.$black-700;
+            }
+          }
         }
       }
     }

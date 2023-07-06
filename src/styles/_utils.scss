@@ -95,8 +95,8 @@ $mappedBreakpoint: (
 }
 
 %arrow-prev {
+  @extend %arrow;
   left: 0;
-  content: '';
   border-left: 2px solid vars.$text-color-black;
   border-bottom: 2px solid vars.$text-color-black;
 
@@ -105,8 +105,8 @@ $mappedBreakpoint: (
   }
 }
 %arrow-next {
+  @extend %arrow;
   right: 0;
-  content: '';
   border-top: 2px solid vars.$text-color-black;
   border-right: 2px solid vars.$text-color-black;
 
