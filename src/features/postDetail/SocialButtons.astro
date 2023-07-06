@@ -18,13 +18,29 @@ const iconSize = '42'
 const url = `${SITE_URL}/${slug}`
 ---
 
-<div>
-  <TwitterShareButton url={url} title={title}>
-    <TwitterIcon round size={iconSize} />
-  </TwitterShareButton>
+<div class="socialButtons">
+  <div class="socialButtons__item">
+    <TwitterShareButton url={url} title={title}>
+      <TwitterIcon round size={iconSize} />
+    </TwitterShareButton>
+  </div>
+  <div class="socialButtons__item">
+    <FacebookShareButton url={url} quote={title}>
+      <FacebookIcon round size={iconSize} />
+    </FacebookShareButton>
+  </div>
 </div>
-<div class="mt-3">
-  <FacebookShareButton url={url} quote={title}>
-    <FacebookIcon round size={iconSize} />
-  </FacebookShareButton>
-</div>
+
+<style lang="scss">
+  @use '../../styles/utils' as utils;
+  @use '../../styles/variables' as vars;
+  .socialButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__item {
+      @include utils.scale(1.2);
+    }
+  }
+</style>

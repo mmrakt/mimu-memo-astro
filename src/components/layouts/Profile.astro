@@ -22,15 +22,15 @@ import TwitterLogo from '../elements/TwitterLogo'
       href="https://github.com/mmrakt"
       target="_blank"
       rel="noreferrer"
-      class=""
+      class="profile__snsLink"
     >
       <GithubLogo />
     </a>
     <a
       href="https://twitter.com/mmrakt0716"
-      class="ml-3"
       target="_blank"
       rel="noreferrer"
+      class="profile__snsLink profile__snsLink--twitter"
     >
       <TwitterLogo />
     </a>
@@ -66,6 +66,17 @@ import TwitterLogo from '../elements/TwitterLogo'
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+    &__snsLink {
+      color: vars.$black-200;
+
+      &--twitter {
+        color: vars.$twitter-blue;
+      }
+
+      @include utils.dark() {
+        color: #fff;
+      }
     }
   }
 </style>

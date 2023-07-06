@@ -5,7 +5,8 @@ const GithubLogo = () => (
     focusable="false"
     data-prefix="fab"
     data-icon="github"
-    className="svg-inline--fa fa-github fa-x w-8 h-8"
+    width={32}
+    height={32}
     role="img"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 496 512"

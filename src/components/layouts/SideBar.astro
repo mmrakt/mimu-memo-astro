@@ -17,6 +17,10 @@ import Profile from './Profile.astro'
     width: 300px;
     flex-shrink: 0;
 
+    @include utils.mq(sp) {
+      width: 100%;
+    }
+
     &__inner {
       margin-top: 80px;
       padding: 20px;

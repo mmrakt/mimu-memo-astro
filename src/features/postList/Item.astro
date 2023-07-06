@@ -42,15 +42,11 @@ if (post?.link) {
 
   .postItem {
     height: 100%;
-    transform: scale(1);
-    transition: transform 0.2s;
     padding: 20px;
 
     @extend %card-content;
 
-    &:hover {
-      transform: scale(1.05);
-    }
+    @include utils.scale(1.05);
 
     &__title {
       font-weight: bold;
