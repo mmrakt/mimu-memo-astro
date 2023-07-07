@@ -2,13 +2,10 @@
 import type { Page } from 'astro'
 
 type Props = {
-  page: Pick<
-    Page,
-    'start' | 'end' | 'size' | 'total' | 'currentPage' | 'lastPage' | 'url'
-  >
+  page: Pick<Page, 'currentPage' | 'lastPage' | 'url'>
 }
 const {
-  page: { start, end, size, total, currentPage, lastPage, url },
+  page: { currentPage, lastPage, url },
 } = Astro.props
 ---
 

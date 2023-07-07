@@ -8,29 +8,33 @@ import Head from '../components/layouts/Head'
 
 export async function getStaticPaths() {
   const collection = await getCollection('owned')
+  const sorted = collection.sort(
+    (a, b) =>
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  )
 
   let paths = []
-  for (let i = 0; i < collection.length; i++) {
+  for (let i = 0; i < sorted.length; i++) {
     let nextUrl = '',
       nextTitle = '',
       prevUrl = '',
       prevTitle = ''
 
-    if (i !== collection.length - 1) {
-      nextUrl = collection[i + 1].slug
-      nextTitle = collection[i + 1].data.title
+    if (i !== sorted.length - 1) {
+      nextUrl = sorted[i + 1].slug
+      nextTitle = sorted[i + 1].data.title
     }
     if (i !== 0) {
-      prevUrl = collection[i - 1].slug
-      prevTitle = collection[i - 1].data.title
+      prevUrl = sorted[i - 1].slug
+      prevTitle = sorted[i - 1].data.title
     }
 
     paths.push({
       params: {
-        slug: collection[i].slug,
+        slug: sorted[i].slug,
       },
       props: {
-        entry: collection[i],
+        entry: sorted[i],
         next: {
           url: nextUrl,
           title: nextTitle,
