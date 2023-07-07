@@ -1,6 +1,12 @@
 import React from 'react'
 
-import { LOCALE, SITE_NAME, SITE_URL, TWITTER_ID } from '../../config'
+import {
+  LOCALE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  TWITTER_ID,
+} from '../../config'
 
 type IProps = {
   pageTitle?: string
@@ -30,7 +36,9 @@ const Head = ({
       <meta charSet="utf-8" />
       <link rel="canonical" href={siteUrl} />
       <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#fff" />
+      <meta name="description" content={SITE_DESCRIPTION} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={SITE_NAME} />
       {pageType && <meta property="og:type" content={pageType} />}

@@ -8,7 +8,7 @@ import TwitterLogo from '../elements/TwitterLogo'
 <div class="profile">
   <h3 class="profile__header font-black">Profile</h3>
   <div class="profile__info flex items-center mt-3">
-    <img src="/img/avatar.png" alt="mmrakt" width={80} />
+    <img src="/img/avatar.png" alt="mmrakt" width={80} height={80} />
     <div class="profile__name ml-3">
       <span>@mmrakt</span>
       <h4 class="font-black">mimu</h4>
@@ -23,6 +23,7 @@ import TwitterLogo from '../elements/TwitterLogo'
       target="_blank"
       rel="noreferrer"
       class="profile__snsLink"
+      aria-label="GitHubプロフィールリンク"
     >
       <GithubLogo />
     </a>
@@ -31,6 +32,7 @@ import TwitterLogo from '../elements/TwitterLogo'
       target="_blank"
       rel="noreferrer"
       class="profile__snsLink profile__snsLink--twitter"
+      aria-label="Twitterプロフィールリンク"
     >
       <TwitterLogo />
     </a>

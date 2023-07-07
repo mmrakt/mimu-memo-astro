@@ -1,10 +1,12 @@
 export const SITE_NAME = import.meta.env.npm_package_config_siteName
-export const SITE_DESCRIPTION = import.meta.env.npm_package_config_description
+export const SITE_INTRO = import.meta.env.npm_package_config_description
 export const SITE_URL =
   import.meta.env.NODE_ENV === 'production'
     ? import.meta.env.npm_package_config_siteUrl_prod
     : import.meta.env.npm_package_config_siteUrl_dev
 export const LOCALE = import.meta.env.npm_package_config_locale
+export const SITE_DESCRIPTION =
+  '平凡エンジニアが技術について学んだことや躓いたことをメモ代わりに残していくブログです。'
 
 export const BREAK_POINT = 980
 export const QIITA_URL_PREFIX = 'https://qiita.com'
