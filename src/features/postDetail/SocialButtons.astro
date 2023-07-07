@@ -1,7 +1,4 @@
 ---
-import React from 'react'
-import { TwitterIcon, TwitterShareButton } from 'react-share'
-
 import { SITE_URL } from '../../config'
 
 type Props = {
@@ -21,9 +18,12 @@ const twitterLink = `https://twitter.com/share?url=${url}&text=${title}`
     rel="nofollow"
     target="_blank"
   >
-    <TwitterShareButton url={url} title={title}>
-      <TwitterIcon round size={iconSize} />
-    </TwitterShareButton>
+    <img
+      src="/img/twitter-circle.png"
+      alt="Twitterシェアボタン"
+      width="40"
+      height="40"
+    />
   </a>
 </div>
 
