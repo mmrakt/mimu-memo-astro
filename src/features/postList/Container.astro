@@ -10,13 +10,21 @@ type Props = {
   media?: Media
 }
 const { page, media } = Astro.props
+const displayMediaName =
+  media === 'owned'
+    ? 'mimu-memo'
+    : media === 'qiita'
+    ? 'Qiita'
+    : media === 'zenn'
+    ? 'Zenn'
+    : ''
 ---
 
 <div class="postListLayout__media">
   {
     media && (
       <p class="postListLayout__mediaText">
-        <b>#{media === 'owned' ? 'mimu-memo' : media}</b>
+        <b>#{displayMediaName}</b>
         の記事
       </p>
     )

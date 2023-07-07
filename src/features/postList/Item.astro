@@ -12,24 +12,32 @@ type Props = {
 }
 const { post } = Astro.props
 
-let externalLinkText = ''
+let externalMedia
 if (post?.link) {
   if (post.link.indexOf(QIITA_URL_PREFIX) === 0) {
-    externalLinkText = '（Qiita記事）'
+    externalMedia = 'qiita'
   } else if (post?.link.indexOf(NOTE_URL_PREFIX) === 0) {
-    externalLinkText = '（note記事）'
+    externalMedia = 'note'
   } else if (post?.link.indexOf(ZENN_URL_PREFIX) === 0) {
-    externalLinkText = '（Zenn記事）'
+    externalMedia = 'zenn'
   }
 }
 ---
 
 <article class="postItem">
-  <p class="postItem__date">
-    <span class="">
+  <p class="postItem__header">
+    <span class="postItem__date">
       {dayjs(post.pubDate).format('YYYY.MM.DD')}
     </span>
-    {externalLinkText && <span>{externalLinkText}</span>}
+    {
+      externalMedia === 'qiita' ? (
+        <span class="postItem__media postItem__media--qiita">Qiita</span>
+      ) : externalMedia === 'zenn' ? (
+        <span class="postItem__media postItem__media--zenn">Zenn</span>
+      ) : (
+        ''
+      )
+    }
   </p>
   <div class="postItem__title">
     <h2 class="">{post.title}</h2>
@@ -46,11 +54,18 @@ if (post?.link) {
 
     @extend %card-content;
 
-    @include utils.scale(1.05);
+    @include utils.mq(pc) {
+      @include utils.scale(1.05);
+    }
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
     &__title {
       font-weight: bold;
-      margin-top: 8px;
+      margin-top: 12px;
 
       & > h2 {
         font-size: 20px;
@@ -61,6 +76,19 @@ if (post?.link) {
         @include utils.dark() {
           color: vars.$black-700;
         }
+      }
+    }
+    &__media {
+      margin-left: 20px;
+      padding: 1px 6px;
+      border-radius: 6px;
+      color: vars.$text-color-white;
+      font-weight: bold;
+      &--qiita {
+        background: vars.$qiita-primary;
+      }
+      &--zenn {
+        background: vars.$zenn-primary;
       }
     }
   }

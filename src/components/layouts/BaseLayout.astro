@@ -58,6 +58,10 @@ const { hasSideBar } = Astro.props
     &__main {
       padding: 40px 16px 80px;
       width: 100%;
+
+      @include utils.mq(sp) {
+        padding: 40px 0 80px;
+      }
     }
   }
 </style>

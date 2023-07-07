@@ -31,6 +31,10 @@ const { post } = Astro.props
     background: #fff;
     padding: 40px;
 
+    @include utils.mq(sp) {
+      padding: 20px 16px 40px;
+    }
+
     @include utils.slideIn();
 
     @include utils.dark() {

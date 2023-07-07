@@ -45,6 +45,10 @@ const { next, prev } = Astro.props
     align-items: center;
     margin-top: 40px;
 
+    @include utils.mq(sp) {
+      padding: 0 16px;
+    }
+
     &__item {
       width: 50%;
     }
