@@ -28,7 +28,7 @@ const Head = ({
     : `${SITE_NAME} - 平凡エンジニアの個人学習メモ`
   // TODO: descriptionをmarkdownから動的に抜き出す方法検討
   const siteUrl = pagePath ? `${SITE_URL}/${pagePath}` : SITE_URL
-  const imageUrl = `${SITE_URL}/img/thumb.png`
+  const imageUrl = `${SITE_URL}/img/mimu-memo-ogp.png`
 
   return (
     <head>
