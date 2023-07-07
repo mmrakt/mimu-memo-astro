@@ -2,7 +2,7 @@
 import dayjs from 'dayjs'
 
 import type { PaginatedPost } from '../../types'
-import '../../styles/postDetail.scss'
+import '../../styles/postDetailContent.scss'
 
 type Props = {
   post: PaginatedPost
@@ -17,7 +17,7 @@ const { post } = Astro.props
   <h1 class="postDetail__title">
     {post.entry.data.title}
   </h1>
-  <div class="postDetail__content">
+  <div class="postDetailContent">
     <slot />
   </div>
 </section>
