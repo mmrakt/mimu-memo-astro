@@ -1,6 +1,9 @@
 {
-  "name": "$npm_package_config_siteName",
-  "version": "0.0.1",
+  "name": "mimu-memo",
+  "description": "mimu's Site",
+  "version": "1.0.0",
+  "author": "mimu",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
