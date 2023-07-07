@@ -14,6 +14,7 @@ type IProps = {
   pageImageWidth?: string
   pageImageHeight?: string
   pageType?: 'blog' | 'article'
+  pageDescription?: string
 }
 
 const Head = ({
@@ -22,11 +23,13 @@ const Head = ({
   pageImageWidth = '1280',
   pageImageHeight = '640',
   pageType,
+  pageDescription,
 }: IProps) => {
   const title = pageTitle
     ? `${pageTitle} - ${SITE_NAME}`
     : `${SITE_NAME} - 平凡エンジニアの個人学習メモ`
   // TODO: descriptionをmarkdownから動的に抜き出す方法検討
+  const description = pageDescription || SITE_DESCRIPTION
   const siteUrl = pagePath ? `${SITE_URL}/${pagePath}` : SITE_URL
   const imageUrl = `${SITE_URL}/img/mimu-memo-ogp.png`
 
@@ -38,7 +41,7 @@ const Head = ({
       <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#fff" />
-      <meta name="description" content={SITE_DESCRIPTION} />
+      <meta name="description" content={description} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={SITE_NAME} />
       {pageType && <meta property="og:type" content={pageType} />}
