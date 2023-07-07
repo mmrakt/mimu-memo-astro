@@ -9,6 +9,11 @@ import '../../styles/_common.scss'
 import SideBar from './SideBar.astro'
 
 inject()
+
+type Props = {
+  hasSideBar: boolean
+}
+const { hasSideBar } = Astro.props
 ---
 
 <body>
@@ -18,7 +23,7 @@ inject()
       <main class="baseLayout__main">
         <slot />
       </main>
-      <SideBar />
+      {hasSideBar && <SideBar />}
     </div>
     <Footer />
   </div>

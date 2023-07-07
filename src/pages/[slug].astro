@@ -56,7 +56,7 @@ const { Content } = await post.entry.render()
     pagePath={post.entry.slug}
     pageType="article"
   />
-  <BaseLayout>
+  <BaseLayout hasSideBar={true}>
     <Container post={post}>
       <Content />
     </Container>

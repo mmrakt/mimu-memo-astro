@@ -53,7 +53,7 @@ const { media } = Astro.params as Params
 
 <html lang="ja">
   <Head pagePath={`/${media}/page/${page.currentPage}`} pageType="blog" />
-  <BaseLayout>
+  <BaseLayout hasSideBar={true}>
     <Container page={page} media={media} />
   </BaseLayout>
 </html>
