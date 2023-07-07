@@ -1,17 +1,12 @@
 ---
 import { SITE_INTRO } from '../../config'
+import SiteLogo from '../elements/SiteLogo.astro'
 ---
 
 <header class="header">
   <div class="header__inner">
     <a href="/page/1" class="header__link">
-      <img
-        class="hader__logo"
-        width="220"
-        height="30"
-        src="/img/mimu-memo.svg"
-        alt="mimu-memo"
-      />
+      <SiteLogo />
     </a>
     <p class="header__text">{SITE_INTRO}</p>
   </div>
