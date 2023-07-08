@@ -1,12 +1,12 @@
 ---
 import { SITE_INTRO } from '../../config'
-import SiteLogo from '../elements/SiteLogo.astro'
 ---
 
 <header class="header">
   <div class="header__inner">
     <a href="/page/1" class="header__link">
-      <SiteLogo />
+      <!-- <SiteLogo /> -->
+      <h1 class="header__title">mimu-memo</h1>
     </a>
     <p class="header__text">{SITE_INTRO}</p>
   </div>
@@ -25,6 +25,9 @@ import SiteLogo from '../elements/SiteLogo.astro'
     }
     &__title {
       color: vars.$text-color-white;
+      font-family: 'Yellowtail', cursive;
+      font-size: 52px;
+      font-weight: normal;
     }
 
     &__inner {
