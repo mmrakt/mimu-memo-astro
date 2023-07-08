@@ -19,6 +19,8 @@ jobs:
         with:
           node-version: '20'
       - uses: pnpm/action-setup@v2.2.2
+        with:
+          verceion: 8.2.0
       # 投稿内容を更新するために npm run build:posts を走らせる
       - name: Recreate all posts
         shell: bash
