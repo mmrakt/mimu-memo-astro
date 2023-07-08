@@ -24,7 +24,7 @@ jobs:
       # 投稿内容を更新するために npm run build:posts を走らせる
       - name: Recreate all posts
         shell: bash
-        run: 
+        run: |
           pnpm i
           pnpm run build
       - uses: amondnet/vercel-action@v20
