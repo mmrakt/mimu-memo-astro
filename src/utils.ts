@@ -1,5 +1,7 @@
 import dayjs from 'dayjs'
+import { remark } from 'remark'
 import Parser from 'rss-parser'
+import strip from 'strip-markdown'
 
 import { QIITA_FEED_URL, ZENN_FEED_URL } from './config/index'
 
@@ -55,3 +57,14 @@ const mappingFeed = (
     link: item.link ?? '',
     media,
   }))
+
+export const extractExcerptFromBody = async (body: string) => {
+  let excerpt = ''
+  const processing = await remark().use(strip).process(body)
+  excerpt = processing.toString().replace(/\r|\n|\rn/g, '')
+
+  if (excerpt.length > 70) {
+    return `${excerpt.slice(0, 70)}...`
+  }
+  return excerpt
+}
