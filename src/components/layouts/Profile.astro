@@ -47,8 +47,9 @@ import TwitterLogo from '../elements/TwitterLogo'
     display: flex;
     flex-direction: column;
     gap: 16px;
-    border-bottom: 1px solid vars.$black-700;
-    padding-bottom: 16px;
+    padding: 20px;
+
+    @extend %card-content;
 
     &__header {
       font-size: 20px;
