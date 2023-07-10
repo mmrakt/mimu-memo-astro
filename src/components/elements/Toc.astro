@@ -1,0 +1,32 @@
+---
+import { POST_DETAIL_CONTENT_CLASS } from '../../config'
+import '../../styles/_tocBody.scss'
+---
+
+<nav class="toc">
+  <h3 class="toc__heading">TOC</h3>
+  <div class="toc__body"></div>
+</nav>
+<script>
+  import tocbot from 'tocbot'
+  import { POST_DETAIL_CONTENT_CLASS } from '../../config'
+  tocbot.init({
+    tocSelector: '.toc__body',
+    contentSelector: `.${POST_DETAIL_CONTENT_CLASS}`,
+    headingSelector: 'h1, h2, h3',
+  })
+</script>
+
+<style lang="scss">
+  @use '../../styles/utils' as utils;
+  @use '../../styles/variables' as vars;
+
+  .toc {
+    padding: 20px;
+    @extend %card-content;
+
+    &__body {
+      margin-top: 20px;
+    }
+  }
+</style>

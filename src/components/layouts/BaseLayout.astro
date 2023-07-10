@@ -8,8 +8,9 @@ import SideBar from './SideBar.astro'
 
 type Props = {
   hasSideBar: boolean
+  hasToc: boolean
 }
-const { hasSideBar } = Astro.props
+const { hasSideBar, hasToc } = Astro.props
 ---
 
 <body>
@@ -19,7 +20,7 @@ const { hasSideBar } = Astro.props
       <main class="baseLayout__main">
         <slot />
       </main>
-      {hasSideBar && <SideBar />}
+      {hasSideBar && <SideBar hasToc={hasToc} />}
     </div>
     <Footer />
   </div>
