@@ -1,5 +1,5 @@
 ---
-import Toc from '../elements/Toc.astro'
+import TocPc from '../elements/TocPc.astro'
 import MediaList from './MediaList.astro'
 import Profile from './Profile.astro'
 
@@ -16,7 +16,7 @@ const { hasToc } = Astro.props
     {
       hasToc && (
         <div class="sideBar__toc">
-          <Toc />
+          <TocPc />
         </div>
       )
     }

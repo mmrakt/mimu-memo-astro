@@ -1,0 +1,78 @@
+---
+import TocSp from './TocSp.astro'
+import { TOC_WRAPPER_CLASS, TOGGLE_TOC_BUTTON_CLASS } from '../../config'
+---
+
+<div class="toggleToc">
+  <button class={TOGGLE_TOC_BUTTON_CLASS}>TOC</button>
+  <div class={TOC_WRAPPER_CLASS}>
+    <TocSp />
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/utils' as utils;
+  @use '../../styles/variables' as vars;
+  .toggleToc {
+    text-align: right;
+
+    &__button {
+      position: relative;
+      padding-right: 40px;
+      font-weight: bold;
+      border: none;
+      background: none;
+
+      &::after {
+        position: absolute;
+        display: block;
+        content: '';
+        top: 25%;
+        right: 20px;
+        border-right: 1px solid vars.$text-color-black;
+        border-bottom: 1px solid vars.$text-color-black;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+      }
+
+      &.isOpen {
+        &::after {
+          transform: rotate(225deg);
+          top: 40%;
+        }
+      }
+    }
+    &__body {
+      display: none;
+      position: absolute;
+      max-width: 400px;
+      top: 30px;
+      left: 10px;
+      right: 10px;
+      z-index: 100;
+      margin: 0 auto;
+
+      &.isOpen {
+        display: block;
+      }
+    }
+  }
+</style>
+
+<script>
+  import { TOC_WRAPPER_CLASS, TOGGLE_TOC_BUTTON_CLASS } from '../../config'
+
+  const button = document.querySelector(`.${TOGGLE_TOC_BUTTON_CLASS}`)
+  button?.addEventListener('click', () => {
+    const isOpen = 'isOpen'
+    const toc = document.querySelector(`.${TOC_WRAPPER_CLASS}`)
+    if (toc?.classList.contains(isOpen)) {
+      toc.classList.remove(isOpen)
+      button.classList.remove(isOpen)
+    } else {
+      toc?.classList.add(isOpen)
+      button.classList.add(isOpen)
+    }
+  })
+</script>
