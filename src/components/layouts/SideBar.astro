@@ -1,25 +1,12 @@
 ---
-import Toc from '../elements/Toc.astro'
 import MediaList from './MediaList.astro'
 import Profile from './Profile.astro'
-
-type Props = {
-  hasToc: boolean
-}
-const { hasToc } = Astro.props
 ---
 
 <div class="sideBar">
   <aside class="sideBar__inner">
     <Profile />
     <MediaList />
-    {
-      hasToc && (
-        <div class="sideBar__toc">
-          <Toc />
-        </div>
-      )
-    }
   </aside>
 </div>
 
@@ -39,21 +26,13 @@ const { hasToc } = Astro.props
 
     &__inner {
       margin-top: 80px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      position: relative;
-      height: 100%;
+      padding: 20px;
 
       @include utils.mq(sp) {
         margin-top: 0;
       }
-    }
-    &__toc {
-      position: sticky;
-      top: 20px;
-      left: 0;
-      height: 100vh;
+
+      @extend %card-content;
     }
   }
 </style>

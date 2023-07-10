@@ -40,7 +40,7 @@ const { page } = Astro.props
 
 <html lang="ja">
   <Head pagePath={`page/${page.currentPage}`} pageType="blog" />
-  <BaseLayout hasSideBar={true} hasToc={false}>
+  <BaseLayout hasSideBar={true}>
     <Container page={page} />
   </BaseLayout>
 </html>
