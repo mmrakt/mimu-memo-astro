@@ -63,7 +63,7 @@ const excerpt = await extractExcerptFromBody(post.entry.body)
     pageType="article"
     pageDescription={excerpt}
   />
-  <BaseLayout hasSideBar={true}>
+  <BaseLayout hasSideBar={true} hasToc={true}>
     <Container post={post}>
       <Content />
     </Container>
