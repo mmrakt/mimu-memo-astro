@@ -3,7 +3,7 @@ import tocbot from 'tocbot'
 import { POST_DETAIL_CONTENT_SELECTOR } from '../config'
 
 const tocModal = () => {
-  const isOpenClass = 'isOpen'
+  const IS_OPEN_CLASS = 'isOpen'
   const TOC_MODAL_SELECTOR = 'js-toc-modal'
   const TOC_TOGGLE_BUTTON_SELECTOR = 'js-toc-toggle-button'
 
@@ -11,6 +11,7 @@ const tocModal = () => {
   const button = document.querySelector(
     `[data-selector=${TOC_TOGGLE_BUTTON_SELECTOR}]`
   )
+
   // MEMO: アンカーリンクで見出しが固定ヘッダーに隠れてしまうため padding-topで調整
   tocbot.init({
     tocSelector: '[data-selector=js-toc-body-sp]',
@@ -29,8 +30,8 @@ const tocModal = () => {
     }
   })
 
-  button?.addEventListener('click', (event) => {
-    if (modal?.classList.contains(isOpenClass)) {
+  button?.addEventListener('click', () => {
+    if (modal?.classList.contains(IS_OPEN_CLASS)) {
       closeModal()
     } else {
       openModal()
@@ -44,12 +45,12 @@ const tocModal = () => {
   })
 
   const openModal = () => {
-    modal?.classList.add(isOpenClass)
-    button?.classList.add(isOpenClass)
+    modal?.classList.add(IS_OPEN_CLASS)
+    button?.classList.add(IS_OPEN_CLASS)
   }
   const closeModal = () => {
-    modal?.classList.remove(isOpenClass)
-    button?.classList.remove(isOpenClass)
+    modal?.classList.remove(IS_OPEN_CLASS)
+    button?.classList.remove(IS_OPEN_CLASS)
   }
 
   function closeModalByOutside(event: Event): void {
