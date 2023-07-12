@@ -45,7 +45,6 @@ const { hasSideBar, hasToc } = Astro.props
 
     &__inner {
       display: flex;
-      gap: 40px;
       max-width: vars.$contentMaxWidth;
       margin: 0 auto;
 
@@ -58,7 +57,6 @@ const { hasSideBar, hasToc } = Astro.props
 
     &__main {
       padding: 40px 16px 80px;
-      width: 100%;
 
       @include utils.mq(sp) {
         padding: 20px 0 80px;
