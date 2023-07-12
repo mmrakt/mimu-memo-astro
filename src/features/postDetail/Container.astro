@@ -61,6 +61,9 @@ const { post } = Astro.props
       @include utils.mq(pc) {
         display: none;
       }
+      @include utils.dark() {
+        background: vars.$black-200;
+      }
     }
     &__inner {
       width: 100%;
