@@ -3,7 +3,7 @@ import type { PaginatedPost } from '../../types'
 import SocialButtons from './SocialButtons.astro'
 import PostDetail from './Content.astro'
 import Pagination from '../../features/postDetail/Pagination.astro'
-import ToggleToc from '../../components/elements/ToggleToc.astro'
+import TocSp from '../../components/elements/TocSp.astro'
 
 type Props = {
   post: PaginatedPost
@@ -16,7 +16,7 @@ const { post } = Astro.props
     <SocialButtons title={post.entry.data.title} slug={post.entry.slug} />
   </div>
   <div class="postDetailLayout__toc">
-    <ToggleToc />
+    <TocSp />
   </div>
   <div class="postDetailLayout__inner">
     <PostDetail post={post}>

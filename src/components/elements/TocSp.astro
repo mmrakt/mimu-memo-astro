@@ -1,18 +1,109 @@
 ---
-import { POST_DETAIL_CONTENT_CLASS } from '../../config'
 import '../../styles/_tocBody.scss'
+import { TOC_WRAPPER_CLASS, TOGGLE_TOC_BUTTON_CLASS } from '../../config'
 ---
 
-<nav class="tocSp">
-  <div class="tocSp__body"></div>
-</nav>
+<div class="toggleToc">
+  <button class={TOGGLE_TOC_BUTTON_CLASS} data-selector="js-toc-toggle-button">
+    TOC
+  </button>
+  <div class={TOC_WRAPPER_CLASS} data-selector="js-toc-modal">
+    <nav class="toggleToc__toc">
+      <div class="toggleToc__tocBody"></div>
+    </nav>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/utils' as utils;
+  @use '../../styles/variables' as vars;
+  .toggleToc {
+    text-align: right;
+
+    &__button {
+      position: relative;
+      padding-right: 40px;
+      font-weight: bold;
+      border: none;
+      background: none;
+
+      &::after {
+        position: absolute;
+        display: block;
+        content: '';
+        top: 25%;
+        right: 20px;
+        border-right: 1px solid vars.$text-color-black;
+        border-bottom: 1px solid vars.$text-color-black;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+      }
+
+      &.isOpen {
+        &::after {
+          transform: rotate(225deg);
+          top: 40%;
+        }
+      }
+      @include utils.dark() {
+        &::after {
+          border-color: vars.$text-color-white;
+        }
+      }
+    }
+    &__body {
+      display: none;
+      position: absolute;
+      max-height: 80vh;
+      max-width: 400px;
+      top: 40px;
+      left: 25px;
+      right: 25px;
+      z-index: 100;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px vars.$black-600;
+      overflow-y: auto;
+
+      &.isOpen {
+        display: block;
+      }
+      @include utils.dark() {
+        box-shadow: none;
+        border: 1px solid vars.$black-500;
+      }
+    }
+    &__toc {
+      padding: 20px;
+      max-height: 80%;
+      overflow-y: auto;
+      @extend %card-content;
+    }
+  }
+</style>
+
 <script>
   import tocbot from 'tocbot'
-  import { POST_DETAIL_CONTENT_CLASS } from '../../config'
+  import {
+    POST_DETAIL_CONTENT_CLASS,
+    TOC_WRAPPER_CLASS,
+    TOGGLE_TOC_BUTTON_CLASS,
+  } from '../../config'
+  const isOpenClass = 'isOpen'
+  const tocModalSelector = 'js-toc-modal'
+  const tocToggleButton = 'js-toc-toggle-button'
+  const modal = document.querySelector(`[data-selector=${tocModalSelector}]`)
+  const button = document.querySelector(`[data-selector=${tocToggleButton}]`)
+  const tocLinkClass = '.toc-link'
+
   tocbot.init({
-    tocSelector: '.tocSp__body',
+    tocSelector: '.toggleToc__tocBody',
     contentSelector: `.${POST_DETAIL_CONTENT_CLASS}`,
     headingSelector: 'h1, h2, h3',
+    onClick: () => {
+      closeModal()
+    },
   })
 
   const tocLinks = document.querySelectorAll('.toc-link')
@@ -22,16 +113,36 @@ import '../../styles/_tocBody.scss'
       link.classList.add(NO_SMOOTH_SCROLL)
     }
   })
-</script>
 
-<style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  button?.addEventListener('click', (event) => {
+    if (modal?.classList.contains(isOpenClass)) {
+      closeModal()
+    } else {
+      openModal()
+    }
 
-  .tocSp {
-    padding: 20px;
-    max-height: 80%;
-    overflow-y: auto;
-    @extend %card-content;
+    document.body.addEventListener(
+      'click',
+      { handleEvent: closeModalByOutside },
+      true
+    )
+  })
+
+  const openModal = () => {
+    modal?.classList.add(isOpenClass)
+    button?.classList.add(isOpenClass)
   }
-</style>
+  const closeModal = () => {
+    modal?.classList.remove(isOpenClass)
+    button?.classList.remove(isOpenClass)
+  }
+
+  function closeModalByOutside(event: Event): void {
+    const target = event.target as HTMLDivElement
+    if (target.closest(`[data-selector=${tocModalSelector}]`) === null) {
+      closeModal()
+      event.stopPropagation() // button要素のイベント発火の抑制
+      document.body.removeEventListener('click', this, true)
+    }
+  }
+</script>
