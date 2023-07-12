@@ -38,7 +38,7 @@ const { post } = Astro.props
 
     @include utils.mq(sp) {
       flex-direction: column;
-      gap: 20px;
+      gap: 0;
       padding-top: 0;
     }
 
@@ -53,6 +53,11 @@ const { post } = Astro.props
       }
     }
     &__toc {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+      background: vars.$black-900;
       @include utils.mq(pc) {
         display: none;
       }

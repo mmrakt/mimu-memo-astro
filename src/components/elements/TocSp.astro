@@ -14,6 +14,14 @@ import '../../styles/_tocBody.scss'
     contentSelector: `.${POST_DETAIL_CONTENT_CLASS}`,
     headingSelector: 'h1, h2, h3',
   })
+
+  const tocLinks = document.querySelectorAll('.toc-link')
+  const NO_SMOOTH_SCROLL = 'no-smooth-scroll'
+  tocLinks.forEach((link) => {
+    if (!link.classList.contains(NO_SMOOTH_SCROLL)) {
+      link.classList.add(NO_SMOOTH_SCROLL)
+    }
+  })
 </script>
 
 <style lang="scss">
