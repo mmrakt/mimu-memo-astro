@@ -1,0 +1,88 @@
+---
+import '../../styles/_tocBody.scss'
+---
+
+<div class="tocSp">
+  <button class="tocSp__button" data-selector="js-toc-toggle-button">
+    TOC
+  </button>
+  <div class="tocSp__body" data-selector="js-toc-modal">
+    <nav class="tocSp__toc">
+      <div class="tocSp__tocBody" data-selector="js-toc-body-sp"></div>
+    </nav>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/utils' as utils;
+  @use '../../styles/variables' as vars;
+  .tocSp {
+    &__button {
+      position: relative;
+      margin-left: 40px;
+      padding-right: 20px;
+      font-weight: bold;
+      border: none;
+      background: none;
+
+      &::after {
+        position: absolute;
+        display: block;
+        content: '';
+        top: 25%;
+        right: 0;
+        border-right: 1px solid vars.$text-color-black;
+        border-bottom: 1px solid vars.$text-color-black;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+      }
+
+      &.isOpen {
+        &::after {
+          transform: rotate(225deg);
+          top: 40%;
+        }
+      }
+      @include utils.dark() {
+        &::after {
+          border-color: vars.$text-color-white;
+        }
+      }
+    }
+    &__body {
+      display: none;
+      position: absolute;
+      max-height: 80vh;
+      max-width: 400px;
+      top: 40px;
+      left: 25px;
+      right: 25px;
+      z-index: 100;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px vars.$black-600;
+      overflow-y: auto;
+
+      &.isOpen {
+        display: block;
+      }
+      @include utils.dark() {
+        box-shadow: none;
+        border: 1px solid vars.$black-500;
+      }
+    }
+    &__toc {
+      padding: 20px;
+      max-height: 80%;
+      overflow-y: auto;
+      @extend %card-content;
+    }
+  }
+</style>
+
+<script>
+  import tocModal from '../../scripts/tocModal'
+
+  tocModal()
+</script>

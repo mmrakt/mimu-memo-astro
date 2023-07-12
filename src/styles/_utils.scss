@@ -1,9 +1,11 @@
 @use 'variables' as vars;
 
-$breakpoint: 980px;
+$breakpointPc: 1280px;
+$breakpointTab: 980px;
 $mappedBreakpoint: (
-  pc: 'screen and (min-width: #{$breakpoint + 1px})',
-  sp: 'screen and (max-width: #{$breakpoint})',
+  pc: 'screen and (min-width: #{$breakpointPc + 1px})',
+  tab: 'screen and (min-width: #{$breakpointTab + 1px})',
+  sp: 'screen and (max-width: #{$breakpointTab})',
 );
 
 @mixin mq($breakpoint) {

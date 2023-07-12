@@ -1,12 +1,9 @@
 ---
-import dayjs from 'dayjs'
-import React from 'react'
-
 import type { PaginatedPost } from '../../types'
-import type { AstroComponentFactory } from 'astro/dist/runtime/server'
 import SocialButtons from './SocialButtons.astro'
 import PostDetail from './Content.astro'
 import Pagination from '../../features/postDetail/Pagination.astro'
+import TocSp from '../../components/elements/TocSp.astro'
 
 type Props = {
   post: PaginatedPost
@@ -17,6 +14,9 @@ const { post } = Astro.props
 <div class="postDetailLayout">
   <div class="postDetailLayout__socialButton">
     <SocialButtons title={post.entry.data.title} slug={post.entry.slug} />
+  </div>
+  <div class="postDetailLayout__tocSp">
+    <TocSp />
   </div>
   <div class="postDetailLayout__inner">
     <PostDetail post={post}>
@@ -36,15 +36,35 @@ const { post } = Astro.props
     position: relative;
     padding-top: 40px;
 
-    &__inner {
-      width: 100%;
+    @include utils.mq(sp) {
+      flex-direction: column;
+      gap: 0;
+      padding-top: 0;
     }
 
     &__socialButton {
+      display: none;
+
+      @include utils.mq(pc) {
+        display: block;
+        position: sticky;
+        top: 100px;
+        margin-left: -80px;
+        height: 100vh;
+      }
+    }
+    &__tocSp {
       position: sticky;
-      top: 100px;
-      margin-left: -80px;
-      height: 100vh;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+      background: vars.$black-900;
+      @include utils.mq(tab) {
+        display: none;
+      }
+      @include utils.dark() {
+        background: vars.$black-200;
+      }
     }
   }
 </style>

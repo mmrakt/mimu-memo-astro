@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 
 import type { PaginatedPost } from '../../types'
 import '../../styles/postDetailContent.scss'
+import { POST_DETAIL_CONTENT_SELECTOR } from '../../config'
 
 type Props = {
   post: PaginatedPost
@@ -17,7 +18,7 @@ const { post } = Astro.props
   <h1 class="postDetail__title">
     {post.entry.data.title}
   </h1>
-  <div class="postDetailContent">
+  <div class="postDetailContent" data-selector={POST_DETAIL_CONTENT_SELECTOR}>
     <slot />
   </div>
 </section>

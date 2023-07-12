@@ -1,0 +1,34 @@
+---
+import { POST_DETAIL_CONTENT_SELECTOR } from '../../config'
+import '../../styles/_tocBody.scss'
+---
+
+<nav class="tocPc">
+  <h3 class="tocPc__heading">TOC</h3>
+  <div class="tocPc__body" data-selector="js-toc-body-pc"></div>
+</nav>
+<script>
+  import tocbot from 'tocbot'
+  import { POST_DETAIL_CONTENT_SELECTOR } from '../../config'
+  tocbot.init({
+    tocSelector: '[data-selector=js-toc-body-pc]',
+    contentSelector: `[data-selector=${POST_DETAIL_CONTENT_SELECTOR}]`,
+    headingSelector: 'h1, h2, h3',
+  })
+</script>
+
+<style lang="scss">
+  @use '../../styles/utils' as utils;
+  @use '../../styles/variables' as vars;
+
+  .tocPc {
+    padding: 20px;
+    max-height: 80%;
+    overflow-y: auto;
+    @extend %card-content;
+
+    &__body {
+      margin-top: 20px;
+    }
+  }
+</style>

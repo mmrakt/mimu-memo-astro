@@ -1,0 +1,46 @@
+@use 'variables' as vars;
+@use 'utils';
+
+.toc-list-item {
+  position: relative;
+  padding: 4px 0 4px 12px;
+
+  @include utils.mq(sp) {
+    text-align: left;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: vars.$black-500;
+    border-radius: 50%;
+    left: 0;
+    top: 16px;
+  }
+
+  &:has(> a.is-active-link)::before {
+    background: vars.$text-color-black;
+
+    @include utils.dark() {
+      background: vars.$black-800;
+    }
+  }
+
+  > a {
+    font-size: 14px;
+    font-weight: bold;
+    color: vars.$black-500;
+
+    &:hover,
+    &.is-active-link {
+      color: vars.$text-color-black;
+
+      @include utils.dark() {
+        color: vars.$black-800;
+      }
+    }
+  }
+}

@@ -5,10 +5,8 @@ import { SITE_INTRO } from '../../config'
 <header class="header">
   <div class="header__inner">
     <a href="/page/1" class="header__link">
-      <!-- <SiteLogo /> -->
       <h1 class="header__title">mimu-memo</h1>
     </a>
-    <p class="header__text">{SITE_INTRO}</p>
   </div>
 </header>
 
@@ -22,23 +20,29 @@ import { SITE_INTRO } from '../../config'
 
     @include utils.dark() {
       background: vars.$black-200;
+      border-bottom: 1px solid vars.$black-600;
+    }
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 20px;
+
+      @include utils.mq(sp) {
+        padding: 10px 20px 10px;
+      }
     }
     &__title {
       color: vars.$text-color-white;
       font-family: 'Yellowtail', cursive;
       font-size: 52px;
       font-weight: normal;
-    }
+      line-height: 1.2;
 
-    &__inner {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px 0 35px;
-    }
-    &__text {
-      font-weight: 500;
+      @include utils.mq(sp) {
+        font-size: 32px;
+      }
     }
   }
 </style>
