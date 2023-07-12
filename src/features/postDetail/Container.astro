@@ -15,7 +15,7 @@ const { post } = Astro.props
   <div class="postDetailLayout__socialButton">
     <SocialButtons title={post.entry.data.title} slug={post.entry.slug} />
   </div>
-  <div class="postDetailLayout__toc">
+  <div class="postDetailLayout__tocSp">
     <TocSp />
   </div>
   <div class="postDetailLayout__inner">
@@ -43,22 +43,23 @@ const { post } = Astro.props
     }
 
     &__socialButton {
-      position: sticky;
-      top: 100px;
-      margin-left: -80px;
-      height: 100vh;
+      display: none;
 
-      @include utils.mq(sp) {
-        display: none;
+      @include utils.mq(pc) {
+        display: block;
+        position: sticky;
+        top: 100px;
+        margin-left: -80px;
+        height: 100vh;
       }
     }
-    &__toc {
+    &__tocSp {
       position: sticky;
       top: 0;
       z-index: 100;
       padding: 10px 0;
       background: vars.$black-900;
-      @include utils.mq(pc) {
+      @include utils.mq(tab) {
         display: none;
       }
       @include utils.dark() {

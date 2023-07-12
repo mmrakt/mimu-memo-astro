@@ -17,7 +17,7 @@ body {
 }
 
 .spOnly {
-  @include utils.mq(pc) {
+  @include utils.mq(tab) {
     display: none;
   }
 }
