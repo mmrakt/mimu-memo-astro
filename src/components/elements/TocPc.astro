@@ -1,18 +1,18 @@
 ---
-import { POST_DETAIL_CONTENT_CLASS } from '../../config'
+import { POST_DETAIL_CONTENT_SELECTOR } from '../../config'
 import '../../styles/_tocBody.scss'
 ---
 
 <nav class="tocPc">
   <h3 class="tocPc__heading">TOC</h3>
-  <div class="tocPc__body"></div>
+  <div class="tocPc__body" data-selector="js-toc-body-pc"></div>
 </nav>
 <script>
   import tocbot from 'tocbot'
-  import { POST_DETAIL_CONTENT_CLASS } from '../../config'
+  import { POST_DETAIL_CONTENT_SELECTOR } from '../../config'
   tocbot.init({
-    tocSelector: '.tocPc__body',
-    contentSelector: `.${POST_DETAIL_CONTENT_CLASS}`,
+    tocSelector: '[data-selector=js-toc-body-pc]',
+    contentSelector: `[data-selector=${POST_DETAIL_CONTENT_SELECTOR}]`,
     headingSelector: 'h1, h2, h3',
   })
 </script>

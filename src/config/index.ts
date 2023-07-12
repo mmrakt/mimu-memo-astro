@@ -8,7 +8,6 @@ export const LOCALE = import.meta.env.npm_package_config_locale
 export const SITE_DESCRIPTION =
   '平凡エンジニアが技術について学んだことや躓いたことをメモ代わりに残していくブログです。'
 
-export const BREAK_POINT = 980
 export const QIITA_URL_PREFIX = 'https://qiita.com'
 export const NOTE_URL_PREFIX = 'https://note.com'
 export const ZENN_URL_PREFIX = 'https://zenn.dev'
@@ -20,7 +19,4 @@ export const TWITTER_ID = 'mmrakt0716'
 export const ZENN_FEED_URL = `https://zenn.dev/${SNS_ID}/feed?all=1`
 export const QIITA_FEED_URL = `https://qiita.com/${SNS_ID}/feed`
 
-export const POST_DETAIL_CONTENT_CLASS = 'postDetailContent'
-
-export const TOGGLE_TOC_BUTTON_CLASS = 'toggleToc__button'
-export const TOC_WRAPPER_CLASS = 'toggleToc__body'
+export const POST_DETAIL_CONTENT_SELECTOR = 'js-post-detail-content'
