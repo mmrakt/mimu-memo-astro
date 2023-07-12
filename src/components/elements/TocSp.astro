@@ -97,6 +97,7 @@ import { TOC_WRAPPER_CLASS, TOGGLE_TOC_BUTTON_CLASS } from '../../config'
   const button = document.querySelector(`[data-selector=${tocToggleButton}]`)
   const tocLinkClass = '.toc-link'
 
+  // MEMO: アンカーリンクで見出しが固定ヘッダーに隠れてしまうため padding-topで調整
   tocbot.init({
     tocSelector: '.toggleToc__tocBody',
     contentSelector: `.${POST_DETAIL_CONTENT_CLASS}`,
