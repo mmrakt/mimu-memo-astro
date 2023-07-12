@@ -54,16 +54,6 @@ const Head = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:creator" content={`@${TWITTER_ID}`} />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="anonymous"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap"
-        rel="stylesheet"
-      />
     </head>
   )
 }

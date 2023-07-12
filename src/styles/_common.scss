@@ -1,6 +1,11 @@
 @use 'variables' as vars;
 @use 'utils';
 
+@font-face {
+  font-family: 'Yellowtail';
+  src: url('/fonts/Yellowtail-Regular.ttf') format('truetype');
+}
+
 body {
   color: vars.$text-color-black;
   font-family: 'Noto Sans JP', sans-serif;
