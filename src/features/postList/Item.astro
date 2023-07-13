@@ -53,6 +53,7 @@ if (post?.link) {
     padding: 20px;
 
     @extend %card-content;
+    border-radius: 10px;
 
     @include utils.mq(tab) {
       @include utils.scale(1.03);
@@ -83,13 +84,8 @@ if (post?.link) {
       padding: 1px 6px;
       border-radius: 6px;
       color: vars.$text-color-white;
+      background: vars.$primary;
       font-weight: bold;
-      &--qiita {
-        background: vars.$qiita-primary;
-      }
-      &--zenn {
-        background: vars.$zenn-primary;
-      }
     }
   }
 </style>

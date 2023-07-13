@@ -11,15 +11,14 @@
   @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
   .footer {
-    background: vars.$primary;
+    color: vars.$text-color-black;
     @include utils.dark() {
+      color: vars.$text-color-white;
       background: vars.$black-200;
-      border-top: 1px solid vars.$black-600;
     }
     &__inner {
       padding: 24px 0;
       text-align: center;
-      color: #fff;
     }
   }
 </style>

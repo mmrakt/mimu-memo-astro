@@ -15,18 +15,14 @@
     display: block;
     width: 5px;
     height: 5px;
-    background: vars.$black-500;
+    background: vars.$primary;
     border-radius: 50%;
     left: 0;
     top: 16px;
   }
 
   &:has(> a.is-active-link)::before {
-    background: vars.$text-color-black;
-
-    @include utils.dark() {
-      background: vars.$black-800;
-    }
+    background: vars.$primary;
   }
 
   > a {
