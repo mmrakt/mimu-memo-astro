@@ -1,11 +1,11 @@
 ---
-import { CollectionEntry, getCollection, getEntry } from 'astro:content'
-import type { Frontmatter, PaginatedPost } from '../types'
-import { extractSlugFromMd, extractExcerptFromBody } from '../utils'
+import {  getCollection } from 'astro:content'
+import type {  PaginatedPost } from '../types'
+import {  extractExcerptFromBody } from '../utils'
 import BaseLayout from '../components/layouts/BaseLayout.astro'
 import Container from '../features/postDetail/Container.astro'
 import Head from '../components/layouts/Head'
-import { remark } from 'remark'
+
 
 export async function getStaticPaths() {
   const collection = await getCollection('owned')

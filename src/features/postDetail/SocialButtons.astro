@@ -6,7 +6,7 @@ type Props = {
   slug: string
 }
 const { title, slug } = Astro.props
-const iconSize = '42'
+
 const url = encodeURI(`${SITE_URL}/${slug}`)
 const twitterLink = `https://twitter.com/share?url=${url}&text=${title}`
 ---
@@ -15,7 +15,7 @@ const twitterLink = `https://twitter.com/share?url=${url}&text=${title}`
   <a
     class="socialButtons__item"
     href={twitterLink}
-    rel="nofollow"
+    rel="nofollow noreferrer"
     target="_blank"
   >
     <img
