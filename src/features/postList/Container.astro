@@ -39,6 +39,11 @@ const displayMediaName =
   @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
   .postListLayout {
+    &__media {
+      @include utils.mq(sp) {
+        margin-top: 20px;
+      }
+    }
     &__mediaText {
       text-align: center;
       font-size: 20px;
@@ -50,6 +55,9 @@ const displayMediaName =
 
     &__body {
       margin-top: 40px;
+      @include utils.mq(sp) {
+        margin-top: 20px;
+      }
     }
   }
 </style>
