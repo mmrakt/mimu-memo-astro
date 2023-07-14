@@ -39,8 +39,12 @@ const { posts } = Astro.props
   @use '../../styles/variables' as vars;
   .postList {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
     @include utils.slideIn();
+
+    &__item {
+      width: calc((100% - 20px) / 2);
+    }
   }
 </style>

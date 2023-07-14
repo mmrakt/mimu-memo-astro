@@ -51,9 +51,28 @@ if (post?.link) {
   .postItem {
     height: 100%;
     padding: 20px;
+    position: relative;
 
     @extend %card-content;
     border-radius: 10px;
+    @extend %card-fold;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-width: 0px 20px 20px 0;
+      border-style: solid;
+      border-color: vars.$black-900 vars.$black-900 vars.$black-700
+        vars.$black-700;
+      display: block;
+
+      @include utils.dark() {
+        border-color: vars.$black-200 vars.$black-200 vars.$black-400
+          vars.$black-400;
+      }
+    }
 
     @include utils.mq(tab) {
       @include utils.scale(1.03);
