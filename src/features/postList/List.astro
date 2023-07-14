@@ -40,11 +40,24 @@ const { posts } = Astro.props
   .postList {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    justify-content: center;
+    row-gap: 40px;
+    column-gap: 20px;
     @include utils.slideIn();
+
+    @include utils.mq(sp) {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      row-gap: 20px;
+      padding: 0 vars.$sp-side-padding;
+    }
 
     &__item {
       width: calc((100% - 20px) / 2);
+
+      @include utils.mq(sp) {
+        width: 100%;
+      }
     }
   }
 </style>

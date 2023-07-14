@@ -42,11 +42,16 @@ const {
     display: flex;
     margin-top: 40px;
 
+    @include utils.mq(sp) {
+      padding: 0 vars.$sp-side-padding;
+    }
+
     &__link {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 8px 12px;
+      font-size: 14px;
       font-weight: bold;
       position: relative;
 
