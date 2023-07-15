@@ -42,9 +42,19 @@ const { post } = Astro.props
       border: none;
     }
 
+    &__date {
+      font-size: 16px;
+      @include utils.mq(sp) {
+        font-size: 14px;
+      }
+    }
     &__title {
-      font-size: 32px;
+      font-size: 24px;
       margin-top: 16px;
+
+      @include utils.mq(sp) {
+        font-size: 22px;
+      }
     }
 
     &__content {
