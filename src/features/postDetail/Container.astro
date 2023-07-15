@@ -55,11 +55,12 @@ const { post } = Astro.props
     }
     &__tocSp {
       position: sticky;
-      top: 0;
+      top: -1px;
       z-index: 100;
       padding: 10px 0;
       border-top: 1px solid vars.$black-700;
       background: vars.$black-900;
+      font-size: 14px;
       @include utils.mq(tab) {
         display: none;
       }

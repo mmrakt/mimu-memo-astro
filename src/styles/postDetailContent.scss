@@ -3,6 +3,7 @@
 
 %headingStyle {
   padding: 60px 0 10px;
+  line-height: 1;
   border-bottom: 3px solid vars.$black-700;
   position: relative;
 
@@ -10,7 +11,7 @@
     position: absolute;
     display: block;
     content: '';
-    bottom: -2px;
+    bottom: -3px;
     width: 20%;
     border-bottom: 3px solid vars.$primary;
   }
@@ -27,11 +28,17 @@
 
   h1 {
     @extend %headingStyle;
-    font-size: 28px;
+    font-size: 24px;
+    @include utils.mq(sp) {
+      font-size: 22px;
+    }
   }
   h2 {
     @extend %headingStyle;
-    font-size: 24px;
+    font-size: 22px;
+    @include utils.mq(sp) {
+      font-size: 20px;
+    }
   }
 
   h3 {
@@ -45,6 +52,9 @@
       bottom: 10px;
       width: 20%;
       border-bottom: 1px solid vars.$black-700;
+    }
+    @include utils.mq(sp) {
+      font-size: 16px;
     }
   }
 
