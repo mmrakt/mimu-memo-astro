@@ -27,9 +27,8 @@ const { post } = Astro.props
   @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
   .postDetail {
-    border-radius: 5px;
-    border: 1px solid vars.$black-800;
-    background: #fff;
+    @extend %card-content;
+
     padding: 40px;
 
     @include utils.mq(sp) {

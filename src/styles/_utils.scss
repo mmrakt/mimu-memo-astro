@@ -77,13 +77,17 @@ $mappedBreakpoint: (
 %card-content {
   background: #fff;
   color: vars.$text-color-black;
-  border-radius: 5px;
   border: 1px solid vars.$black-800;
+  border-radius: 10px;
 
   @include dark() {
     background: vars.$black-300;
     color: #fff;
     border: none;
+  }
+
+  @include mq(sp) {
+    border-radius: 0;
   }
 }
 
@@ -99,8 +103,8 @@ $mappedBreakpoint: (
 %arrow-prev {
   @extend %arrow;
   left: 0;
-  border-left: 2px solid vars.$text-color-black;
-  border-bottom: 2px solid vars.$text-color-black;
+  border-left: 1px solid vars.$text-color-black;
+  border-bottom: 1px solid vars.$text-color-black;
 
   @include dark() {
     border-color: #fff;
@@ -109,10 +113,26 @@ $mappedBreakpoint: (
 %arrow-next {
   @extend %arrow;
   right: 0;
-  border-top: 2px solid vars.$text-color-black;
-  border-right: 2px solid vars.$text-color-black;
+  border-top: 1px solid vars.$text-color-black;
+  border-right: 1px solid vars.$text-color-black;
 
   @include dark() {
     border-color: #fff;
+  }
+}
+
+%card-fold {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0px 20px 20px 0;
+  border-style: solid;
+  border-color: vars.$black-900 vars.$black-900 vars.$black-750 vars.$black-750;
+  display: block;
+
+  @include dark() {
+    border-color: vars.$black-200 vars.$black-200 vars.$black-400
+      vars.$black-400;
   }
 }

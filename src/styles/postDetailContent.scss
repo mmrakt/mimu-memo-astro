@@ -1,6 +1,20 @@
 @use 'variables' as vars;
 @use 'utils';
 
+%headingStyle {
+  padding: 60px 0 10px;
+  border-bottom: 3px solid vars.$black-700;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+    bottom: -2px;
+    width: 20%;
+    border-bottom: 3px solid vars.$primary;
+  }
+}
 .postDetailContent {
   .astro-code {
     font-size: 14px;
@@ -12,19 +26,26 @@
   }
 
   h1 {
+    @extend %headingStyle;
     font-size: 28px;
-    margin-top: 40px;
-    padding-bottom: 20px;
   }
   h2 {
+    @extend %headingStyle;
     font-size: 24px;
-    padding: 60px 0 10px;
-    border-bottom: 1px solid vars.$black-700;
   }
 
   h3 {
     font-size: 20px;
-    padding: 50px 0 0;
+    padding: 50px 0 20px;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      bottom: 10px;
+      width: 20%;
+      border-bottom: 1px solid vars.$black-700;
+    }
   }
 
   h4 {
@@ -53,6 +74,8 @@
 
   a {
     @extend %link;
+    color: vars.$primary;
+    text-decoration: underline vars.$primary;
   }
 
   blockquote {

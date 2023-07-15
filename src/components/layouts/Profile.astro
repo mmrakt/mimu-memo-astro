@@ -6,37 +6,42 @@ import TwitterLogo from '../elements/TwitterLogo'
 ---
 
 <div class="profile">
-  <h3 class="profile__header font-black">Profile</h3>
-  <div class="profile__info flex items-center mt-3">
-    <img src="/img/avatar.png" alt="mmrakt" width={80} height={80} />
+  <div class="profile__info">
+    <img
+      class="profile__avatar"
+      src="/img/avatar.png"
+      alt="mmrakt"
+      width={80}
+      height={80}
+    />
     <div class="profile__name ml-3">
-      <span>@mmrakt</span>
       <h4 class="font-black">mimu</h4>
+      <div class="profile__sns">
+        <a
+          href="https://github.com/mmrakt"
+          target="_blank"
+          rel="noreferrer"
+          class="profile__snsLink profile__snsLink--github"
+          aria-label="GitHubプロフィールリンク"
+        >
+          <GithubLogo />
+        </a>
+        <a
+          href="https://twitter.com/mmrakt0716"
+          target="_blank"
+          rel="noreferrer"
+          class="profile__snsLink profile__snsLink--twitter"
+          aria-label="Twitterプロフィールリンク"
+        >
+          <TwitterLogo />
+        </a>
+      </div>
     </div>
   </div>
-  <p class="profile__introduce description mt-3">
-    ストリートダンスと飲酒と個人開発が好き🕺🍺🧑‍💻
+  <p class="profile__introduce">
+    ストリートダンスと飲酒と個人開発が好きな関西人。<br
+    />フロントエンド、バックエンドどっちも好きです。
   </p>
-  <div class="profile__sns mt-3 flex items-center">
-    <a
-      href="https://github.com/mmrakt"
-      target="_blank"
-      rel="noreferrer"
-      class="profile__snsLink"
-      aria-label="GitHubプロフィールリンク"
-    >
-      <GithubLogo />
-    </a>
-    <a
-      href="https://twitter.com/mmrakt0716"
-      target="_blank"
-      rel="noreferrer"
-      class="profile__snsLink profile__snsLink--twitter"
-      aria-label="Twitterプロフィールリンク"
-    >
-      <TwitterLogo />
-    </a>
-  </div>
 </div>
 
 <style lang="scss">
@@ -51,35 +56,34 @@ import TwitterLogo from '../elements/TwitterLogo'
 
     @extend %card-content;
 
-    &__header {
-      font-size: 20px;
-      font-weight: bolder;
-    }
     &__info {
       display: flex;
       align-items: center;
     }
     &__name {
       margin-left: 12px;
+      font-size: 18px;
       & > h4 {
         font-weight: bold;
       }
     }
     &__sns {
+      margin-top: 10px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     &__snsLink {
       color: vars.$black-200;
-
-      &--twitter {
-        color: vars.$twitter-blue;
-      }
-
+      width: 25px;
+      height: 25px;
+      color: vars.$black-400;
       @include utils.dark() {
         color: #fff;
       }
+    }
+    &__introduce {
+      font-size: 14px;
     }
   }
 </style>

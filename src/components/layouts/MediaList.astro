@@ -3,14 +3,11 @@ import React from 'react'
 
 import { MEDIA_LIST_DISPLAY } from '../../config'
 
-
-
-
 import MediaItem from './MediaItem.astro'
 ---
 
 <div class="mediaList">
-  <h3 class="mediaList__header">Media</h3>
+  <h3 class="mediaList__heading">Articles</h3>
   <div class="mediaList__list">
     {MEDIA_LIST_DISPLAY.map((media) => <MediaItem media={media} />)}
   </div>
@@ -25,8 +22,8 @@ import MediaItem from './MediaItem.astro'
 
     @extend %card-content;
 
-    &__header {
-      font-size: 20px;
+    &__heading {
+      font-size: 16px;
       font-weight: bolder;
     }
     &__list {

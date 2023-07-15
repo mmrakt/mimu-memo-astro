@@ -39,9 +39,7 @@ if (post?.link) {
       )
     }
   </p>
-  <div class="postItem__title">
-    <h2 class="">{post.title}</h2>
-  </div>
+  <h2 class="postItem__title">{post.title}</h2>
 </article>
 
 <style lang="scss">
@@ -49,10 +47,12 @@ if (post?.link) {
   @use '../../styles/variables' as vars;
 
   .postItem {
-    height: 100%;
     padding: 20px;
+    position: relative;
+    height: 100%;
 
     @extend %card-content;
+    border-radius: 10px;
 
     @include utils.mq(tab) {
       @include utils.scale(1.03);
@@ -62,14 +62,17 @@ if (post?.link) {
       align-items: center;
       justify-content: space-between;
     }
+    &__date {
+      font-size: 14px;
+      @include utils.mq(sp) {
+        font-size: 12px;
+      }
+    }
 
     &__title {
+      font-size: 16px;
       font-weight: bold;
       margin-top: 12px;
-
-      & > h2 {
-        font-size: 20px;
-      }
 
       &:hover {
         color: vars.$black-400;
@@ -77,18 +80,23 @@ if (post?.link) {
           color: vars.$black-700;
         }
       }
+
+      @include utils.mq(sp) {
+        font-size: 14px;
+      }
     }
     &__media {
-      margin-left: 20px;
-      padding: 1px 6px;
-      border-radius: 6px;
+      // position: absolute;
+      // margin-top: -41px;
+      margin-right: 10px;
+      padding: 0 6px;
       color: vars.$text-color-white;
+      background: vars.$primary;
+      font-size: 12px;
       font-weight: bold;
-      &--qiita {
-        background: vars.$qiita-primary;
-      }
-      &--zenn {
-        background: vars.$zenn-primary;
+
+      @include utils.dark() {
+        color: vars.$text-color-black;
       }
     }
   }
