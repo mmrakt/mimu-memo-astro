@@ -78,6 +78,7 @@ $mappedBreakpoint: (
   background: #fff;
   color: vars.$text-color-black;
   border: 1px solid vars.$black-800;
+  border-radius: 10px;
 
   @include dark() {
     background: vars.$black-300;

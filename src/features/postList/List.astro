@@ -43,6 +43,7 @@ const { posts } = Astro.props
     justify-content: center;
     row-gap: 40px;
     column-gap: 20px;
+    position: relative;
     @include utils.slideIn();
 
     @include utils.mq(sp) {
@@ -56,7 +57,7 @@ const { posts } = Astro.props
       width: calc((100% - 20px) / 2);
 
       @include utils.mq(sp) {
-        width: 100%;
+        max-width: 100%;
       }
     }
   }

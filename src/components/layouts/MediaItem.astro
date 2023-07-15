@@ -1,12 +1,11 @@
 ---
 import React from 'react'
 
-import {  QIITA_FEED_URL, ZENN_FEED_URL } from '../../config'
+import { QIITA_FEED_URL, ZENN_FEED_URL } from '../../config'
 import { convertMediaNameToSlug, fetchFeed } from '../../utils'
-import type {   MediaDisplay } from '../../types'
+import type { MediaDisplay } from '../../types'
 import { getCollection } from 'astro:content'
 import LoadingSpinner from '../elements/LoadingSpinner.astro'
-
 
 type Props = {
   media: MediaDisplay
@@ -54,7 +53,8 @@ if (media === 'mimu-memo') {
       padding: 4px;
     }
     &__text {
-      margin-top: 8px;
+      margin-top: 4px;
+      font-size: 14px;
       font-weight: 500;
 
       @extend %link;

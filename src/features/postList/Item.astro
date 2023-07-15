@@ -52,11 +52,7 @@ if (post?.link) {
     height: 100%;
 
     @extend %card-content;
-    boder: none;
-
-    &::after {
-      @extend %card-fold;
-    }
+    border-radius: 10px;
 
     @include utils.mq(tab) {
       @include utils.scale(1.03);
