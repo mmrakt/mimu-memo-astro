@@ -6,6 +6,7 @@ const URL_LIST = [
   { url: '/javascript-input', name: 'post' },
   { url: '/qiita', name: 'qiita-index' },
   { url: '/owned/page/2', name: 'owned-index-page-2' },
+  { url: '/unknown', name: '404' },
 ]
 const SCREEN_TYPES = ['pc', 'sp']
 
