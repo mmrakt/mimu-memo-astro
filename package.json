@@ -13,7 +13,8 @@
     "lint": "eslint ./src/**/*.{ts,tsx,astro}",
     "lint:fix": "eslint --fix ./src/**/*.{ts,tsx,astro}",
     "prepare": "husky install",
-    "test": "npx playwright test"
+    "vrt": "npx playwright test",
+    "vrt:update": "npx playwright test -u"
   },
   "dependencies": {
     "@astrojs/image": "^0.17.1",
