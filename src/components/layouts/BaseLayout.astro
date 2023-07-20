@@ -16,7 +16,11 @@ const { hasSideBar, hasToc } = Astro.props
 <body>
   <div class="baseLayout">
     <Header />
-    <div class="baseLayout__inner">
+    <div
+      class={`baseLayout__inner ${
+        hasSideBar ? 'baseLayout__inner--hasSideBar' : ''
+      }`}
+    >
       <main class="baseLayout__main">
         <slot />
       </main>
@@ -38,13 +42,13 @@ const { hasSideBar, hasToc } = Astro.props
   .baseLayout {
     background: vars.$black-900;
     width: 100%;
+    min-height: 100vh;
     @include utils.dark() {
       background: vars.$black-200;
       color: #fff;
     }
 
     &__inner {
-      display: flex;
       max-width: vars.$contentMaxWidth;
       margin: 0 auto;
 
@@ -52,6 +56,10 @@ const { hasSideBar, hasToc } = Astro.props
       @include utils.mq(sp) {
         flex-direction: column;
         gap: 0;
+      }
+
+      &--hasSideBar {
+        display: flex;
       }
     }
 
