@@ -1,7 +1,7 @@
 ---
 ---
 
-<div class="notFount">
+<div class="notFound">
   <div class="notFound__title">
     <h1 class="notFound__titleMain">404</h1>
     <span class="notFound__titleSub">Not Found</span>
@@ -9,7 +9,6 @@
   <div class="notFound__body">
     <p class="notFound__bodyText">
       アクセスしたページは削除またはURLが変更されていたため<br
-        class="notFound__onlyPc"
       />表示することができませんでした。
     </p>
     <div class="notFound__buttonWrapper">
@@ -23,10 +22,15 @@
   @use '../../styles/variables' as vars;
 
   .notFound {
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @include utils.mq(sp) {
+      padding: 0 vars.$sp-side-padding;
+    }
 
     &__title {
       display: flex;
@@ -47,6 +51,9 @@
     &__bodyText {
       font-size: 20px;
       font-weight: 500;
+      @include utils.mq(sp) {
+        font-size: 16px;
+      }
     }
 
     &__onlyPc {
@@ -63,7 +70,6 @@
     &__button {
       padding: 10px 20px;
       background: vars.$black-750;
-      //   border: 1px solid vars.$black-700;
       border-radius: 10px;
       color: vars.$text-color-black;
       font-weight: 500;
