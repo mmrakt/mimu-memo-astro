@@ -1,6 +1,7 @@
 export const onRequest = ({ url: { pathname }, redirect }, next) => {
   const path = pathname.replace(/\/$/, '')
   if (path === '') {
+    console.log('here')
     return redirect('/page/1')
   } else if (path === '/page') {
     return redirect('/page/1')

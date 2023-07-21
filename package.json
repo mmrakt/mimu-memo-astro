@@ -20,6 +20,7 @@
     "@astrojs/image": "^0.17.1",
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/react": "^2.2.1",
+    "@astrojs/vercel": "^3.7.3",
     "@types/node": "^20.3.2",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@vercel/analytics": "^1.0.1",
