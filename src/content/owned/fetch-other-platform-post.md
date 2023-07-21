@@ -12,7 +12,9 @@ Qiita や Zenn 等のプラットフォームで投稿した post を本ブロ�
 ## やり方
 
 各プラットフォームのフィードの取得方法は下記記事を参考にした。
+
 [Qiita や note に投稿した記事一覧を Gatsby で表示する](https://www.zakioka.net/blog/gatsby-qiita-note-post-list)
+
 RSS でフィードを取得するための専用の gatsby プラグインがあるらしい。
 記事の取得処理の実装自体は上記記事の手順通りにすればほぼ OK だった。
 

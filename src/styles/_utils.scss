@@ -74,6 +74,17 @@ $mappedBreakpoint: (
   }
 }
 
+%link-primary {
+  @extend %link;
+  color: vars.$primary;
+  text-decoration: none;
+
+  &:hover {
+    color: vars.$primary;
+    text-decoration: underline vars.$primary;
+  }
+}
+
 %card-content {
   color: vars.$text-color-black;
   border: 1px solid vars.$line-color-light;

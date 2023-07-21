@@ -27,19 +27,21 @@
     }
     &__title {
       color: #fff;
-      text-shadow: 1px 1px #000, -1px 1px #000, -1px -1px #000, 1px -1px #000,
-        1px 0px #000, 0px 1px #000, -1px 0px #000, 0px -1px #000;
+      text-shadow: 1px 1px vars.$primary, -1px 1px vars.$primary,
+        -1px -1px vars.$primary, 1px -1px vars.$primary, 1px 0px vars.$primary,
+        0px 1px vars.$primary, -1px 0px vars.$primary, 0px -1px vars.$primary;
       font-family: 'Yellowtail', cursive;
       font-size: 52px;
       font-weight: normal;
       line-height: 1.2;
 
       @include utils.mq(sp) {
-        font-size: 32px;
+        font-size: 40px;
       }
       @include utils.dark() {
-        text-shadow: 1px 1px #fff, -1px 1px #fff, -1px -1px #fff, 1px -1px #fff,
-          1px 0px #fff, 0px 1px #fff, -1px 0px #fff, 0px -1px #fff;
+        text-shadow: 1px 1px vars.$primary, -1px 1px vars.$primary,
+          -1px -1px vars.$primary, 1px -1px vars.$primary, 1px 0px vars.$primary,
+          0px 1px vars.$primary, -1px 0px vars.$primary, 0px -1px vars.$primary;
         color: vars.$text-color-black;
       }
     }
