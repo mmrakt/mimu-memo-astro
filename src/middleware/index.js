@@ -6,16 +6,10 @@ export const onRequest = ({ url: { pathname }, redirect }, next) => {
     return redirect('/page/1')
   } else if (path === '/owned' || path === '/owned/page') {
     return redirect('/owned/page/1')
+  } else if (path === '/qiita' || path === '/qiita/page') {
+    return redirect('/qiita/page/1')
+  } else if (path === '/zenn' || path === '/zenn/page') {
+    return redirect('/zenn/page/1')
   }
   next()
 }
-
-// import { defineMiddleware } from 'astro/middleware'
-
-// // `context` and `next` are automatically typed
-// export const onRequest = defineMiddleware(({ url, redirect }, next) => {
-//   if (url.pathname.endsWith('.html')) {
-//     return redirect(url.pathname.replace('.html', ''))
-//   }
-//   next()
-// })
