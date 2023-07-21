@@ -75,19 +75,14 @@ $mappedBreakpoint: (
 }
 
 %card-content {
-  background: #fff;
   color: vars.$text-color-black;
-  border: 1px solid vars.$black-800;
+  border: 1px solid vars.$line-color-light;
   border-radius: 10px;
 
   @include dark() {
-    background: vars.$black-300;
+    background: vars.$bg-color-dark-secondary;
     color: #fff;
-    border: none;
-  }
-
-  @include mq(sp) {
-    border-radius: 0;
+    border: 1px solid vars.$bg-color-dark-tertiary;
   }
 }
 

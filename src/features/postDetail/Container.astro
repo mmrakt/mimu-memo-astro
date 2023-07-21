@@ -59,13 +59,16 @@ const { post } = Astro.props
       z-index: 100;
       padding: 10px 0;
       border-top: 1px solid vars.$black-700;
+      border-bottom: 1px solid vars.$black-700;
       background: vars.$black-900;
+      background: inherit;
       font-size: 14px;
       @include utils.mq(tab) {
         display: none;
       }
       @include utils.dark() {
-        background: vars.$black-200;
+        border-color: vars.$bg-color-dark-tertiary;
+        background: vars.$bg-color-dark-primary;
       }
     }
     &__inner {

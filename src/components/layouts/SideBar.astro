@@ -32,8 +32,7 @@ const { hasToc } = Astro.props
 
     @include utils.mq(sp) {
       width: 100%;
-      padding-right: 0;
-      padding-bottom: 40px;
+      padding: 0 vars.$sp-side-padding 40px;
     }
 
     &__inner {

@@ -14,9 +14,6 @@
   @use '../../styles/variables' as vars;
 
   .header {
-    @include utils.dark() {
-      background: vars.$black-200;
-    }
     &__inner {
       display: flex;
       flex-direction: column;
@@ -29,7 +26,7 @@
       }
     }
     &__title {
-      color: vars.$primary-light;
+      color: #fff;
       text-shadow: 1px 1px #000, -1px 1px #000, -1px -1px #000, 1px -1px #000,
         1px 0px #000, 0px 1px #000, -1px 0px #000, 0px -1px #000;
       font-family: 'Yellowtail', cursive;

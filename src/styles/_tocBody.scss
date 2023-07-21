@@ -28,7 +28,9 @@
   > a {
     font-size: 14px;
     font-weight: bold;
-    color: vars.$black-500;
+    @include utils.dark() {
+      color: vars.$text-color-dark-tertiary;
+    }
 
     &:hover,
     &.is-active-link {
