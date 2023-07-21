@@ -7,6 +7,8 @@ import BaseLayout from '../../../components/layouts/BaseLayout.astro'
 import Container from '../../../features/postList/Container.astro'
 import Head from '../../../components/layouts/Head'
 
+export const prerender = true
+
 export async function getStaticPaths({
   paginate,
 }: {
