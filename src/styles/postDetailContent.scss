@@ -1,13 +1,13 @@
 @use 'variables' as vars;
 @use 'utils';
 
-%headingStyle {
+%largeHeadingStyle {
   padding: 60px 0 10px;
-  line-height: 1;
   border-bottom: 3px solid vars.$line-color-light;
   position: relative;
-
-  @extend %headingBorder;
+  border-bottom: 3px solid #904e95;
+  border-image: linear-gradient(to left, #e96443, #904e95);
+  border-image-slice: 1;
 }
 
 %headingBorder {
@@ -36,23 +36,17 @@
   }
 
   h1 {
-    @extend %headingStyle;
+    @extend %largeHeadingStyle;
     font-size: 24px;
     @include utils.mq(sp) {
       font-size: 22px;
     }
-    &::after {
-      border-bottom: 3px solid vars.$primary;
-    }
   }
   h2 {
-    @extend %headingStyle;
+    @extend %largeHeadingStyle;
     font-size: 22px;
     @include utils.mq(sp) {
       font-size: 20px;
-    }
-    &::after {
-      border-bottom: 3px solid vars.$primary;
     }
   }
 
