@@ -1,21 +1,30 @@
 @use 'variables' as vars;
 @use 'utils';
 
-%headingStyle {
+%largeHeadingStyle {
   padding: 60px 0 10px;
-  line-height: 1;
-  border-bottom: 3px solid vars.$black-700;
+  border-bottom: 3px solid vars.$line-color-light;
   position: relative;
+  border-bottom: 3px solid #904e95;
+  border-image: linear-gradient(to left, #e96443, #904e95);
+  border-image-slice: 1;
+}
 
+%headingBorder {
   &::after {
     position: absolute;
     display: block;
     content: '';
     bottom: -3px;
     width: 20%;
-    border-bottom: 3px solid vars.$primary;
+    border-bottom: 3px solid vars.$line-color-light;
+
+    @include utils.dark() {
+      border-color: vars.$bg-color-dark-tertiary;
+    }
   }
 }
+
 .postDetailContent {
   .astro-code {
     font-size: 14px;
@@ -27,14 +36,14 @@
   }
 
   h1 {
-    @extend %headingStyle;
+    @extend %largeHeadingStyle;
     font-size: 24px;
     @include utils.mq(sp) {
       font-size: 22px;
     }
   }
   h2 {
-    @extend %headingStyle;
+    @extend %largeHeadingStyle;
     font-size: 22px;
     @include utils.mq(sp) {
       font-size: 20px;
@@ -45,13 +54,9 @@
     font-size: 20px;
     padding: 50px 0 20px;
     position: relative;
+    @extend %headingBorder;
     &::after {
-      position: absolute;
-      content: '';
-      display: block;
       bottom: 10px;
-      width: 20%;
-      border-bottom: 1px solid vars.$black-700;
     }
     @include utils.mq(sp) {
       font-size: 16px;
@@ -83,9 +88,7 @@
   }
 
   a {
-    @extend %link;
-    color: vars.$primary;
-    text-decoration: underline vars.$primary;
+    @extend %link-primary;
   }
 
   blockquote {

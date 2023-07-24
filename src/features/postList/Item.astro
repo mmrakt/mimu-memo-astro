@@ -31,9 +31,9 @@ if (post?.link) {
     </span>
     {
       externalMedia === 'qiita' ? (
-        <span class="postItem__media postItem__media--qiita">Qiita</span>
+        <img src="/img/qiita.png" alt="Qiita" width="20" height="20" />
       ) : externalMedia === 'zenn' ? (
-        <span class="postItem__media postItem__media--zenn">Zenn</span>
+        <img src="/img/zenn.svg" alt="Zenn" width="20" height="20" />
       ) : (
         ''
       )
@@ -71,7 +71,7 @@ if (post?.link) {
 
     &__title {
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 700;
       margin-top: 12px;
 
       &:hover {

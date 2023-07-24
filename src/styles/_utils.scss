@@ -74,20 +74,26 @@ $mappedBreakpoint: (
   }
 }
 
+%link-primary {
+  @extend %link;
+  color: vars.$primary;
+  text-decoration: none;
+
+  &:hover {
+    color: vars.$primary;
+    text-decoration: underline vars.$primary;
+  }
+}
+
 %card-content {
-  background: #fff;
   color: vars.$text-color-black;
-  border: 1px solid vars.$black-800;
+  border: 1px solid vars.$line-color-light;
   border-radius: 10px;
 
   @include dark() {
-    background: vars.$black-300;
+    background: vars.$bg-color-dark-secondary;
     color: #fff;
-    border: none;
-  }
-
-  @include mq(sp) {
-    border-radius: 0;
+    border: 1px solid vars.$bg-color-dark-tertiary;
   }
 }
 
@@ -135,4 +141,19 @@ $mappedBreakpoint: (
     border-color: vars.$black-200 vars.$black-200 vars.$black-400
       vars.$black-400;
   }
+}
+
+%gradient-bg {
+  // NOTE: https://uigradients.com/
+  background: #ece9e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #ffffff,
+    #ece9e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #ffffff,
+    #ece9e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

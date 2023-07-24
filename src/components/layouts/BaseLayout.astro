@@ -40,11 +40,13 @@ const { hasSideBar, hasToc } = Astro.props
   @use '../../styles/utils' as utils;
   @use '../../styles/variables' as vars;
   .baseLayout {
-    background: vars.$black-900;
     width: 100%;
     min-height: 100vh;
+
+    @extend %gradient-bg;
+
     @include utils.dark() {
-      background: vars.$black-200;
+      background: vars.$bg-color-dark-primary;
       color: #fff;
     }
 
