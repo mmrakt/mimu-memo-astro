@@ -24,7 +24,7 @@ const displayMediaName =
   {
     media && (
       <p class="postListLayout__mediaText">
-        <b>#{displayMediaName}</b>
+        <b class="postListLayout__mediaName">{displayMediaName}</b>
         の記事
       </p>
     )
@@ -40,19 +40,19 @@ const displayMediaName =
   @use '../../styles/variables' as vars;
   .postListLayout {
     &__media {
-      @include utils.mq(sp) {
-        margin-top: 20px;
-      }
+      margin-top: 20px;
     }
     &__mediaText {
       text-align: center;
-      font-size: 20px;
+      font-size: 16px;
 
       & b {
         font-weight: bold;
       }
     }
-
+    &__mediaName {
+      font-size: 20px;
+    }
     &__body {
       margin-top: 40px;
       @include utils.mq(sp) {

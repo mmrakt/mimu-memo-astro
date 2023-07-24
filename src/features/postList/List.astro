@@ -16,7 +16,12 @@ const { posts } = Astro.props
       <LoadingSpinner />
     </div>
   ) : (
-    <ul class="postList">
+    <ul
+      class:list={[
+        'postList',
+        { postList__onlyOne: posts.length === 1 ? true : false },
+      ]}
+    >
       {posts.map((post) => (
         <li class="postList__item">
           {post.media !== 'owned' ? (
@@ -51,6 +56,14 @@ const { posts } = Astro.props
       flex-direction: column;
       row-gap: 20px;
       padding: 0 vars.$sp-side-padding;
+    }
+
+    &__onlyOne {
+      &::after {
+        content: '';
+        display: block;
+        width: calc((100% - 20px) / 2);
+      }
     }
 
     &__item {
