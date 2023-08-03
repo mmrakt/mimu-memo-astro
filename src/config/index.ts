@@ -11,8 +11,8 @@ export const SITE_DESCRIPTION =
 export const QIITA_URL_PREFIX = 'https://qiita.com'
 export const NOTE_URL_PREFIX = 'https://note.com'
 export const ZENN_URL_PREFIX = 'https://zenn.dev'
-export const MEDIA_LIST = ['owned', 'qiita', 'zenn', 'note'] as const
-export const MEDIA_LIST_DISPLAY = [
+export const MEDIA_TYPE_LIST = ['owned', 'qiita', 'zenn', 'note'] as const
+export const MEDIA_TYPE_LIST_FOR_DISPLAY = [
   'mimu-memo',
   'Qiita',
   'Zenn',

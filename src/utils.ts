@@ -9,14 +9,21 @@ import {
   ZENN_FEED_URL,
 } from './config/index'
 
-import type { Frontmatter, Media, MediaDisplay, QiitaPost } from './types/index'
+import type {
+  Frontmatter,
+  MediaType,
+  MediaTypeForDisplay,
+  QiitaPost,
+} from './types/index'
 import type { MarkdownInstance } from 'astro'
 
 export const trimString = (str: string, limit: number) =>
   str.length > limit ? `${str.substring(0, limit)}...` : str
 
-export const convertMediaNameToSlug = (mediaName: MediaDisplay): Media | '' => {
-  switch (mediaName) {
+export const convertMediaTypeToSlug = (
+  mediaType: MediaTypeForDisplay
+): MediaType | '' => {
+  switch (mediaType) {
     case 'mimu-memo':
       return 'owned'
     case 'Qiita':
@@ -76,7 +83,7 @@ const mappingQiitaFeed = (posts: QiitaPost[]): Frontmatter[] => {
 
 const mappingFeed = (
   items: Parser.Item[],
-  media: Exclude<Media, 'mimu-memo'>
+  media: Exclude<MediaType, 'mimu-memo'>
 ) =>
   items.map((item) => ({
     title: item.title ?? '',

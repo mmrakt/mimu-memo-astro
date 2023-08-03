@@ -5,14 +5,14 @@ import {
   NOTE_URL_PREFIX,
   ZENN_URL_PREFIX,
 } from '../../config'
-import type { Frontmatter, Media } from '../../types'
+import type { Frontmatter, MediaType } from '../../types'
 
 type Props = {
   post: Frontmatter
 }
 const { post } = Astro.props
 
-let externalMedia: Media | '' = ''
+let externalMedia: MediaType | '' = ''
 if (post?.link) {
   if (post.link.indexOf(QIITA_URL_PREFIX) === 0) {
     externalMedia = 'qiita'

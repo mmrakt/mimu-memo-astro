@@ -2,15 +2,15 @@
 import Pagination from './Pagination.astro'
 import PostList from './List.astro'
 
-import type { Frontmatter, Media } from '../../types'
+import type { Frontmatter, MediaType } from '../../types'
 import type { Page } from 'astro'
 
 type Props = {
   page: Page<Frontmatter>
-  media?: Media
+  media?: MediaType
 }
 const { page, media } = Astro.props
-const displayMediaName =
+const displayMediaType =
   media === 'owned'
     ? 'mimu-memo'
     : media === 'qiita'
@@ -26,7 +26,7 @@ const displayMediaName =
   {
     media && (
       <p class="postListLayout__mediaText">
-        <b class="postListLayout__mediaName">{displayMediaName}</b>
+        <b class="postListLayout__mediaType">{displayMediaType}</b>
         の記事
       </p>
     )
@@ -52,7 +52,7 @@ const displayMediaName =
         font-weight: bold;
       }
     }
-    &__mediaName {
+    &__mediaType {
       font-size: 20px;
     }
     &__body {

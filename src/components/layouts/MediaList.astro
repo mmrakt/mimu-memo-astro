@@ -1,7 +1,7 @@
 ---
 import React from 'react'
 
-import { MEDIA_LIST_DISPLAY } from '../../config'
+import { MEDIA_TYPE_LIST_FOR_DISPLAY } from '../../config'
 
 import MediaItem from './MediaItem.astro'
 ---
@@ -9,7 +9,7 @@ import MediaItem from './MediaItem.astro'
 <div class="mediaList">
   <h3 class="mediaList__heading">Articles</h3>
   <div class="mediaList__list">
-    {MEDIA_LIST_DISPLAY.map((media) => <MediaItem media={media} />)}
+    {MEDIA_TYPE_LIST_FOR_DISPLAY.map((media) => <MediaItem media={media} />)}
   </div>
 </div>
 

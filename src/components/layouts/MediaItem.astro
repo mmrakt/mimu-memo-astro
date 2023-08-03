@@ -2,13 +2,13 @@
 import React from 'react'
 
 import { NOTE_FEED_URL, QIITA_API_ENDPOINT, ZENN_FEED_URL } from '../../config'
-import { convertMediaNameToSlug, fetchFeed, fetchPosts } from '../../utils'
-import type { MediaDisplay } from '../../types'
+import { convertMediaTypeToSlug, fetchFeed, fetchPosts } from '../../utils'
+import type { MediaTypeForDisplay } from '../../types'
 import { getCollection } from 'astro:content'
 import LoadingSpinner from '../elements/LoadingSpinner.astro'
 
 type Props = {
-  media: MediaDisplay
+  media: MediaTypeForDisplay
 }
 const { media } = Astro.props
 
@@ -37,7 +37,7 @@ if (media === 'mimu-memo') {
       <LoadingSpinner />
     ) : (
       <a
-        href={`/${convertMediaNameToSlug(media)}/page/1`}
+        href={`/${convertMediaTypeToSlug(media)}/page/1`}
         class="mediaItem__link"
       >
         <span class="mediaItem__text">

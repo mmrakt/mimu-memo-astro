@@ -1,12 +1,11 @@
-import { MEDIA_LIST, MEDIA_LIST_DISPLAY } from '../config'
-
 import type { CollectionEntry } from 'astro:content'
+import type { MEDIA_TYPE_LIST, MEDIA_TYPE_LIST_FOR_DISPLAY } from '../config'
 
 export type Frontmatter = {
   pubDate: string
   title: string
   link: string
-  media: Media // TODO: 汎用化する
+  media: MediaType // TODO: 汎用化する
 }
 
 export type PaginatedPost = {
@@ -21,8 +20,8 @@ export type PaginatedPost = {
   }
 }
 
-export type Media = (typeof MEDIA_LIST)[number]
-export type MediaDisplay = (typeof MEDIA_LIST_DISPLAY)[number]
+export type MediaType = (typeof MEDIA_TYPE_LIST)[number]
+export type MediaTypeForDisplay = (typeof MEDIA_TYPE_LIST_FOR_DISPLAY)[number]
 
 export type QiitaPost = {
   rendered_body: string

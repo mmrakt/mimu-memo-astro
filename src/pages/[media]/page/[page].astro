@@ -1,13 +1,13 @@
 ---
 import type { Page, PaginateFunction } from 'astro'
-import { MEDIA_LIST } from '../../../config'
+import { MEDIA_TYPE_LIST } from '../../../config'
 import {
   extractSlugFromMd,
   makeNotePosts,
   makeQiitaPosts,
   makeZennPosts,
 } from '../../../utils'
-import type { Frontmatter, Media } from '../../../types'
+import type { Frontmatter, MediaType } from '../../../types'
 import BaseLayout from '../../../components/layouts/BaseLayout.astro'
 import Container from '../../../features/postList/Container.astro'
 import Head from '../../../components/layouts/Head.astro'
@@ -33,7 +33,7 @@ export async function getStaticPaths({
   })
 
   let posts: Frontmatter[] = []
-  return MEDIA_LIST.map((media) => {
+  return MEDIA_TYPE_LIST.map((media) => {
     if (media === 'owned') {
       posts = ownedPosts
     } else if (media === 'qiita') {
@@ -55,7 +55,7 @@ type Props = {
   page: Page<Frontmatter>
 }
 type Params = {
-  media: Media
+  media: MediaType
 }
 const { page } = Astro.props
 const { media } = Astro.params as Params
