@@ -3,9 +3,9 @@ import { remark } from 'remark'
 import Parser from 'rss-parser'
 import strip from 'strip-markdown'
 
-import { QIITA_FEED_URL, ZENN_FEED_URL } from './config/index'
+import { QIITA_API_ENDPOINT, ZENN_FEED_URL } from './config/index'
 
-import type { Frontmatter, Media, MediaDisplay } from './types/index'
+import type { Frontmatter, Media, MediaDisplay, QiitaPost } from './types/index'
 import type { MarkdownInstance } from 'astro'
 
 export const trimString = (str: string, limit: number) =>
@@ -33,8 +33,9 @@ export const sortPostsByPubDate = (posts: Frontmatter[]): Frontmatter[] =>
   )
 
 export const makeQiitaPost = async (): Promise<Frontmatter[]> => {
-  const feed = await fetchFeed(QIITA_FEED_URL)
-  return mappingFeed(feed.items, 'qiita')
+  const token = import.meta.env.QIITA_TOKEN || ''
+  const posts = await fetchPosts(QIITA_API_ENDPOINT, token)
+  return mappingQiitaFeed(posts)
 }
 
 export const makeZennPost = async (): Promise<Frontmatter[]> => {
@@ -47,6 +48,23 @@ export const fetchFeed = async (url: string) => {
   return feed
 }
 
+export const fetchPosts = async (endpoint: string, token: string) => {
+  const res = await fetch(endpoint, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  return res.json()
+}
+
+const mappingQiitaFeed = (posts: QiitaPost[]): Frontmatter[] => {
+  return posts.map((post) => ({
+    title: post.title ?? '',
+    pubDate: post.created_at ? dayjs(post.created_at).format('YYYY-MM-DD') : '',
+    link: post.url ?? '',
+    media: 'qiita',
+  }))
+}
+
+// TODO: Note連携実装してから抽象化検討
 const mappingFeed = (
   items: Parser.Item[],
   media: Exclude<Media, 'mimu-memo'>

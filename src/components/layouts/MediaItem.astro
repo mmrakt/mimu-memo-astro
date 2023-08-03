@@ -1,8 +1,8 @@
 ---
 import React from 'react'
 
-import { QIITA_FEED_URL, ZENN_FEED_URL } from '../../config'
-import { convertMediaNameToSlug, fetchFeed } from '../../utils'
+import { QIITA_API_ENDPOINT, ZENN_FEED_URL } from '../../config'
+import { convertMediaNameToSlug, fetchFeed, fetchPosts } from '../../utils'
 import type { MediaDisplay } from '../../types'
 import { getCollection } from 'astro:content'
 import LoadingSpinner from '../elements/LoadingSpinner.astro'
@@ -17,8 +17,11 @@ if (media === 'mimu-memo') {
   const ownedMd = await getCollection('owned')
   postCount = ownedMd.length
 } else if (media === 'Qiita') {
-  const qiitaFeed = await fetchFeed(QIITA_FEED_URL)
-  postCount = qiitaFeed.items.length
+  const token = import.meta.env.QIITA_TOKEN || ''
+  if (token) {
+    const posts = await fetchPosts(QIITA_API_ENDPOINT, token)
+    postCount = posts.length
+  }
 } else if (media === 'Zenn') {
   const zennFeed = await fetchFeed(ZENN_FEED_URL)
   postCount = zennFeed.items.length
