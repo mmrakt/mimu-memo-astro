@@ -6,6 +6,11 @@
   src: url('/fonts/Yellowtail-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Menlo';
+  src: url('/fonts/Menlo-Regular.ttf') format('truetype');
+}
+
 body {
   color: vars.$text-color-black;
   font-family: 'Noto Sans JP', sans-serif;

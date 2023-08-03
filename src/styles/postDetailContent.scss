@@ -104,6 +104,10 @@
     }
   }
 
+  code {
+    font-family: 'Menlo';
+  }
+
   > code,
   *:not(.astro-code) > code {
     background: vars.$black-800;
