@@ -3,10 +3,11 @@ import type { Page, PaginateFunction } from 'astro'
 import BaseLayout from '../../components/layouts/BaseLayout.astro'
 import Container from '../../features/postList/Container.astro'
 import {
-  makeQiitaPost,
-  makeZennPost,
+  makeQiitaPosts,
+  makeZennPosts,
   extractSlugFromMd,
   sortPostsByPubDate,
+  makeNotePosts,
 } from '../../utils'
 import type { Frontmatter } from '../../types/index.ts'
 import Head from '../../components/layouts/Head.astro'
@@ -19,8 +20,9 @@ export async function getStaticPaths({
   paginate: PaginateFunction
 }) {
   const ownedMd = await Astro.glob<Frontmatter>('../../content/owned/*.md'),
-    qiitaPosts = await makeQiitaPost(),
-    zennPosts = await makeZennPost()
+    qiitaPosts = await makeQiitaPosts(),
+    zennPosts = await makeZennPosts(),
+    notePosts = await makeNotePosts()
   const ownedPosts: Frontmatter[] = ownedMd.map((post) => {
     return {
       pubDate: post.frontmatter.pubDate,
@@ -30,7 +32,12 @@ export async function getStaticPaths({
     }
   })
 
-  const posts = sortPostsByPubDate([...ownedPosts, ...qiitaPosts, ...zennPosts])
+  const posts = sortPostsByPubDate([
+    ...ownedPosts,
+    ...qiitaPosts,
+    ...zennPosts,
+    ...notePosts,
+  ])
 
   return paginate(posts, { pageSize: 10 })
 }
@@ -42,7 +49,7 @@ const { page } = Astro.props
 
 <html lang="ja">
   <Head pagePath={`page/${page.currentPage}`} pageType="blog" />
-  <BaseLayout hasSideBar={true}>
+  <BaseLayout hasSideBar={true} hasToc={false}>
     <Container page={page} />
   </BaseLayout>
 </html>

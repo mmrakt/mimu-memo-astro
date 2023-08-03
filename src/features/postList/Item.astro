@@ -5,14 +5,14 @@ import {
   NOTE_URL_PREFIX,
   ZENN_URL_PREFIX,
 } from '../../config'
-import type { Frontmatter } from '../../types'
+import type { Frontmatter, Media } from '../../types'
 
 type Props = {
   post: Frontmatter
 }
 const { post } = Astro.props
 
-let externalMedia
+let externalMedia: Media | '' = ''
 if (post?.link) {
   if (post.link.indexOf(QIITA_URL_PREFIX) === 0) {
     externalMedia = 'qiita'
@@ -34,6 +34,8 @@ if (post?.link) {
         <img src="/img/qiita.png" alt="Qiita" width="20" height="20" />
       ) : externalMedia === 'zenn' ? (
         <img src="/img/zenn.svg" alt="Zenn" width="20" height="20" />
+      ) : externalMedia === 'note' ? (
+        <img src="/img/note.svg" alt="note" width="20" height="20" />
       ) : (
         ''
       )
@@ -86,8 +88,6 @@ if (post?.link) {
       }
     }
     &__media {
-      // position: absolute;
-      // margin-top: -41px;
       margin-right: 10px;
       padding: 0 6px;
       color: vars.$text-color-white;

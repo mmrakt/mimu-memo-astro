@@ -11,12 +11,18 @@ export const SITE_DESCRIPTION =
 export const QIITA_URL_PREFIX = 'https://qiita.com'
 export const NOTE_URL_PREFIX = 'https://note.com'
 export const ZENN_URL_PREFIX = 'https://zenn.dev'
-export const MEDIA_LIST = ['owned', 'qiita', 'zenn'] as const
-export const MEDIA_LIST_DISPLAY = ['mimu-memo', 'Qiita', 'Zenn'] as const
+export const MEDIA_LIST = ['owned', 'qiita', 'zenn', 'note'] as const
+export const MEDIA_LIST_DISPLAY = [
+  'mimu-memo',
+  'Qiita',
+  'Zenn',
+  'note',
+] as const
 
 export const SNS_ID = 'mmrakt'
 export const TWITTER_ID = 'mmrakt0716'
 export const ZENN_FEED_URL = `https://zenn.dev/${SNS_ID}/feed?all=1`
+export const NOTE_FEED_URL = `https://note.com/${SNS_ID}/rss`
 export const QIITA_API_ENDPOINT =
   'https://qiita.com/api/v2/authenticated_user/items'
 

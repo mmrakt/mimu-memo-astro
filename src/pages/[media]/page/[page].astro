@@ -1,7 +1,12 @@
 ---
 import type { Page, PaginateFunction } from 'astro'
 import { MEDIA_LIST } from '../../../config'
-import { extractSlugFromMd, makeQiitaPost, makeZennPost } from '../../../utils'
+import {
+  extractSlugFromMd,
+  makeNotePosts,
+  makeQiitaPosts,
+  makeZennPosts,
+} from '../../../utils'
 import type { Frontmatter, Media } from '../../../types'
 import BaseLayout from '../../../components/layouts/BaseLayout.astro'
 import Container from '../../../features/postList/Container.astro'
@@ -15,8 +20,9 @@ export async function getStaticPaths({
   paginate: PaginateFunction
 }) {
   const ownedMd = await Astro.glob<Frontmatter>('../../../content/owned/*.md'),
-    qiitaPosts = await makeQiitaPost(),
-    zennPosts = await makeZennPost()
+    qiitaPosts = await makeQiitaPosts(),
+    zennPosts = await makeZennPosts(),
+    notePosts = await makeNotePosts()
   const ownedPosts: Frontmatter[] = ownedMd.map((post) => {
     return {
       pubDate: post.frontmatter.pubDate,
@@ -34,6 +40,8 @@ export async function getStaticPaths({
       posts = qiitaPosts
     } else if (media === 'zenn') {
       posts = zennPosts
+    } else if (media === 'note') {
+      posts = notePosts
     }
     if (posts.length !== 0) {
       return paginate(posts, {

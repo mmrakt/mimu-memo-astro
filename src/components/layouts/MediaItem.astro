@@ -1,7 +1,7 @@
 ---
 import React from 'react'
 
-import { QIITA_API_ENDPOINT, ZENN_FEED_URL } from '../../config'
+import { NOTE_FEED_URL, QIITA_API_ENDPOINT, ZENN_FEED_URL } from '../../config'
 import { convertMediaNameToSlug, fetchFeed, fetchPosts } from '../../utils'
 import type { MediaDisplay } from '../../types'
 import { getCollection } from 'astro:content'
@@ -14,8 +14,8 @@ const { media } = Astro.props
 
 let postCount
 if (media === 'mimu-memo') {
-  const ownedMd = await getCollection('owned')
-  postCount = ownedMd.length
+  const posts = await getCollection('owned')
+  postCount = posts.length
 } else if (media === 'Qiita') {
   const token = import.meta.env.QIITA_TOKEN || ''
   if (token) {
@@ -23,8 +23,11 @@ if (media === 'mimu-memo') {
     postCount = posts.length
   }
 } else if (media === 'Zenn') {
-  const zennFeed = await fetchFeed(ZENN_FEED_URL)
-  postCount = zennFeed.items.length
+  const feed = await fetchFeed(ZENN_FEED_URL)
+  postCount = feed.items.length
+} else if (media === 'note') {
+  const feed = await fetchFeed(NOTE_FEED_URL)
+  postCount = feed.items.length
 }
 ---
 
