@@ -4,10 +4,21 @@ import React from 'react'
 import { MEDIA_TYPE_LIST_FOR_DISPLAY } from '../../config'
 
 import MediaItem from './MediaItem.astro'
+import SideBarHeading from './SideBarHeading.astro'
 ---
 
 <div class="mediaList">
-  <h3 class="mediaList__heading">Articles</h3>
+  <SideBarHeading text="Articles">
+    <picture>
+      <source
+        media="(prefers-color-scheme: dark)"
+        srcset="/img/article-white.png"
+        width="25"
+        height="25"
+      />
+      <img src="/img/article-black.png" width="25" height="25" alt="" />
+    </picture>
+  </SideBarHeading>
   <div class="mediaList__list">
     {MEDIA_TYPE_LIST_FOR_DISPLAY.map((media) => <MediaItem media={media} />)}
   </div>
