@@ -25,7 +25,6 @@
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@vercel/analytics": "^1.0.1",
     "astro": "^2.7.1",
-    "autoprefixer": "^10.4.14",
     "dayjs": "^1.11.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -55,6 +54,7 @@
     "@types/react": "^18.2.14",
     "@typescript-eslint/parser": "^5.60.1",
     "astro-auto-import": "^0.3.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.43.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
@@ -62,6 +62,7 @@
     "eslint-plugin-autofix": "^1.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
+    "postcss": "^8.4.27",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.10.0",
     "vitest": "^0.33.0"
