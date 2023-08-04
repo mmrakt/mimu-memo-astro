@@ -14,6 +14,7 @@
     "lint:fix": "eslint --fix ./src/**/*.{ts,tsx,astro}",
     "prepare": "husky install",
     "vrt": "npx playwright test",
+    "vrt:ui": "npx playwright test --ui",
     "vrt:update": "npx playwright test -u"
   },
   "dependencies": {
