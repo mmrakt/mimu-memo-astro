@@ -3,7 +3,7 @@
 
 .toc-list-item {
   position: relative;
-  padding: 4px 0 4px 16px;
+  padding-left: 16px;
 
   @include utils.mq(sp) {
     text-align: left;
@@ -29,6 +29,8 @@
     color: vars.$text-color-light-secondary;
     font-size: 14px;
     font-weight: bold;
+    display: block;
+    padding: 6px 0;
     @include utils.dark() {
       color: vars.$text-color-dark-tertiary;
     }
