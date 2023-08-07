@@ -10,6 +10,7 @@ export default defineConfig({
       langs: [],
       wrap: true,
     },
+    remarkPlugins: ['remark-breaks'],
   },
   output: 'server',
   adapter: vercel(),
