@@ -42,6 +42,15 @@ import TwitterLogo from '../elements/TwitterLogo'
     ストリートダンスと飲酒と個人開発が好きな関西人。<br
     />フロントエンド、バックエンドどっちも好きです。
   </p>
+  <div class="profile__portfolio">
+    <a
+      href="https://mimuuuu.net/"
+      class="profile__portfolioLink"
+      target="__blank"
+    >
+      ポートフォリオ →
+    </a>
+  </div>
 </div>
 
 <style lang="scss">
@@ -90,6 +99,18 @@ import TwitterLogo from '../elements/TwitterLogo'
     }
     &__introduce {
       font-size: 14px;
+    }
+    &__portfolio {
+      padding-top: 10px;
+      text-align: right;
+    }
+    &__portfolioLink {
+      font-size: 14px;
+      color: vars.$black-200;
+      text-decoration: underline;
+      @include utils.dark() {
+        color: #fff;
+      }
     }
   }
 </style>
