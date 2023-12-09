@@ -1,11 +1,7 @@
 ---
 import dayjs from 'dayjs'
-import {
-  QIITA_URL_PREFIX,
-  NOTE_URL_PREFIX,
-  ZENN_URL_PREFIX,
-} from '../../config'
-import type { Frontmatter, MediaType } from '../../types'
+import { QIITA_URL_PREFIX, NOTE_URL_PREFIX, ZENN_URL_PREFIX } from '@/config'
+import type { Frontmatter, MediaType } from '@/types'
 
 type Props = {
   post: Frontmatter
@@ -45,8 +41,8 @@ if (post?.link) {
 </article>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
 
   .postItem {
     padding: 20px;

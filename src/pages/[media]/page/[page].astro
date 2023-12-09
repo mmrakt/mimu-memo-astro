@@ -1,16 +1,16 @@
 ---
 import type { Page, PaginateFunction } from 'astro'
-import { MEDIA_TYPE_LIST } from '../../../config'
+import { MEDIA_TYPE_LIST } from '@/config'
 import {
   extractSlugFromMd,
   makeNotePosts,
   makeQiitaPosts,
   makeZennPosts,
-} from '../../../utils'
-import type { Frontmatter, MediaType } from '../../../types'
-import BaseLayout from '../../../components/layouts/BaseLayout.astro'
-import Container from '../../../features/postList/Container.astro'
-import Head from '../../../components/layouts/Head.astro'
+} from '@/utils'
+import type { Frontmatter, MediaType } from '@/types'
+import BaseLayout from '@/components/layouts/BaseLayout.astro'
+import Container from '@/features/postList/Container.astro'
+import Head from '@/components/layouts/Head.astro'
 
 export const prerender = true
 

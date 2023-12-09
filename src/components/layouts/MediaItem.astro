@@ -1,11 +1,9 @@
 ---
-import React from 'react'
-
-import { NOTE_FEED_URL, QIITA_API_ENDPOINT, ZENN_FEED_URL } from '../../config'
-import { convertMediaTypeToSlug, fetchFeed, fetchPosts } from '../../utils'
-import type { MediaTypeForDisplay } from '../../types'
+import { NOTE_FEED_URL, QIITA_API_ENDPOINT, ZENN_FEED_URL } from '@/config'
+import { convertMediaTypeToSlug, fetchFeed, fetchPosts } from '@/utils'
+import type { MediaTypeForDisplay } from '@/types'
 import { getCollection } from 'astro:content'
-import LoadingSpinner from '../elements/LoadingSpinner.astro'
+import LoadingSpinner from '@/components/elements/LoadingSpinner.astro'
 
 type Props = {
   media: MediaTypeForDisplay
@@ -49,8 +47,8 @@ if (media === 'mimu-memo') {
 </>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
 
   .mediaItem {
     &__link {

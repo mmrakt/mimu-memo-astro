@@ -1,6 +1,6 @@
 ---
-import type { PaginatedPost } from '../../types'
-import { trimString } from '../../utils'
+import type { PaginatedPost } from '@/types'
+import { trimString } from '@/utils'
 
 type Props = {
   next: PaginatedPost['next']
@@ -37,8 +37,8 @@ const { next, prev } = Astro.props
 </div>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
   .postDetailPagination {
     display: flex;
     gap: 20px;

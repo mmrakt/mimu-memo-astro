@@ -1,5 +1,5 @@
 ---
-import TocPc from '../elements/TocPc.astro'
+import TocPc from '@/components/elements/TocPc.astro'
 import MediaList from './MediaList.astro'
 import Profile from './Profile.astro'
 
@@ -23,8 +23,8 @@ const { hasToc } = Astro.props
   </aside>
 </div>
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
   .sideBar {
     width: 300px;
     flex-shrink: 0;

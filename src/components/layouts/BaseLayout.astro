@@ -2,8 +2,8 @@
 import Footer from './Footer.astro'
 import Header from './Header.astro'
 
-import '../../styles/reset.css'
-import '../../styles/_common.scss'
+import '@/styles/reset.css'
+import '@/styles/_common.scss'
 import SideBar from './SideBar.astro'
 
 type Props = {
@@ -37,8 +37,8 @@ const { hasSideBar, hasToc } = Astro.props
 </script>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
   .baseLayout {
     width: 100%;
     min-height: 100vh;

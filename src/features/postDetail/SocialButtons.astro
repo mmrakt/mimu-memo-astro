@@ -1,5 +1,5 @@
 ---
-import { SITE_URL } from '../../config'
+import { SITE_URL } from '@/config'
 
 type Props = {
   title: string
@@ -28,8 +28,8 @@ const twitterLink = `https://twitter.com/share?url=${url}&text=${title}`
 </div>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
   .socialButtons {
     display: flex;
     flex-direction: column;

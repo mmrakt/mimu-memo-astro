@@ -1,5 +1,5 @@
 ---
-import '../../styles/_tocBody.scss'
+import '@/styles/_tocBody.scss'
 ---
 
 <div class="tocSp">
@@ -14,8 +14,8 @@ import '../../styles/_tocBody.scss'
 </div>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
   .tocSp {
     &__button {
       position: relative;
@@ -83,7 +83,7 @@ import '../../styles/_tocBody.scss'
 </style>
 
 <script>
-  import tocModal from '../../scripts/tocModal'
+  import tocModal from '@/scripts/tocModal'
 
   tocModal()
 </script>

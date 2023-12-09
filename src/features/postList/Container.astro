@@ -2,7 +2,7 @@
 import Pagination from './Pagination.astro'
 import PostList from './List.astro'
 
-import type { Frontmatter, MediaType } from '../../types'
+import type { Frontmatter, MediaType } from '@/types'
 import type { Page } from 'astro'
 
 type Props = {
@@ -38,8 +38,8 @@ const displayMediaType =
 </div>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
   .postListLayout {
     &__media {
       margin-top: 20px;

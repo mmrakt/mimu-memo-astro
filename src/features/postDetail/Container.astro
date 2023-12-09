@@ -1,9 +1,9 @@
 ---
-import type { PaginatedPost } from '../../types'
+import type { PaginatedPost } from '@/types'
 import SocialButtons from './SocialButtons.astro'
 import PostDetail from './Content.astro'
-import Pagination from '../../features/postDetail/Pagination.astro'
-import TocSp from '../../components/elements/TocSp.astro'
+import Pagination from '@/features/postDetail/Pagination.astro'
+import TocSp from '@/components/elements/TocSp.astro'
 
 type Props = {
   post: PaginatedPost
@@ -27,8 +27,8 @@ const { post } = Astro.props
 </div>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
   .postDetailLayout {
     display: flex;
     width: 100%;
