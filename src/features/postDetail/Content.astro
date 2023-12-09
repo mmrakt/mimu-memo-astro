@@ -1,9 +1,9 @@
 ---
 import dayjs from 'dayjs'
 
-import type { PaginatedPost } from '../../types'
-import '../../styles/postDetailContent.scss'
-import { POST_DETAIL_CONTENT_SELECTOR } from '../../config'
+import type { PaginatedPost } from '@/types'
+import '@/styles/postDetailContent.scss'
+import { POST_DETAIL_CONTENT_SELECTOR } from '@/config'
 
 type Props = {
   post: PaginatedPost
@@ -24,8 +24,8 @@ const { post } = Astro.props
 </section>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
   .postDetail {
     @extend %card-content;
 

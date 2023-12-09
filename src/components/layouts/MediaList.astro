@@ -1,7 +1,5 @@
 ---
-import React from 'react'
-
-import { MEDIA_TYPE_LIST_FOR_DISPLAY } from '../../config'
+import { MEDIA_TYPE_LIST_FOR_DISPLAY } from '@/config'
 
 import MediaItem from './MediaItem.astro'
 import SideBarHeading from './SideBarHeading.astro'
@@ -25,8 +23,8 @@ import SideBarHeading from './SideBarHeading.astro'
 </div>
 
 <style lang="scss">
-  @use '../../styles/utils' as utils;
-  @use '../../styles/variables' as vars;
+  @use '@/styles/utils' as utils;
+  @use '@/styles/variables' as vars;
 
   .mediaList {
     padding: 20px;
